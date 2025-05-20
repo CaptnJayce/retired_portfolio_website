@@ -9,14 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
 
     function pickColour(min, max) {
-        // first half for StarClose, second half for StarFar
-        colours = ['#FFFFFFFF', '#FFFFFFBF', '#26BBD9FF', '#FFFFFF66', '#FFFFFF33', '#26BBD966'];
+        colours = ['#FFFFFFFF', '#FFFFFFBF', '#26BBD9FF'];
         return colours[Math.floor(Math.random() * max + min)];
     }
 
     class Planet {
         constructor() {
-            this.radius = 300;
+            this.size = 300;
             this.colour = '#1EB980';
             this.x = canvas.width / 2;
             this.y = canvas.height + 100;
@@ -27,100 +26,73 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.translate(this.x, this.y);
             ctx.fillStyle = this.colour;
             ctx.beginPath();
-            ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
+            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
             ctx.fill();
             ctx.restore();
         }
     }
 
-    class StarClose {
+    class Star {
         constructor() {
-            this.pulseSpeed = Math.random() * 0.02 + 0.01;
-            this.isGrowing = true;
+            // this.pulseSpeed = Math.random() * 0.01 + 0.01;
+            // this.isGrowing = true;
 
-            this.size = Math.random() * 1 + 3;
-            this.maxSize = this.size + 4;
+            this.size = Math.random() * 0.5 + 1;
+            this.maxSize = this.size + 1;
             this.minSize = this.size;
 
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
 
-            this.colour = pickColour(0, 3); // pick first three colours
+            this.colour = pickColour(0, 3);
         }
 
         update() {
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+
+            const glowRadius = this.size + 6;
+            const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, glowRadius);
+
             if (this.colour === '#26BBD9FF') {
-                if (this.isGrowing) {
-                    this.size += this.pulseSpeed;
-                    if (this.size >= this.maxSize) this.isGrowing = false;
-                } else {
-                    this.size -= this.pulseSpeed;
-                    if (this.size <= this.minSize) this.isGrowing = true;
-                }
+                gradient.addColorStop(0, 'rgba(36, 188, 220, 0.4)');
+                gradient.addColorStop(0.3, 'rgba(36, 188, 220, 0.2)');
+                gradient.addColorStop(0.4, 'rgba(36, 188, 220, 0.1)');
+                gradient.addColorStop(1, 'rgba(36, 188, 220, 0)');
+            } else {
+                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+                gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.2)');
+                gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.1)');
+                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
             }
-        }
 
-        draw() {
-            ctx.save();
-            ctx.translate(this.x, this.y);
+            // gradient
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(0, 0, glowRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // star
             ctx.fillStyle = this.colour;
             ctx.beginPath();
             ctx.arc(0, 0, this.size, 0, Math.PI * 2);
             ctx.fill();
-            ctx.restore();
-        }
-    }
 
-    class StarFar {
-        constructor() {
-            this.pulseSpeed = Math.random() * 0.02 + 0.01;
-            this.isGrowing = true;
-
-            this.size = Math.random() * 1 + 3;
-            this.maxSize = this.size + 2;
-            this.minSize = this.size;
-
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-
-            this.colour = pickColour(3, 3); // pick last three colours
-        }
-
-        update() {
-            if (this.colour === '#26BBD966') {
-                if (this.isGrowing) {
-                    this.size += this.pulseSpeed;
-                    if (this.size >= this.maxSize) this.isGrowing = false;
-                } else {
-                    this.size -= this.pulseSpeed;
-                    if (this.size <= this.minSize) this.isGrowing = true;
-                }
-            }
-        }
-
-        draw() {
-            ctx.save();
-            ctx.translate(this.x, this.y);
-            ctx.fillStyle = this.colour;
-            ctx.beginPath();
-            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-            ctx.fill();
             ctx.restore();
         }
     }
 
     const stars = [];
-    const star_count = 40;
+    const star_count = 120;
 
     for (let i = 0; i < star_count; i++) {
-        if (i % 2 === 0) {
-            stars.push(new StarClose());
-        } else {
-            stars.push(new StarFar());
-        }
+        stars.push(new Star());
     }
 
-    const planet = new Planet();  // Create a planet instance
+    const planet = new Planet();
 
     // animation
     function animate() {
