@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Planet {
         constructor() {
-            this.size = 300;
+            this.size = 500;
             this.colour = '#1EB980';
-            this.x = canvas.width / 2;
+            this.x = canvas.width - 100;
             this.y = canvas.height + 100;
         }
 
@@ -44,10 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
 
+            this.speed_x = -0.2
+            this.speed_y = 0.1;
+
             this.colour = pickColour(0, 3);
         }
 
         update() {
+            this.x += this.speed_x;
+            this.y += this.speed_y;
+            this.rot += this.rotSpeed;
+
+            if (this.x > canvas.width + this.size) this.x = -this.size;
+            else if (this.x < -this.size) this.x = canvas.width + this.size;
+
+            if (this.y > canvas.height + this.size) this.y = -this.size;
+            else if (this.y < -this.size) this.y = canvas.height + this.size;
         }
 
         draw() {
