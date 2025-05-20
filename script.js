@@ -34,26 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Star {
         constructor() {
-            // this.pulseSpeed = Math.random() * 0.01 + 0.01;
-            // this.isGrowing = true;
-
+            this.lifetime = Math.random() * 360 + 120;
             this.size = Math.random() * 0.5 + 1;
             this.maxSize = this.size + 1;
             this.minSize = this.size;
-
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-
-            this.speed_x = -0.2
+            this.speed_x = -0.2;
             this.speed_y = 0.1;
-
             this.colour = pickColour(0, 3);
         }
 
-        update() {
+        update(deltaTime) {
             this.x += this.speed_x;
             this.y += this.speed_y;
-            this.rot += this.rotSpeed;
+
+            this.lifetime -= deltaTime;
 
             if (this.x > canvas.width + this.size) this.x = -this.size;
             else if (this.x < -this.size) this.x = canvas.width + this.size;
@@ -81,13 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
             }
 
-            // gradient
             ctx.fillStyle = gradient;
             ctx.beginPath();
             ctx.arc(0, 0, glowRadius, 0, Math.PI * 2);
             ctx.fill();
 
-            // star
             ctx.fillStyle = this.colour;
             ctx.beginPath();
             ctx.arc(0, 0, this.size, 0, Math.PI * 2);
@@ -106,19 +100,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const planet = new Planet();
 
-    // animation
-    function animate() {
+    let lastTime = 0;
+    function animate(currentTime) {
+        const deltaTime = (currentTime - lastTime) / 1000;
+        lastTime = currentTime;
+
         ctx.fillStyle = '#0000000';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         stars.forEach(star => {
-            star.update();
+            star.update(deltaTime);
             star.draw();
+
+            if (star.lifetime <= 0) {
+                stars.pop();
+            }
         });
-        planet.draw()
+        planet.draw();
 
         requestAnimationFrame(animate);
     }
 
-    animate();
+    requestAnimationFrame(animate);
 });
