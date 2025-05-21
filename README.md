@@ -2,4 +2,4 @@
 
 - I wanted to experiment with ThreeJS for my Portfolio Website which will be themed around Outer Wilds (my goat)
 
-![reference_image](outer_wilds_map.png)
+![reference_image](/public/assets/outer_wilds_map.png)
