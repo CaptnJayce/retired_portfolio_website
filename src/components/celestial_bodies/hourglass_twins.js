@@ -5,25 +5,28 @@ export class HourglassTwins extends THREE.Group {
         super();
 
         const geometry = new THREE.SphereGeometry(0.75, 64, 64);
+        this.twin1 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0x86110e }));
+        this.twin2 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0xF6D7B0 }));
 
-        const twin1 = new THREE.Mesh(
-            geometry,
-            new THREE.MeshStandardMaterial({
-                color: 0x86110e,
-                roughness: 0.7
-            })
-        );
-        twin1.position.set(15, 2, 0);
+        this.twin1.position.set(2, 0, 0);
+        this.twin2.position.set(-2, 0, 0);
 
-        const twin2 = new THREE.Mesh(
-            geometry,
-            new THREE.MeshStandardMaterial({
-                color: 0xF6D7B0,
-                roughness: 0.7
-            })
-        );
-        twin2.position.set(15, -2, 0);
+        this.add(this.twin1, this.twin2);
 
-        this.add(twin1, twin2);
+        this.orbitRadius = 15;
+        this.orbitSpeed = 0.5;
+        this.angle = 0;
+    }
+
+    update() {
+        this.angle += 0.001 * this.orbitSpeed;
+
+        this.position.x = Math.cos(this.angle) * this.orbitRadius;
+        this.position.y = Math.sin(this.angle) * this.orbitRadius;
+
+        this.twin1.position.x = 2 * Math.cos(this.angle * 3);
+        this.twin1.position.y = 2 * Math.sin(this.angle * 3);
+        this.twin2.position.x = -2 * Math.cos(this.angle * 3);
+        this.twin2.position.y = -2 * Math.sin(this.angle * 3);
     }
 }

@@ -24,6 +24,8 @@ export class SolarSystem {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
 
+        this.animatedBodies = [];
+
         this.init();
     }
 
@@ -31,11 +33,26 @@ export class SolarSystem {
         this.scene.add(createAmbientLight());
 
         this.scene.add(new Sun());
-        this.scene.add(new HourglassTwins());
-        this.scene.add(new TimberHearth());
-        this.scene.add(new BrittleHollow());
-        this.scene.add(new GiantsDeep());
-        this.scene.add(new DarkBramble());
+
+        const hourglassTwins = new HourglassTwins();
+        this.animatedBodies.push(hourglassTwins);
+        this.scene.add(hourglassTwins);
+
+        const timberHearth = new TimberHearth();
+        this.animatedBodies.push(timberHearth);
+        this.scene.add(timberHearth);
+
+        const brittleHollow = new BrittleHollow();
+        this.animatedBodies.push(brittleHollow);
+        this.scene.add(brittleHollow);
+
+        const giantsDeep = new GiantsDeep();
+        this.animatedBodies.push(giantsDeep);
+        this.scene.add(giantsDeep);
+
+        const darkBramble = new DarkBramble();
+        this.animatedBodies.push(darkBramble);
+        this.scene.add(darkBramble);
 
         const viewSize = 100;
         const aspect = window.innerWidth / window.innerHeight;
@@ -43,7 +60,9 @@ export class SolarSystem {
     }
 
     update() {
-        // will populate later
+        this.animatedBodies.forEach(body => {
+            if (body.update) body.update();
+        });
     }
 
     render() {
