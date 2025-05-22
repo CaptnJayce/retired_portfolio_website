@@ -10,16 +10,14 @@ export class TimberHearth extends THREE.Mesh {
 
         super(geometry, material);
 
-        this.semiMajorAxis = 40;
-        this.semiMinorAxis = 25;
+        this.semiMajorAxis = 30;
+        this.semiMinorAxis = 20;
         this.orbitSpeed = 0.5;
-        this.angle = 0;
-
-        this.position.set(this.semiMajorAxis, 0, 0);
+        this.angle = Math.random() * Math.PI * 2;
     }
 
     update() {
-        this.angle += 0.01 * this.orbitSpeed;
+        this.angle += 0.0009 * this.orbitSpeed;
 
         this.position.x = Math.cos(this.angle) * this.semiMajorAxis;
         this.position.y = Math.sin(this.angle) * this.semiMinorAxis;

@@ -13,14 +13,14 @@ export class HourglassTwins extends THREE.Group {
 
         this.add(this.twin1, this.twin2);
 
-        this.semiMajorAxis = 20;
+        this.semiMajorAxis = 15;
         this.semiMinorAxis = 15;
         this.orbitSpeed = 0.5;
-        this.angle = 0;
+        this.angle = Math.random() * Math.PI * 2;
     }
 
     update() {
-        this.angle += 0.01 * this.orbitSpeed;
+        this.angle += 0.001 * this.orbitSpeed;
 
         this.position.x = Math.cos(this.angle) * this.semiMajorAxis;
         this.position.y = Math.sin(this.angle) * this.semiMinorAxis;
