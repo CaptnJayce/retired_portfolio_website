@@ -1,5 +1,27 @@
 {
+  "name": "outer-wilds-map",
+  "version": "1.0.0",
+  "description": "- I wanted to experiment with ThreeJS for my Portfolio Website which will be themed around Outer Wilds (my goat) - The plan is to have each planet as a different webpage, so Hourglass Twins will be \"Projects\", Timberhearth will be \"About Me\", etc",
+  "main": "index.js",
   "dependencies": {
-    "three": "^0.176.0"
-  }
+    "three": "^0.176.0",
+    "vite": "^6.3.5"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaptnJayce/outer-wilds-map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CaptnJayce/outer-wilds-map/issues"
+  },
+  "homepage": "https://github.com/CaptnJayce/outer-wilds-map#readme"
 }
