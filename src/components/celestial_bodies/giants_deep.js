@@ -7,12 +7,12 @@ export class GiantsDeep extends THREE.Mesh {
 
         super(geometry, material);
 
-        this.semiMajorAxis = 50;
+        this.semiMajorAxis = 55;
         this.semiMinorAxis = 35;
         this.orbitSpeed = 0.5;
         this.angle = 0;
 
-        this.position.set(50, 0, 0);
+        this.position.set(this.semiMajorAxis, 0, 0);
     }
 
     update() {

@@ -7,18 +7,18 @@ export class BrittleHollow extends THREE.Mesh {
 
         super(geometry, material);
 
-        this.semiMajorAxis = 40;
-        this.semiMinorAxis = 30;
+        this.semiMajorAxis = 30;
+        this.semiMinorAxis = 20;
         this.orbitSpeed = 0.5;
         this.angle = 0;
 
-        this.position.set(35, 0, 0);
+        this.position.set(this.semiMajorAxis, 0, 0);
     }
 
     update() {
         this.angle += 0.01 * this.orbitSpeed;
 
-        this.position.x = Math.cos(this.angle) * this.orbitRadius;
-        this.position.y = Math.sin(this.angle) * this.orbitRadius;
+        this.position.x = Math.cos(this.angle) * this.semiMajorAxis;
+        this.position.y = Math.sin(this.angle) * this.semiMinorAxis;
     }
 }
