@@ -6,6 +6,16 @@ export class DarkBramble extends THREE.Mesh {
         const material = new THREE.MeshStandardMaterial({ color: 0xe2d997, roughness: 0.7 })
         super(geometry, material);
 
+        this.outlineMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(4.2, 64, 64),
+            new THREE.MeshBasicMaterial({
+                color: 0xFFFFFF,
+                side: THREE.BackSide
+            })
+        );
+        this.outlineMesh.visible = false;
+        this.add(this.outlineMesh);
+
         this.semiMajorAxis = 75;
         this.semiMinorAxis = 45;
         this.orbitSpeed = 0.5;
@@ -14,6 +24,10 @@ export class DarkBramble extends THREE.Mesh {
         this.isClickable = true;
         this.camera = camera;
         this.handleClick = this.onClick.bind(this);
+
+        this.isHoverable = true;
+        this.handleMouseOver = this.onMouseOver.bind(this);
+        this.handleMouseOut = this.onMouseOut.bind(this);
     }
 
     onClick() {
@@ -23,6 +37,14 @@ export class DarkBramble extends THREE.Mesh {
                 zoom: 4
             });
         }
+    }
+
+    onMouseOver() {
+        this.outlineMesh.visible = true;
+    }
+
+    onMouseOut() {
+        this.outlineMesh.visible = false;
     }
 
     update() {

@@ -28,6 +28,7 @@ export class SolarSystem {
         this.animatedBodies = [];
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
+        this.hoveredObject = null;
 
         this.init();
         this.setupEventListeners();
@@ -35,12 +36,48 @@ export class SolarSystem {
 
     setupEventListeners() {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
+        window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
         window.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 paused = false;
                 this.camera.resetView();
             }
         });
+    }
+
+    onMouseMove(event) {
+        this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        this.raycaster.setFromCamera(this.mouse, this.camera);
+        const intersects = this.raycaster.intersectObjects(this.scene.children, true);
+
+        if (intersects.length > 0) {
+            const object = intersects[0].object;
+
+            // Find the topmost hoverable object in the hierarchy
+            let hoverableObject = object;
+            while (hoverableObject.parent && !hoverableObject.isHoverable) {
+                hoverableObject = hoverableObject.parent;
+            }
+
+            if (hoverableObject.isHoverable) {
+                if (this.hoveredObject !== hoverableObject) {
+                    if (this.hoveredObject) {
+                        this.hoveredObject.handleMouseOut();
+                    }
+                    hoverableObject.handleMouseOver();
+                    this.hoveredObject = hoverableObject;
+                }
+                return;
+            }
+        }
+
+        // If no hoverable object is found, clear any existing hover state
+        if (this.hoveredObject) {
+            this.hoveredObject.handleMouseOut();
+            this.hoveredObject = null;
+        }
     }
 
     onMouseClick(event) {

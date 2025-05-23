@@ -11,14 +11,38 @@ export class Sun extends THREE.Mesh {
         });
         super(geometry, material);
 
+        this.outlineMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(8.2, 64, 64),
+            new THREE.MeshBasicMaterial({
+                color: 0xFFFFFF,
+                side: THREE.BackSide
+            })
+        );
+        this.outlineMesh.visible = false;
+        this.add(this.outlineMesh);
+
         this.light = new THREE.PointLight(0xFFA500, 10000, 250, 2);
         this.add(this.light);
 
         this.isClickable = true;
+        this.isHoverable = true;
         this.handleClick = this.onClick.bind(this);
+        this.handleMouseOver = this.onMouseOver.bind(this);
+        this.handleMouseOut = this.onMouseOut.bind(this);
+
+        this.originalEmissive = material.emissive.clone();
+        this.originalEmissiveIntensity = material.emissiveIntensity;
     }
 
     onClick() {
-        console.log("sun clicked")
+        console.log("Sun clicked");
+    }
+
+    onMouseOver() {
+        this.outlineMesh.visible = true;
+    }
+
+    onMouseOut() {
+        this.outlineMesh.visible = false;
     }
 }

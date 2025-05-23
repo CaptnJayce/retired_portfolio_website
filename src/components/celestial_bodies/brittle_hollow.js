@@ -7,6 +7,16 @@ export class BrittleHollow extends THREE.Mesh {
 
         super(geometry, material);
 
+        this.outlineMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(1.7, 64, 64),
+            new THREE.MeshBasicMaterial({
+                color: 0xFFFFFF,
+                side: THREE.BackSide
+            })
+        );
+        this.outlineMesh.visible = false;
+        this.add(this.outlineMesh);
+
         this.semiMajorAxis = 40;
         this.semiMinorAxis = 25;
         this.orbitSpeed = 0.5;
@@ -15,6 +25,10 @@ export class BrittleHollow extends THREE.Mesh {
         this.isClickable = true;
         this.camera = camera;
         this.handleClick = this.onClick.bind(this);
+
+        this.isHoverable = true;
+        this.handleMouseOver = this.onMouseOver.bind(this);
+        this.handleMouseOut = this.onMouseOut.bind(this);
     }
 
     onClick() {
@@ -24,6 +38,14 @@ export class BrittleHollow extends THREE.Mesh {
                 zoom: 4
             });
         }
+    }
+
+    onMouseOver() {
+        this.outlineMesh.visible = true;
+    }
+
+    onMouseOut() {
+        this.outlineMesh.visible = false;
     }
 
     update() {

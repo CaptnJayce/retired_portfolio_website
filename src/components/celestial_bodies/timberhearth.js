@@ -10,6 +10,16 @@ export class TimberHearth extends THREE.Mesh {
 
         super(geometry, material);
 
+        this.outlineMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(1.45, 64, 64),
+            new THREE.MeshBasicMaterial({
+                color: 0xFFFFFF,
+                side: THREE.BackSide
+            })
+        );
+        this.outlineMesh.visible = false;
+        this.add(this.outlineMesh);
+
         this.semiMajorAxis = 30;
         this.semiMinorAxis = 20;
         this.orbitSpeed = 0.5;
@@ -18,6 +28,10 @@ export class TimberHearth extends THREE.Mesh {
         this.isClickable = true;
         this.camera = camera;
         this.handleClick = this.onClick.bind(this);
+
+        this.isHoverable = true;
+        this.handleMouseOver = this.onMouseOver.bind(this);
+        this.handleMouseOut = this.onMouseOut.bind(this);
     }
 
     onClick() {
@@ -27,6 +41,14 @@ export class TimberHearth extends THREE.Mesh {
                 zoom: 4
             });
         }
+    }
+
+    onMouseOver() {
+        this.outlineMesh.visible = true;
+    }
+
+    onMouseOut() {
+        this.outlineMesh.visible = false;
     }
 
     update() {
