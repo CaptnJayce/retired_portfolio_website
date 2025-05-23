@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export class GiantsDeep extends THREE.Mesh {
-    constructor() {
+    constructor(camera) {
         const geometry = new THREE.SphereGeometry(4, 64, 64);
         const material = new THREE.MeshStandardMaterial({ color: 0x30a073, roughness: 0.7 })
 
@@ -13,11 +13,17 @@ export class GiantsDeep extends THREE.Mesh {
         this.angle = Math.random() * Math.PI * 2;
 
         this.isClickable = true;
+        this.camera = camera;
         this.handleClick = this.onClick.bind(this);
     }
 
     onClick() {
-        console.log("giants deep clicked")
+        if (this.camera && typeof this.camera.focusOnObject === 'function') {
+            this.camera.focusOnObject(this, {
+                distance: 5,
+                zoom: 4
+            });
+        }
     }
 
     update() {

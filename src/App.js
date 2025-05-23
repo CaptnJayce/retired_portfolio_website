@@ -38,6 +38,7 @@ export class SolarSystem {
         window.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 paused = false;
+                this.camera.resetView();
             }
         });
     }
@@ -47,15 +48,12 @@ export class SolarSystem {
         this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         this.raycaster.setFromCamera(this.mouse, this.camera);
-
         const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
         if (intersects.length > 0) {
             paused = true;
-
             for (const intersect of intersects) {
                 let object = intersect.object;
-
                 while (object) {
                     if (object.isClickable && object.handleClick) {
                         object.handleClick();
@@ -72,23 +70,23 @@ export class SolarSystem {
 
         this.scene.add(new Sun());
 
-        const hourglassTwins = new HourglassTwins();
+        const hourglassTwins = new HourglassTwins(this.camera);
         this.animatedBodies.push(hourglassTwins);
         this.scene.add(hourglassTwins);
 
-        const timberHearth = new TimberHearth();
+        const timberHearth = new TimberHearth(this.camera);
         this.animatedBodies.push(timberHearth);
         this.scene.add(timberHearth);
 
-        const brittleHollow = new BrittleHollow();
+        const brittleHollow = new BrittleHollow(this.camera);
         this.animatedBodies.push(brittleHollow);
         this.scene.add(brittleHollow);
 
-        const giantsDeep = new GiantsDeep();
+        const giantsDeep = new GiantsDeep(this.camera);
         this.animatedBodies.push(giantsDeep);
         this.scene.add(giantsDeep);
 
-        const darkBramble = new DarkBramble();
+        const darkBramble = new DarkBramble(this.camera);
         this.animatedBodies.push(darkBramble);
         this.scene.add(darkBramble);
 

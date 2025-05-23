@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export class HourglassTwins extends THREE.Group {
-    constructor() {
+    constructor(camera) {
         super();
 
         const geometry = new THREE.SphereGeometry(0.75, 64, 64);
@@ -19,11 +19,17 @@ export class HourglassTwins extends THREE.Group {
         this.angle = Math.random() * Math.PI * 2;
 
         this.isClickable = true;
+        this.camera = camera;
         this.handleClick = this.onClick.bind(this);
     }
 
     onClick() {
-        console.log("twins clicked")
+        if (this.camera && typeof this.camera.focusOnObject === 'function') {
+            this.camera.focusOnObject(this, {
+                distance: 5,
+                zoom: 4
+            });
+        }
     }
 
     update() {

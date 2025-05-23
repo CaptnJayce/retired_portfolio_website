@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export class DarkBramble extends THREE.Mesh {
-    constructor() {
+    constructor(camera) {
         const geometry = new THREE.SphereGeometry(4, 64, 64);
         const material = new THREE.MeshStandardMaterial({ color: 0xe2d997, roughness: 0.7 })
         super(geometry, material);
@@ -12,11 +12,17 @@ export class DarkBramble extends THREE.Mesh {
         this.angle = Math.random() * Math.PI * 2;
 
         this.isClickable = true;
+        this.camera = camera;
         this.handleClick = this.onClick.bind(this);
     }
 
     onClick() {
-        console.log("dark bramble clicked")
+        if (this.camera && typeof this.camera.focusOnObject === 'function') {
+            this.camera.focusOnObject(this, {
+                distance: 5,
+                zoom: 4
+            });
+        }
     }
 
     update() {
