@@ -26,7 +26,7 @@ export class HourglassTwins extends THREE.Group {
     onClick() {
         if (this.camera && typeof this.camera.focusOnObject === 'function') {
             this.camera.focusOnObject(this, {
-                distance: 5,
+                distance: 10, // further away to prevent clipping into the sun
                 zoom: 4
             });
         }

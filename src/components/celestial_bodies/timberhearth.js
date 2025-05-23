@@ -23,7 +23,7 @@ export class TimberHearth extends THREE.Mesh {
     onClick() {
         if (this.camera && typeof this.camera.focusOnObject === 'function') {
             this.camera.focusOnObject(this, {
-                distance: 5,
+                distance: 10,
                 zoom: 4
             });
         }
