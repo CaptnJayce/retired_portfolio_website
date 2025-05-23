@@ -11,6 +11,13 @@ export class BrittleHollow extends THREE.Mesh {
         this.semiMinorAxis = 25;
         this.orbitSpeed = 0.5;
         this.angle = Math.random() * Math.PI * 2;
+
+        this.isClickable = true;
+        this.handleClick = this.onClick.bind(this);
+    }
+
+    onClick() {
+        console.log("brittle hollow clicked")
     }
 
     update() {

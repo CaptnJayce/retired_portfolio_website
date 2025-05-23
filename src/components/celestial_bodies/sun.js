@@ -13,5 +13,12 @@ export class Sun extends THREE.Mesh {
 
         this.light = new THREE.PointLight(0xFFA500, 10000, 250, 2);
         this.add(this.light);
+
+        this.isClickable = true;
+        this.handleClick = this.onClick.bind(this);
+    }
+
+    onClick() {
+        console.log("sun clicked")
     }
 }

@@ -14,6 +14,13 @@ export class TimberHearth extends THREE.Mesh {
         this.semiMinorAxis = 20;
         this.orbitSpeed = 0.5;
         this.angle = Math.random() * Math.PI * 2;
+
+        this.isClickable = true;
+        this.handleClick = this.onClick.bind(this);
+    }
+
+    onClick() {
+        console.log("timberhearth clicked")
     }
 
     update() {

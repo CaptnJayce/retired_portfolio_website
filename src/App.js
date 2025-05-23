@@ -25,8 +25,38 @@ export class SolarSystem {
         document.body.appendChild(this.renderer.domElement);
 
         this.animatedBodies = [];
+        this.raycaster = new THREE.Raycaster();
+        this.mouse = new THREE.Vector2();
 
         this.init();
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        window.addEventListener('click', (event) => this.onMouseClick(event), false);
+    }
+
+    onMouseClick(event) {
+        this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        this.raycaster.setFromCamera(this.mouse, this.camera);
+
+        const intersects = this.raycaster.intersectObjects(this.scene.children, true);
+
+        if (intersects.length > 0) {
+            for (const intersect of intersects) {
+                let object = intersect.object;
+
+                while (object) {
+                    if (object.isClickable && object.handleClick) {
+                        object.handleClick();
+                        return;
+                    }
+                    object = object.parent;
+                }
+            }
+        }
     }
 
     init() {
