@@ -11,6 +11,7 @@ import { Stars } from './components/celestial_bodies/stars.js'
 import { createCamera } from './systems/camera.js'
 import { createAmbientLight } from './systems/light.js'
 
+var paused = false;
 export class SolarSystem {
     constructor() {
         this.scene = new THREE.Scene();
@@ -34,6 +35,11 @@ export class SolarSystem {
 
     setupEventListeners() {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                paused = false;
+            }
+        });
     }
 
     onMouseClick(event) {
@@ -45,6 +51,8 @@ export class SolarSystem {
         const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
         if (intersects.length > 0) {
+            paused = true;
+
             for (const intersect of intersects) {
                 let object = intersect.object;
 
@@ -90,9 +98,11 @@ export class SolarSystem {
     }
 
     update() {
-        this.animatedBodies.forEach(body => {
-            if (body.update) body.update();
-        });
+        if (!paused) {
+            this.animatedBodies.forEach(body => {
+                if (body.update) body.update();
+            });
+        }
     }
 
     render() {
