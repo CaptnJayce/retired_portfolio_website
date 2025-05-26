@@ -16,6 +16,8 @@ export class DarkBramble extends THREE.Mesh {
         this.outlineMesh.visible = false;
         this.add(this.outlineMesh);
 
+        this.name = "Dark Bramble";
+
         this.semiMajorAxis = 75;
         this.semiMinorAxis = 45;
         this.orbitSpeed = 0.5;

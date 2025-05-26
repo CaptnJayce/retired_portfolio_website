@@ -24,6 +24,8 @@ export class Sun extends THREE.Mesh {
         this.light = new THREE.PointLight(0xFFA500, 10000, 250, 2);
         this.add(this.light);
 
+        this.name = "Sun";
+
         this.isClickable = true;
         this.isHoverable = true;
         this.handleClick = this.onClick.bind(this);
@@ -35,7 +37,6 @@ export class Sun extends THREE.Mesh {
     }
 
     onClick() {
-        console.log("Sun clicked");
     }
 
     onMouseOver() {

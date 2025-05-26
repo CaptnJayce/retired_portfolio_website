@@ -24,6 +24,8 @@ export class HourglassTwins extends THREE.Group {
         this.outlineMeshOne.visible = false;
         this.outlineMeshTwo.visible = false;
 
+        this.name = "Hourglass Twins";
+
         this.twin1 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0x86110e }));
         this.twin2 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0xF6D7B0 }));
 

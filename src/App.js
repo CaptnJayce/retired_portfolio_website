@@ -30,8 +30,45 @@ export class SolarSystem {
         this.mouse = new THREE.Vector2();
         this.hoveredObject = null;
 
+        this.tooltip = null;
+        this.createTooltip();
+
         this.init();
         this.setupEventListeners();
+    }
+
+
+    createTooltip() {
+        this.tooltip = document.createElement('div');
+        this.tooltip.style.position = 'fixed';
+        this.tooltip.style.color = 'white';
+        this.tooltip.style.fontFamily = 'Arial, sans-serif';
+        this.tooltip.style.fontSize = '20px';
+        this.tooltip.style.visibility = 'hidden';
+        this.tooltip.style.transform = 'translate(-50%, -100%)';
+        document.body.appendChild(this.tooltip);
+    }
+
+    updateTooltip(object) {
+        if (!object || !this.tooltip) return;
+
+        const worldPos = new THREE.Vector3();
+        object.getWorldPosition(worldPos);
+
+        const planetRadius = object.geometry?.parameters?.radius || 1;
+        const offsetY = planetRadius * 1.5;
+        worldPos.y += offsetY;
+
+        worldPos.project(this.camera);
+
+        const normalizedX = (worldPos.x * 0.5) + 0.5;
+        const normalizedY = (-worldPos.y * 0.5) + 0.5;
+
+        const screenX = normalizedX * window.innerWidth;
+        const screenY = normalizedY * window.innerHeight;
+
+        this.tooltip.style.left = `${screenX}px`;
+        this.tooltip.style.top = `${screenY}px`;
     }
 
     setupEventListeners() {
@@ -55,7 +92,6 @@ export class SolarSystem {
         if (intersects.length > 0) {
             const object = intersects[0].object;
 
-            // Find the topmost hoverable object in the hierarchy
             let hoverableObject = object;
             while (hoverableObject.parent && !hoverableObject.isHoverable) {
                 hoverableObject = hoverableObject.parent;
@@ -68,15 +104,19 @@ export class SolarSystem {
                     }
                     hoverableObject.handleMouseOver();
                     this.hoveredObject = hoverableObject;
+
+                    this.tooltip.textContent = hoverableObject.name || 'Planet';
+                    this.tooltip.style.visibility = 'visible';
+                    this.updateTooltip(hoverableObject);
                 }
                 return;
             }
         }
 
-        // If no hoverable object is found, clear any existing hover state
         if (this.hoveredObject) {
             this.hoveredObject.handleMouseOut();
             this.hoveredObject = null;
+            this.tooltip.style.visibility = 'hidden';
         }
     }
 
@@ -141,6 +181,10 @@ export class SolarSystem {
     }
 
     render() {
+        if (this.tooltip.style.visibility === 'visible' && this.hoveredObject) {
+            this.updateTooltip(this.hoveredObject);
+        }
+
         this.renderer.render(this.scene, this.camera);
     }
 }
