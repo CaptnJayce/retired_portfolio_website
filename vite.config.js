@@ -3,5 +3,5 @@
  */
 
 export default {
-    base: process.env.NODE_ENV === 'production' ? '/outer-wilds-map/' : ''
+    base: process.env.NODE_ENV === 'production' ? '/' : ''
 }
