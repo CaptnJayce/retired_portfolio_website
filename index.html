@@ -10,25 +10,139 @@
         body {
             margin: 0;
             overflow: hidden;
+            color: white;
         }
 
-        #info {
+        #overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .title {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            font-size: 30px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .projects-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .left-column,
+        .right-column {
+            flex: 1;
+            max-height: 800px;
+            overflow-y: scroll;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .left-column {
+            background: rgba(30, 30, 60, 0.5);
+            border: 1px solid #3344aa;
+            transform: translateX(-250px);
+        }
+
+        .right-column {
+            background: rgba(30, 60, 30, 0.5);
+            border: 1px solid #44aa44;
+            transform: translateX(250px);
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: rgba(20, 20, 20, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .incomplete-projects .project-card {
+            border-left-color: #4477ff;
+        }
+
+        .complete-projects .project-card {
+            border-left-color: #44cc44;
+        }
+
+        .project-card h3 {
+            margin-top: 0;
             color: white;
-            background-color: rgba(0, 0, 0, 0);
-            font-size: 50px;
-            border: none;
-            cursor: pointer;
+        }
+
+        .project-card p {
+            color: #ccc;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            background: #333;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .project-image {
+            max-width: 100%;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #4af;
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
     <script type="module" src="./src/main.js"></script>
-    <a href="https://github.com/CaptnJayce/outer-wilds-map"><button id="info"> <i
-                class="nf nf-fa-github"></i></button></a>
+
+    <div id="overlay" class="hidden">
+        <h2 class="title">Projects</h2>
+        <div class="projects-container">
+            <div class="left-column">
+                <h3>In Progress</h3>
+                <div class="projects-list incomplete-projects"></div>
+            </div>
+            <div class="right-column">
+                <h3>Completed</h3>
+                <div class="projects-list complete-projects"></div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

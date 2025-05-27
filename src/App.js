@@ -35,6 +35,10 @@ export class SolarSystem {
 
         this.init();
         this.setupEventListeners();
+
+        document.getElementById('close-info')?.addEventListener('click', () => {
+            this.hidePlanetInfo();
+        });
     }
 
     createTooltip() {
@@ -70,6 +74,20 @@ export class SolarSystem {
         this.tooltip.style.top = `${screenY}px`;
     }
 
+    hidePlanetInfo() {
+        const infoOverlay = document.getElementById('overlay');
+        infoOverlay.classList.remove('visible');
+
+        this.camera.resetView();
+        paused = false;
+
+        this.scene.traverse((object) => {
+            if (object.isHoverable === false) {
+                object.isHoverable = true;
+            }
+        });
+    }
+
     setupEventListeners() {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
         window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
@@ -79,6 +97,7 @@ export class SolarSystem {
             if (event.key === 'Escape') {
                 paused = false;
                 this.camera.resetView();
+                this.hidePlanetInfo()
 
                 // im lazy leave me alone
                 this.scene.traverse((object) => {

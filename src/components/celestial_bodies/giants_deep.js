@@ -17,7 +17,6 @@ export class GiantsDeep extends THREE.Mesh {
         this.outlineMesh.visible = false;
         this.add(this.outlineMesh);
 
-        // this.name = "Giant's Deep";
         this.name = "Contact";
 
         this.semiMajorAxis = 55;

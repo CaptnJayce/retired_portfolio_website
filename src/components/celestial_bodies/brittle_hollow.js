@@ -17,7 +17,6 @@ export class BrittleHollow extends THREE.Mesh {
         this.outlineMesh.visible = false;
         this.add(this.outlineMesh);
 
-        // this.name = "Brittle Hollow";
         this.name = "Experience"
 
         this.semiMajorAxis = 40;
