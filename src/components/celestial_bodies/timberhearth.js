@@ -20,7 +20,8 @@ export class TimberHearth extends THREE.Mesh {
         this.outlineMesh.visible = false;
         this.add(this.outlineMesh);
 
-        this.name = "Timber Hearth";
+        // this.name = "Timber Hearth";
+        this.name = "Projects";
 
         this.semiMajorAxis = 30;
         this.semiMinorAxis = 20;

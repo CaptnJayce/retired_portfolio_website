@@ -24,7 +24,7 @@ export class Sun extends THREE.Mesh {
         this.light = new THREE.PointLight(0xFFA500, 10000, 250, 2);
         this.add(this.light);
 
-        this.name = "Sun";
+        this.name = "Portfolio Page";
 
         this.isClickable = true;
         this.isHoverable = true;

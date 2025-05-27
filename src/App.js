@@ -37,7 +37,6 @@ export class SolarSystem {
         this.setupEventListeners();
     }
 
-
     createTooltip() {
         this.tooltip = document.createElement('div');
         this.tooltip.style.position = 'fixed';
@@ -135,7 +134,6 @@ export class SolarSystem {
         if (intersects.length > 0) {
             paused = true;
 
-            // Clear any existing hover state
             if (this.hoveredObject) {
                 this.hoveredObject.handleMouseOut();
                 this.hoveredObject = null;
