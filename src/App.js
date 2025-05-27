@@ -78,6 +78,13 @@ export class SolarSystem {
             if (event.key === 'Escape') {
                 paused = false;
                 this.camera.resetView();
+
+                // im lazy leave me alone
+                this.scene.traverse((object) => {
+                    if (object.isHoverable == false) {
+                        object.isHoverable = true;
+                    }
+                });
             }
         });
     }
@@ -91,11 +98,7 @@ export class SolarSystem {
 
         if (intersects.length > 0) {
             const object = intersects[0].object;
-
             let hoverableObject = object;
-            while (hoverableObject.parent && !hoverableObject.isHoverable) {
-                hoverableObject = hoverableObject.parent;
-            }
 
             if (hoverableObject.isHoverable) {
                 if (this.hoveredObject !== hoverableObject) {
@@ -131,6 +134,10 @@ export class SolarSystem {
             paused = true;
             for (const intersect of intersects) {
                 let object = intersect.object;
+
+                // disables planet outline
+                object.isHoverable = false;
+
                 while (object) {
                     if (object.isClickable && object.handleClick) {
                         object.handleClick();

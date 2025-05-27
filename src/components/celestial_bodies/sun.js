@@ -28,6 +28,8 @@ export class Sun extends THREE.Mesh {
 
         this.isClickable = true;
         this.isHoverable = true;
+        this.isSelected = false;
+
         this.handleClick = this.onClick.bind(this);
         this.handleMouseOver = this.onMouseOver.bind(this);
         this.handleMouseOut = this.onMouseOut.bind(this);
