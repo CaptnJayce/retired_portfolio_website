@@ -75,6 +75,8 @@ export class SolarSystem {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
         window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
         window.addEventListener('keydown', (event) => {
+
+            // resume orbits 
             if (event.key === 'Escape') {
                 paused = false;
                 this.camera.resetView();
@@ -132,6 +134,14 @@ export class SolarSystem {
 
         if (intersects.length > 0) {
             paused = true;
+
+            // Clear any existing hover state
+            if (this.hoveredObject) {
+                this.hoveredObject.handleMouseOut();
+                this.hoveredObject = null;
+                this.tooltip.style.visibility = 'hidden';
+            }
+
             for (const intersect of intersects) {
                 let object = intersect.object;
 

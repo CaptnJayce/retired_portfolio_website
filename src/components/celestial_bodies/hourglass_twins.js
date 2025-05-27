@@ -24,16 +24,8 @@ export class HourglassTwins extends THREE.Group {
         this.outlineMeshOne.visible = false;
         this.outlineMeshTwo.visible = false;
 
-        this.name = "Hourglass Twins";
-
         this.twin1 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0x86110e }));
         this.twin2 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0xF6D7B0 }));
-
-        this.outlineMeshOne.position.set(2, 0, 0);
-        this.outlineMeshTwo.position.set(-2, 0, 0);
-
-        this.twin1.position.set(2, 0, 0);
-        this.twin2.position.set(-2, 0, 0);
 
         this.add(this.outlineMeshOne, this.outlineMeshTwo, this.twin1, this.twin2);
 
@@ -46,28 +38,38 @@ export class HourglassTwins extends THREE.Group {
         this.camera = camera;
         this.handleClick = this.onClick.bind(this);
 
-        this.isHoverable = true;
-        this.handleMouseOver = this.onMouseOver.bind(this);
-        this.handleMouseOut = this.onMouseOut.bind(this);
+        this.twin1.name = "Ember Twin";
+        this.twin1.isHoverable = true;
+        this.twin1.handleMouseOver = () => {
+            this.outlineMeshOne.visible = true;
+        };
+        this.twin1.handleMouseOut = () => {
+            this.outlineMeshOne.visible = false;
+        };
+
+        this.twin2.name = "Ash Twin";
+        this.twin2.isHoverable = true;
+        this.twin2.handleMouseOver = () => {
+            this.outlineMeshTwo.visible = true;
+        };
+        this.twin2.handleMouseOut = () => {
+            this.outlineMeshTwo.visible = false;
+        };
     }
 
     onClick() {
         if (this.camera && typeof this.camera.focusOnObject === 'function') {
+            this.twin1.isHoverable = false;
+            this.twin2.isHoverable = false;
+
+            this.outlineMeshOne.visible = false;
+            this.outlineMeshTwo.visible = false;
+
             this.camera.focusOnObject(this, {
                 distance: 10,
                 zoom: 4
             });
         }
-    }
-
-    onMouseOver() {
-        this.outlineMeshOne.visible = true;
-        this.outlineMeshTwo.visible = true;
-    }
-
-    onMouseOut() {
-        this.outlineMeshOne.visible = false;
-        this.outlineMeshTwo.visible = false;
     }
 
     update() {
