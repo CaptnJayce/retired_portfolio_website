@@ -152,7 +152,7 @@ export class TimberHearth extends THREE.Mesh {
         <div class="tags"> ${(project.tech || []).map(tech => `<span class="tag">${tech}</span>`).join('')} </div>
 
         ${project.img ? `<img src="${project.img}" alt="${project.title || 'Project'}" class="project-image">` : ''}
-        ${project.link ? `<a href="${project.link}" class="link" target="_blank">View Project</a>` : ''}`;
+        ${project.link ? `<a href="${project.link}" class="link" target="_blank">View project</a>` : ''}`;
 
         return card;
     }
