@@ -23,49 +23,89 @@ export class TimberHearth extends THREE.Mesh {
         this.name = "Projects";
         this.projects = [
             {
-                title: "Project 1",
-                desc: "1 ...",
-                tech: ["Three.js"],
+                title: "This Website",
+                desc: "A portfolio website, inspired my Outer Wilds, made in ThreeJS",
+                tech: ["ThreeJS", "HTML", "CSS"],
+                status: "Incomplete",
+                img: "",
+                link: "https://github.com/CaptnJayce/captnjayce.github.io"
+            },
+            {
+                title: "Tino Sport Webpage",
+                desc: "A full-stack website developed in Shopify (design choices are at the liberty of the store owner..)",
+                tech: ["Shopify", "JavaScript"],
                 status: "Complete",
                 img: "",
-                link: ""
+                link: "https://www.tinosport.co.uk/"
             },
             {
-                title: "Project 2",
-                desc: "2 ...",
-                tech: ["Odin"],
+                title: "Parry The Floor Demo",
+                desc: "A simple platformer, focused around hitting obstacles to gain navigate levels",
+                tech: ["Godot", "GDScript"],
+                status: "Complete",
+                img: "",
+                link: "https://captnjayce.itch.io/parry-the-floor"
+            },
+            {
+                title: "Witch Way",
+                desc: "My current long term game-dev project",
+                tech: ["Odin", "Raylib"],
                 status: "Incomplete",
                 img: "",
-                link: ""
+                link: "https://github.com/CaptnJayce/witch-way"
             },
             {
-                title: "Project 3",
-                desc: "3 ...",
-                tech: ["C++"],
+                title: "Algorithm Visualizser",
+                desc: "An HTML website that visualises various algorithms",
+                tech: ["JS", "HTML", "CSS"],
+                status: "Complete",
+                img: "",
+                link: "https://github.com/CaptnJayce/algorithm-visualizser"
+            },
+            {
+                title: "Infinite Caves",
+                desc: "Using Perlin Noise and seeded generation to make infinite caves",
+                tech: ["Unity", "C#"],
+                status: "Complete",
+                img: "",
+                link: "https://github.com/CaptnJayce/infinite-caves"
+            },
+            {
+                title: "Quartermaster",
+                desc: "A desktop assistant",
+                tech: ["Python", "Ollama"],
                 status: "Incomplete",
                 img: "",
-                link: ""
+                link: "https://github.com/CaptnJayce/quartermaster"
             },
             {
-                title: "Project 3",
-                desc: "3 ...",
-                tech: ["C++"],
+                title: "Falling Sand",
+                desc: "A falling sand simulation",
+                tech: ["C++", "Raylib"],
+                status: "Complete",
+                img: "",
+                link: "https://github.com/CaptnJayce/falling-sand"
+            },
+            {
+                title: "20 Games Challenge",
+                desc: "A forever incomplete project documenting my attempt at the 20 Games Challenge by SDG Games",
+                tech: ["C++", "Raylib"],
                 status: "Incomplete",
                 img: "",
-                link: ""
+                link: "https://github.com/CaptnJayce/20-games-challenge"
             },
             {
-                title: "Project 3",
-                desc: "3 ...",
-                tech: ["C++"],
-                status: "Incomplete",
+                title: "Tino Sport Webpage",
+                desc: "A full-stack website developed on Shopify (design choices are at the liberty of the store owner..)",
+                tech: ["Shopify", "JavaScript"],
+                status: "Complete",
                 img: "",
-                link: ""
+                link: "https://www.tinosport.co.uk/"
             },
             {
-                title: "Project 3",
-                desc: "3 ...",
-                tech: ["C++"],
+                title: "Ergodash",
+                desc: "A custom built keyboard",
+                tech: ["Ergodash Kit", "Soldering Kit"],
                 status: "Incomplete",
                 img: "",
                 link: ""
@@ -132,7 +172,9 @@ export class TimberHearth extends THREE.Mesh {
                 zoom: 4
             });
 
-            this.showProjectsInfo();
+            setTimeout(() => {
+                this.showProjectsInfo();
+            }, 1000);
         }
     }
 
