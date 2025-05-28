@@ -120,7 +120,7 @@ export class SolarSystem {
             const object = intersects[0].object;
             let hoverableObject = object;
 
-            // icl i got DeepSeek to fix this weird ass but with mouseMove
+            // icl i got DeepSeek to fix this weird ass bug with mouseMove
             while (hoverableObject && !hoverableObject.isHoverable && hoverableObject.parent) {
                 hoverableObject = hoverableObject.parent;
             }
