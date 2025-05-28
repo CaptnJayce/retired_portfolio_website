@@ -120,23 +120,29 @@ export class SolarSystem {
             const object = intersects[0].object;
             let hoverableObject = object;
 
-            if (hoverableObject.isHoverable) {
+            // icl i got DeepSeek to fix this weird ass but with mouseMove
+            while (hoverableObject && !hoverableObject.isHoverable && hoverableObject.parent) {
+                hoverableObject = hoverableObject.parent;
+            }
+            if (hoverableObject?.isHoverable) {
                 if (this.hoveredObject !== hoverableObject) {
-                    if (this.hoveredObject) {
+                    if (this.hoveredObject && this.hoveredObject.handleMouseOut) {
                         this.hoveredObject.handleMouseOut();
                     }
-                    hoverableObject.handleMouseOver();
-                    this.hoveredObject = hoverableObject;
+                    if (hoverableObject.handleMouseOver) {
+                        hoverableObject.handleMouseOver();
+                        this.hoveredObject = hoverableObject;
 
-                    this.tooltip.textContent = hoverableObject.name || 'Planet';
-                    this.tooltip.style.visibility = 'visible';
-                    this.updateTooltip(hoverableObject);
+                        this.tooltip.textContent = hoverableObject.name || 'Planet';
+                        this.tooltip.style.visibility = 'visible';
+                        this.updateTooltip(hoverableObject);
+                    }
                 }
                 return;
             }
         }
 
-        if (this.hoveredObject) {
+        if (this.hoveredObject && this.hoveredObject.handleMouseOut) {
             this.hoveredObject.handleMouseOut();
             this.hoveredObject = null;
             this.tooltip.style.visibility = 'hidden';
@@ -151,9 +157,6 @@ export class SolarSystem {
         const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
         if (intersects.length > 0) {
-            this.hidePlanetInfo()
-            paused = true;
-
             if (this.hoveredObject) {
                 this.hoveredObject.handleMouseOut();
                 this.hoveredObject = null;
@@ -162,15 +165,26 @@ export class SolarSystem {
 
             for (const intersect of intersects) {
                 let object = intersect.object;
-
-                // disables planet outline
                 object.isHoverable = false;
 
                 while (object) {
                     if (object.isClickable && object.handleClick) {
-                        object.handleClick();
-                        return;
+                        // if click the same planet, hide info and zoom out
+                        // else, just hide info
+                        if (this.currentPlanet == object.name) {
+                            this.hidePlanetInfo();
+                            this.currentPlanet = null;
+                            return;
+                        } else {
+                            this.hidePlanetInfo();
+                            object.handleClick();
+                            this.currentPlanet = object.name;
+                            paused = true;
+                            return;
+                        }
                     }
+
+                    this.hidePlanetInfo();
                     object = object.parent;
                 }
             }
