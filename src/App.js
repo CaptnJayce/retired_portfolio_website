@@ -82,7 +82,7 @@ export class SolarSystem {
         paused = false;
 
         this.scene.traverse((object) => {
-            if (object.isHoverable === false) {
+            if (object.isHoverable == false) {
                 object.isHoverable = true;
             }
         });
@@ -94,7 +94,7 @@ export class SolarSystem {
         window.addEventListener('keydown', (event) => {
 
             // resume orbits 
-            if (event.key === 'Escape') {
+            if (event.key == 'Escape') {
                 paused = false;
                 this.camera.resetView();
                 this.hidePlanetInfo()
@@ -151,6 +151,7 @@ export class SolarSystem {
         const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
         if (intersects.length > 0) {
+            this.hidePlanetInfo()
             paused = true;
 
             if (this.hoveredObject) {
@@ -215,7 +216,7 @@ export class SolarSystem {
     }
 
     render() {
-        if (this.tooltip.style.visibility === 'visible' && this.hoveredObject) {
+        if (this.tooltip.style.visibility == 'visible' && this.hoveredObject) {
             this.updateTooltip(this.hoveredObject);
         }
 

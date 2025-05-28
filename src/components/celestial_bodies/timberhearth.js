@@ -24,19 +24,11 @@ export class TimberHearth extends THREE.Mesh {
         this.projects = [
             {
                 title: "This Website",
-                desc: "A portfolio website, inspired my Outer Wilds, made in ThreeJS",
+                desc: "A portfolio website, inspired by Outer Wilds, made in ThreeJS",
                 tech: ["ThreeJS", "HTML", "CSS"],
                 status: "Incomplete",
                 img: "",
                 link: "https://github.com/CaptnJayce/captnjayce.github.io"
-            },
-            {
-                title: "Tino Sport Webpage",
-                desc: "A full-stack website developed in Shopify (design choices are at the liberty of the store owner..)",
-                tech: ["Shopify", "JavaScript"],
-                status: "Complete",
-                img: "",
-                link: "https://www.tinosport.co.uk/"
             },
             {
                 title: "Parry The Floor Demo",
