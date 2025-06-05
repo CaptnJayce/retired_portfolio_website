@@ -218,13 +218,14 @@ export class SolarSystem {
 
         const viewSize = 100;
         const aspect = window.innerWidth / window.innerHeight;
-        new Stars(this.scene, viewSize, aspect);
+        this.stars = new Stars(this.scene, viewSize, aspect);
+        this.animatedBodies.push(this.stars);
     }
 
-    update() {
+    update(deltaTime) {
         if (!paused) {
             this.animatedBodies.forEach(body => {
-                if (body.update) body.update();
+                if (body.update) body.update(deltaTime);
             });
         }
     }

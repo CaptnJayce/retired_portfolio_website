@@ -13,7 +13,7 @@ export class Stars {
         };
 
         this.getLifetime = () => {
-            return (180 + Math.random() * 120) * 1000;
+            return (Math.random() * 360 + 120);
         };
 
         this.createStars();
@@ -30,24 +30,19 @@ export class Stars {
             star.position.y = (Math.random() - 0.5) * this.height;
             star.position.z = 0;
 
-            star.userData = {
-                created_at: Date.now(),
-                lifetime: this.getLifetime()
-            };
+            star.lifetime = this.getLifetime()
 
             this.stars.push(star);
             this.scene.add(star);
         }
     }
 
-    update() {
-        const currentTime = Date.now();
-
+    update(deltaTime) {
         for (let i = this.stars.length - 1; i >= 0; i--) {
             const star = this.stars[i];
 
-            const age = currentTime - star.userData.created_at;
-            if (age >= star.userData.lifetime) {
+            star.lifetime -= deltaTime;
+            if (star.lifetime <= 0) {
                 this.scene.remove(star);
                 this.stars.splice(i, 1);
             }
