@@ -75,8 +75,11 @@ export class SolarSystem {
     }
 
     hidePlanetInfo() {
-        const infoOverlay = document.getElementById('overlay');
-        infoOverlay.classList.remove('visible');
+        const projectsOverlay = document.getElementById('projectsOverlay');
+        const aboutMeOverlay = document.getElementById('aboutMeOverlay');
+
+        projectsOverlay.classList.remove('visible');
+        aboutMeOverlay.classList.remove('visible');
 
         this.camera.resetView();
         paused = false;
@@ -194,7 +197,7 @@ export class SolarSystem {
     init() {
         this.scene.add(createAmbientLight());
 
-        this.scene.add(new Sun());
+        this.scene.add(new Sun(this.camera));
 
         const hourglassTwins = new HourglassTwins(this.camera);
         this.animatedBodies.push(hourglassTwins);

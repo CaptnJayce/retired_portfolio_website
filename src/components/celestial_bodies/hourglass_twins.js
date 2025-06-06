@@ -39,7 +39,7 @@ export class HourglassTwins extends THREE.Group {
         this.handleClick = this.onClick.bind(this);
 
         // this.twin1.name = "Ember Twin";
-        this.twin1.name = "About Me";
+        this.twin1.name = "Experience";
         this.twin1.isHoverable = true;
         this.twin1.handleMouseOver = () => {
             this.outlineMeshOne.visible = true;
@@ -49,7 +49,7 @@ export class HourglassTwins extends THREE.Group {
         };
 
         // this.twin2.name = "Ash Twin";
-        this.twin2.name = "Tools/Environment"
+        this.twin2.name = "Education"
         this.twin2.isHoverable = true;
         this.twin2.handleMouseOver = () => {
             this.outlineMeshTwo.visible = true;

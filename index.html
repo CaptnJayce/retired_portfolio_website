@@ -13,7 +13,7 @@
             color: white;
         }
 
-        #overlay {
+        #aboutMeOverlay {
             position: fixed;
             width: 100%;
             height: 100%;
@@ -26,20 +26,66 @@
             transition: opacity 0.3s ease;
         }
 
-        #overlay.visible {
+        #aboutMeOverlay.visible {
             opacity: 1;
             pointer-events: auto;
         }
 
-        .title {
-            position: absolute;
-            font-size: 30px;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .aboutMeContainer {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: 80vw;
+            gap: 2rem;
+            margin-top: 1rem;
         }
 
-        .projects-container {
+        .aboutMeTitle {
+            background: rgba(20, 20, 20, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #FFA500;
+            text-align: center;
+        }
+
+        .aboutMeContent {
+            display: flex;
+            gap: 25rem;
+        }
+
+        .aboutMeLeft,
+        .aboutMeRight {
+            background: rgba(20, 20, 20, 0.7);
+            padding: 1rem;
+            flex: 1;
+            height: 650px;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: white #00000000;
+            border-left: 4px solid #FFA500;
+            border-radius: 8px;
+            max-width: 600px
+        }
+
+        #projectsOverlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #projectsOverlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .projectsContainer {
             display: flex;
             height: 80vh;
             width: 80vw;
@@ -47,52 +93,54 @@
             margin-top: 1rem;
         }
 
-        .left-column,
-        .right-column {
+        .leftColumn,
+        .rightColumn {
             flex: 1;
             max-height: 800px;
             overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: white #00000000;
             padding: 1rem;
             border-radius: 8px;
         }
 
-        .left-column {
+        .leftColumn {
             background: rgba(233, 86, 120, 0.1);
             border: 1px solid #E95678;
         }
 
-        .right-column {
+        .rightColumn {
             background: rgba(89, 227, 227, 0.1);
             border: 1px solid #59E3E3;
         }
 
-        .projects-list {
+        .projectsList {
             display: grid;
             gap: 1.5rem;
             margin-top: 1rem;
         }
 
-        .project-card {
+        .projectCard {
             background: rgba(20, 20, 20, 0.7);
             padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid;
         }
 
-        .incomplete-projects .project-card {
+        .incompleteProjects .projectCard {
             border-left-color: #E95678;
         }
 
-        .complete-projects .project-card {
+        .completeProjects .projectCard {
             border-left-color: #59E3E3;
         }
 
-        .project-card h3 {
+        .projectCard h3 {
             margin-top: 0;
             color: white;
         }
 
-        .project-card p {
+        .projectCard p {
             color: #ccc;
         }
 
@@ -110,7 +158,7 @@
             font-size: 0.8rem;
         }
 
-        .project-image {
+        .projectImage {
             max-width: 100%;
             border-radius: 4px;
             margin-top: 1rem;
@@ -128,16 +176,29 @@
 <body>
     <script type="module" src="./src/main.js"></script>
 
-    <div id="overlay" class="hidden">
-        <h2 class="title">Projects</h2>
-        <div class="projects-container">
-            <div class="left-column">
+    <div id="projectsOverlay" class="hidden">
+        <div class="projectsContainer">
+            <div class="leftColumn">
                 <h3>In Progress</h3>
-                <div class="projects-list incomplete-projects"></div>
+                <div class="projectsList incompleteProjects"></div>
             </div>
-            <div class="right-column">
+            <div class="rightColumn">
                 <h3>Completed</h3>
-                <div class="projects-list complete-projects"></div>
+                <div class="projectsList completeProjects"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutMeOverlay">
+        <div class="aboutMeContainer">
+            <div class="aboutMeTitle">
+                <h2>About Me</h2>
+            </div>
+            <div class="aboutMeContent">
+                <div class="aboutMeLeft">
+                </div>
+                <div class="aboutMeRight">
+                </div>
             </div>
         </div>
     </div>

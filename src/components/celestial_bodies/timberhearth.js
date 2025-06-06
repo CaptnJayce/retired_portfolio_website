@@ -120,9 +120,9 @@ export class TimberHearth extends THREE.Mesh {
 
     // we're doing this da looooooooooooooooooooong way
     showProjectsInfo() {
-        const infoOverlay = document.getElementById('overlay');
-        const incompleteList = infoOverlay.querySelector('.incomplete-projects');
-        const completeList = infoOverlay.querySelector('.complete-projects');
+        const overlay = document.getElementById('projectsOverlay');
+        const incompleteList = overlay.querySelector('.incompleteProjects');
+        const completeList = overlay.querySelector('.completeProjects');
 
         incompleteList.innerHTML = '';
         completeList.innerHTML = '';
@@ -130,19 +130,19 @@ export class TimberHearth extends THREE.Mesh {
         this.projects.forEach(project => {
             const projectCard = this.createProjectCard(project);
 
-            if (project.status === 'Complete') {
+            if (project.status == 'Complete') {
                 completeList.appendChild(projectCard);
             } else {
                 incompleteList.appendChild(projectCard);
             }
         });
 
-        infoOverlay.classList.add('visible');
+        overlay.classList.add('visible');
     }
 
     createProjectCard(project) {
         const card = document.createElement('div');
-        card.className = 'project-card';
+        card.className = 'projectCard';
 
         card.innerHTML = `
         <h3>${project.title || 'Untitled Project'}</h3>
@@ -151,7 +151,7 @@ export class TimberHearth extends THREE.Mesh {
 
         <div class="tags"> ${(project.tech || []).map(tech => `<span class="tag">${tech}</span>`).join('')} </div>
 
-        ${project.img ? `<img src="${project.img}" alt="${project.title || 'Project'}" class="project-image">` : ''}
+        ${project.img ? `<img src="${project.img}" alt="${project.title || 'Project'}" class="projectImage">` : ''}
         ${project.link ? `<a href="${project.link}" class="link" target="_blank">View project</a>` : ''}`;
 
         return card;
