@@ -1,26 +1,14 @@
-import * as THREE from 'three';
+import { BasePlanet } from './planet.js';
 
-export class TimberHearth extends THREE.Mesh {
+export class TimberHearth extends BasePlanet {
     constructor(camera) {
-        const geometry = new THREE.SphereGeometry(1.25, 64, 64);
-        const material = new THREE.MeshStandardMaterial({
-            color: 0x59981a,
-            roughness: 0.7,
-        });
+        super(camera, "Projects", 1.25, 0x59981a);
 
-        super(geometry, material);
+        this.semiMajorAxis = 30;
+        this.semiMinorAxis = 20;
+        this.orbitSpeed = 0.5;
+        this.angle = Math.random() * Math.PI * 2;
 
-        this.outlineMesh = new THREE.Mesh(
-            new THREE.SphereGeometry(1.45, 64, 64),
-            new THREE.MeshBasicMaterial({
-                color: 0xFFFFFF,
-                side: THREE.BackSide
-            })
-        );
-        this.outlineMesh.visible = false;
-        this.add(this.outlineMesh);
-
-        this.name = "Projects";
         this.projects = [
             {
                 title: "This Website",
@@ -103,23 +91,10 @@ export class TimberHearth extends THREE.Mesh {
                 link: ""
             }
         ];
-
-        this.semiMajorAxis = 30;
-        this.semiMinorAxis = 20;
-        this.orbitSpeed = 0.5;
-        this.angle = Math.random() * Math.PI * 2;
-
-        this.isClickable = true;
-        this.camera = camera;
-        this.handleClick = this.onClick.bind(this);
-
-        this.isHoverable = true;
-        this.handleMouseOver = this.onMouseOver.bind(this);
-        this.handleMouseOut = this.onMouseOut.bind(this);
     }
 
     // we're doing this da looooooooooooooooooooong way
-    showProjectsInfo() {
+    showPlanetInfo() {
         const overlay = document.getElementById('projectsOverlay');
         const incompleteList = overlay.querySelector('.incompleteProjects');
         const completeList = overlay.querySelector('.completeProjects');
@@ -155,27 +130,6 @@ export class TimberHearth extends THREE.Mesh {
         ${project.link ? `<a href="${project.link}" class="link" target="_blank">View project</a>` : ''}`;
 
         return card;
-    }
-
-    onClick() {
-        if (this.camera && typeof this.camera.focusOnObject === 'function') {
-            this.camera.focusOnObject(this, {
-                distance: 10,
-                zoom: 1
-            });
-
-            setTimeout(() => {
-                this.showProjectsInfo();
-            }, 1000);
-        }
-    }
-
-    onMouseOver() {
-        this.outlineMesh.visible = true;
-    }
-
-    onMouseOut() {
-        this.outlineMesh.visible = false;
     }
 
     update() {

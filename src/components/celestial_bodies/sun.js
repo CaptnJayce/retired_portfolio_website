@@ -1,45 +1,18 @@
 import * as THREE from 'three';
+import { BasePlanet } from './planet.js';
 
-export class Sun extends THREE.Mesh {
+export class Sun extends BasePlanet {
     constructor(camera) {
-        const geometry = new THREE.SphereGeometry(8, 64, 64);
-        const material = new THREE.MeshStandardMaterial({
-            color: 0xFFA500,
-            emissive: 0xFFA500,
-            emissiveIntensity: 1,
-            roughness: 0.7
-        });
-        super(geometry, material);
+        super(camera, "About Me", 8, 0xFFA500);
 
-        this.outlineMesh = new THREE.Mesh(
-            new THREE.SphereGeometry(8.2, 64, 64),
-            new THREE.MeshBasicMaterial({
-                color: 0xFFFFFF,
-                side: THREE.BackSide
-            })
-        );
-        this.outlineMesh.visible = false;
-        this.add(this.outlineMesh);
+        this.material.emissive = new THREE.Color(0xFFA500);
+        this.material.emissiveIntensity = 1;
 
         this.light = new THREE.PointLight(0xFFA500, 10000, 250, 2);
         this.add(this.light);
-
-        this.name = "About Me";
-
-        this.isClickable = true;
-        this.camera = camera;
-        this.handleClick = this.onClick.bind(this);
-
-        this.isHoverable = true;
-        this.handleMouseOver = this.onMouseOver.bind(this);
-        this.handleMouseOut = this.onMouseOut.bind(this);
-
-        this.originalEmissive = material.emissive.clone();
-        this.originalEmissiveIntensity = material.emissiveIntensity;
     }
 
-    // we're still doing this da looooooooooooooooooooong way
-    showAboutMeInfo() {
+    showPlanetInfo() {
         const overlay = document.getElementById('aboutMeOverlay');
         const title = overlay.querySelector('.aboutMeTitle');
         const left = overlay.querySelector('.aboutMeLeft');
@@ -69,26 +42,5 @@ export class Sun extends THREE.Mesh {
         card.className = 'aboutMeCard';
 
         return card;
-    }
-
-    onClick() {
-        if (this.camera && typeof this.camera.focusOnObject === 'function') {
-            this.camera.focusOnObject(this, {
-                distance: 10,
-                zoom: 1
-            });
-
-            setTimeout(() => {
-                this.showAboutMeInfo();
-            }, 1000);
-        }
-    }
-
-    onMouseOver() {
-        this.outlineMesh.visible = true;
-    }
-
-    onMouseOut() {
-        this.outlineMesh.visible = false;
     }
 }

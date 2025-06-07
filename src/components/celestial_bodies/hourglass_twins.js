@@ -1,3 +1,4 @@
+// unique case so doesnt extend from base class
 import * as THREE from 'three';
 
 export class HourglassTwins extends THREE.Group {

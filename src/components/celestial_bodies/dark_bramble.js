@@ -1,52 +1,13 @@
-import * as THREE from 'three';
+import { BasePlanet } from './planet.js';
 
-export class DarkBramble extends THREE.Mesh {
+export class DarkBramble extends BasePlanet {
     constructor(camera) {
-        const geometry = new THREE.SphereGeometry(4, 64, 64);
-        const material = new THREE.MeshStandardMaterial({ color: 0xe2d997, roughness: 0.7 })
-        super(geometry, material);
-
-        this.outlineMesh = new THREE.Mesh(
-            new THREE.SphereGeometry(4.2, 64, 64),
-            new THREE.MeshBasicMaterial({
-                color: 0xFFFFFF,
-                side: THREE.BackSide
-            })
-        );
-        this.outlineMesh.visible = false;
-        this.add(this.outlineMesh);
-
-        this.name = "...";
+        super(camera, "...", 4, 0xe2d997);
 
         this.semiMajorAxis = 75;
         this.semiMinorAxis = 45;
         this.orbitSpeed = 0.5;
         this.angle = Math.random() * Math.PI * 2;
-
-        this.isClickable = true;
-        this.camera = camera;
-        this.handleClick = this.onClick.bind(this);
-
-        this.isHoverable = true;
-        this.handleMouseOver = this.onMouseOver.bind(this);
-        this.handleMouseOut = this.onMouseOut.bind(this);
-    }
-
-    onClick() {
-        if (this.camera && typeof this.camera.focusOnObject === 'function') {
-            this.camera.focusOnObject(this, {
-                distance: 10,
-                zoom: 1
-            });
-        }
-    }
-
-    onMouseOver() {
-        this.outlineMesh.visible = true;
-    }
-
-    onMouseOut() {
-        this.outlineMesh.visible = false;
     }
 
     update() {

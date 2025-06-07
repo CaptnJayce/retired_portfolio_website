@@ -1,53 +1,13 @@
-import * as THREE from 'three';
+import { BasePlanet } from './planet.js';
 
-export class BrittleHollow extends THREE.Mesh {
+export class BrittleHollow extends BasePlanet {
     constructor(camera) {
-        const geometry = new THREE.SphereGeometry(1.5, 64, 64);
-        const material = new THREE.MeshStandardMaterial({ color: 0x808080, roughness: 0.7 });
-
-        super(geometry, material);
-
-        this.outlineMesh = new THREE.Mesh(
-            new THREE.SphereGeometry(1.7, 64, 64),
-            new THREE.MeshBasicMaterial({
-                color: 0xFFFFFF,
-                side: THREE.BackSide
-            })
-        );
-        this.outlineMesh.visible = false;
-        this.add(this.outlineMesh);
-
-        this.name = "Contact"
+        super(camera, "Contact Me", 1.5, 0x808080);
 
         this.semiMajorAxis = 40;
         this.semiMinorAxis = 25;
         this.orbitSpeed = 0.5;
         this.angle = Math.random() * Math.PI * 2;
-
-        this.isClickable = true;
-        this.camera = camera;
-        this.handleClick = this.onClick.bind(this);
-
-        this.isHoverable = true;
-        this.handleMouseOver = this.onMouseOver.bind(this);
-        this.handleMouseOut = this.onMouseOut.bind(this);
-    }
-
-    onClick() {
-        if (this.camera && typeof this.camera.focusOnObject === 'function') {
-            this.camera.focusOnObject(this, {
-                distance: 10,
-                zoom: 1
-            });
-        }
-    }
-
-    onMouseOver() {
-        this.outlineMesh.visible = true;
-    }
-
-    onMouseOut() {
-        this.outlineMesh.visible = false;
     }
 
     update() {
