@@ -32,6 +32,7 @@ export class BasePlanet extends THREE.Mesh {
         this.handleMouseOver = this.onMouseOver.bind(this);
         this.handleMouseOut = this.onMouseOut.bind(this);
 
+        this.tooltipVisible = false;
         this.tooltip = document.createElement('div');
         this.tooltip.style.position = 'fixed';
         this.tooltip.style.color = 'white';
@@ -89,6 +90,7 @@ export class BasePlanet extends THREE.Mesh {
 
     onMouseOver() {
         if (this.isZoomed == false) {
+            this.tooltipVisible = true;
             this.outlineMesh.visible = true;
             this.tooltip.style.visibility = 'visible';
             this.updateTooltip();

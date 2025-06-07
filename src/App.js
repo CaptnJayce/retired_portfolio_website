@@ -147,6 +147,12 @@ export class SolarSystem {
             this.animatedBodies.forEach(body => {
                 if (body.update) body.update(deltaTime);
             });
+
+            this.scene.traverse((object) => {
+                if (object.tooltipVisible && object.updateTooltip) {
+                    object.updateTooltip();
+                }
+            });
         }
     }
 
