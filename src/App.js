@@ -37,15 +37,6 @@ export class SolarSystem {
     setupEventListeners() {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
         window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
-        window.addEventListener('keydown', (event) => {
-            if (event.key == 'Escape') {
-                paused = false;
-                this.camera.resetView();
-                if (this.hoveredObject && this.hoveredObject.hidePlanetInfo) {
-                    this.hoveredObject.hidePlanetInfo();
-                }
-            }
-        });
     }
 
     onMouseMove(event) {

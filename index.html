@@ -35,36 +35,43 @@
             display: flex;
             flex-direction: column;
             height: auto;
-            width: 80vw;
+            width: 90vw;
             gap: 2rem;
-            margin-top: 1rem;
         }
 
         .aboutMeTitle {
             background: rgba(20, 20, 20, 0.7);
-            padding: 1.5rem;
+            padding-left: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #FFA500;
-            text-align: center;
+            text-align: left;
         }
 
         .aboutMeContent {
             display: flex;
-            gap: 25rem;
+            gap: 35rem;
         }
 
         .aboutMeLeft,
         .aboutMeRight {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.8);
             padding: 1rem;
             flex: 1;
             height: 650px;
-            overflow-y: scroll;
             scrollbar-width: thin;
             scrollbar-color: white #00000000;
             border-left: 4px solid #FFA500;
             border-radius: 8px;
-            max-width: 600px
+            font-size: 12px;
+        }
+
+        .aboutMeRight {
+            border-left: transparent;
+        }
+
+        .aboutMeLeft,
+        .aboutMeRight p {
+            font-size: 16px;
         }
 
         #projectsOverlay {
