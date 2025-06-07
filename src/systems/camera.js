@@ -10,7 +10,7 @@ export function createCamera() {
         viewSize / 2,
         -viewSize / 2,
         0.1,
-        1000
+        100
     );
     camera.position.set(0, 0, 50);
 

@@ -234,10 +234,7 @@ export class SolarSystem {
     }
 
     render() {
-        if (this.tooltip.style.visibility == 'visible' && this.hoveredObject) {
-            this.updateTooltip(this.hoveredObject);
-        }
-
+        this.updateTooltip(this.hoveredObject);
         this.renderer.render(this.scene, this.camera);
     }
 }

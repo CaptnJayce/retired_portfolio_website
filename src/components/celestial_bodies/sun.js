@@ -75,7 +75,7 @@ export class Sun extends THREE.Mesh {
         if (this.camera && typeof this.camera.focusOnObject === 'function') {
             this.camera.focusOnObject(this, {
                 distance: 10,
-                zoom: 2.5
+                zoom: 1
             });
 
             setTimeout(() => {
