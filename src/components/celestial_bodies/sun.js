@@ -3,7 +3,7 @@ import { BasePlanet } from './planet.js';
 
 export class Sun extends BasePlanet {
     constructor(camera) {
-        super(camera, "About Me", 2, 8, 0xFFA500);
+        super(camera, "About Me", 1.8, 8, 0xFFA500, 25);
 
         this.material.emissive = new THREE.Color(0xFFA500);
         this.material.emissiveIntensity = 1;
@@ -15,33 +15,30 @@ export class Sun extends BasePlanet {
     showPlanetInfo() {
         const overlay = document.getElementById('aboutMeOverlay');
         const title = overlay.querySelector('.aboutMeTitle');
-        const left = overlay.querySelector('.aboutMeLeft');
-        const right = overlay.querySelector('.aboutMeRight');
+        const main = overlay.querySelector('.aboutMeMain');
 
         title.innerHTML = `
-        <h2>Welcome to my webpage :)</h2>
-        <h3>My name is Casey, I'm a Computer Science graduate with a passion for web and game development. Each planet will tell you something different, and there are some easter eggs hidden throughout. Enjoy :) </h3>
-        `;
-        left.innerHTML = `
-        <h2>Programming history:</h2>
-        <hr></hr>
-        <h2>Early Days:</h2>
-        <p>I started programming late in secondary school (2017/2018), mostly during Computer Science GCSE. However, I only found a passion for coding when I encountered game development for the first time in college, as well as web development later on.</p>
-        <hr></hr>
-        <h2>University:</h2>
-        <p>Whilst attending University I decided to experiment with other fields of CS, such as AI, Cybersecurity, and Networking. I ended up writing a Cybersecurity focused dissertation - which explained and demonstrated how websites are scouted for weaknesses, attacked, and also how they can be defended.</p>
-        <hr></hr>
-        `;
-        right.innerHTML = `
-        <h2>Other: </h2>
-        <h2></h2>
+        <h2>A small introduction about myself, as well as this website</h2>
         `;
 
-        const leftCard = this.createAboutMeCard();
-        const rightCard = this.createAboutMeCard();
+        // TODO
+        // align planet to the left or right side of the screen when zooming in so that you can fit information better
+        // fill out information
+        // find a nice font
+        // finalise design of the box
+        main.innerHTML = `
+        <p>My name is Casey Jestico</p>
+        <p>I'm a game developer and front-end web developer based in London</p>
+        <br></br>
+        <p>I'm skilled in JS, ThreeJS, Odin, Raylib, C++, Lua, and Linux System Administration</p>
+        <br></br>
+        <p>I have a strong academic background with a BSc in Computer Science, a Level 3 BTEC Certification in IT, as well as an AWS Cloud Practitioner Certificate. I'm also going through various courses in the Salesforce ecosystem</p>
+        <br></br>
+        <p>Some other skills I have: Blender, Aseprite, Godot, 3D Printing, and playing Terraria (very important)</p>
+        `;
 
-        left.appendChild(leftCard);
-        right.appendChild(rightCard);
+        const card = this.createAboutMeCard();
+        main.appendChild(card);
 
         overlay.classList.add('visible');
     }

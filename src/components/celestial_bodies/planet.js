@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 
 export class BasePlanet extends THREE.Mesh {
-    constructor(camera, planetName, zoomAmount, radius, color) {
+    constructor(camera, planetName, zoomAmount, radius, color, xOffset) {
         const geometry = new THREE.SphereGeometry(radius, 64, 64);
         const material = new THREE.MeshStandardMaterial({
             color: color,
@@ -25,6 +25,7 @@ export class BasePlanet extends THREE.Mesh {
         this.zoom = zoomAmount;
         this.isZoomed = false;
         this.camera = camera;
+        this.xOffset = xOffset;
 
         this.isClickable = true;
         this.isHoverable = true;

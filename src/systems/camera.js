@@ -26,7 +26,8 @@ export function createCamera() {
             duration: 1.5,
             distance: 5,
             zoom: 3,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
+            xOffset: object.xOffset,
         };
         const config = { ...defaults, ...options };
 
@@ -34,7 +35,7 @@ export function createCamera() {
         targetPosition.z = config.distance;
 
         gsap.to(this.position, {
-            x: targetPosition.x,
+            x: targetPosition.x - config.xOffset,
             y: targetPosition.y,
             z: targetPosition.z,
             duration: config.duration,

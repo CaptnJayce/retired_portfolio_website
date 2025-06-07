@@ -34,44 +34,37 @@
         .aboutMeContainer {
             display: flex;
             flex-direction: column;
-            height: auto;
             width: 90vw;
-            gap: 2rem;
+            height: 90vh;
+            gap: 0.5rem;
         }
 
         .aboutMeTitle {
             background: rgba(20, 20, 20, 0.7);
             padding-left: 1.5rem;
             border-radius: 8px;
+            height: auto;
             border-left: 4px solid #FFA500;
             text-align: left;
+            align-items: center;
         }
-
         .aboutMeContent {
             display: flex;
-            gap: 35rem;
         }
 
-        .aboutMeLeft,
-        .aboutMeRight {
+        .aboutMeMain {
             background: rgba(20, 20, 20, 0.8);
             padding: 1rem;
             flex: 1;
-            height: 650px;
+            max-height: 70vh;
+            overflow-y: scroll;
             scrollbar-width: thin;
             scrollbar-color: white #00000000;
             border-left: 4px solid #FFA500;
             border-radius: 8px;
-            font-size: 12px;
         }
-
-        .aboutMeRight {
-            border-left: transparent;
-        }
-
-        .aboutMeLeft,
-        .aboutMeRight p {
-            font-size: 16px;
+        .aboutMeMain p {
+            font-size: 18px;
         }
 
         #projectsOverlay {
@@ -199,12 +192,9 @@
     <div id="aboutMeOverlay">
         <div class="aboutMeContainer">
             <div class="aboutMeTitle">
-                <h2>About Me</h2>
             </div>
             <div class="aboutMeContent">
-                <div class="aboutMeLeft">
-                </div>
-                <div class="aboutMeRight">
+                <div class="aboutMeMain">
                 </div>
             </div>
         </div>
