@@ -2,7 +2,7 @@ import { BasePlanet } from './planet.js';
 
 export class DarkBramble extends BasePlanet {
     constructor(camera) {
-        super(camera, "...", 4, 0xe2d997);
+        super(camera, "...", 3, 4, 0xe2d997);
 
         this.semiMajorAxis = 75;
         this.semiMinorAxis = 45;

@@ -3,7 +3,7 @@ import { BasePlanet } from './planet.js';
 
 export class Sun extends BasePlanet {
     constructor(camera) {
-        super(camera, "About Me", 8, 0xFFA500);
+        super(camera, "About Me", 2, 8, 0xFFA500);
 
         this.material.emissive = new THREE.Color(0xFFA500);
         this.material.emissiveIntensity = 1;

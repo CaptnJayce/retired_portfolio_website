@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 
 export class BasePlanet extends THREE.Mesh {
-    constructor(camera, planetName, radius, color) {
+    constructor(camera, planetName, zoomAmount, radius, color) {
         const geometry = new THREE.SphereGeometry(radius, 64, 64);
         const material = new THREE.MeshStandardMaterial({
             color: color,
@@ -22,6 +22,8 @@ export class BasePlanet extends THREE.Mesh {
         this.add(this.outlineMesh);
 
         this.name = planetName;
+        this.zoom = zoomAmount;
+        this.isZoomed = false;
         this.camera = camera;
 
         this.isClickable = true;
@@ -29,27 +31,93 @@ export class BasePlanet extends THREE.Mesh {
         this.handleClick = this.onClick.bind(this);
         this.handleMouseOver = this.onMouseOver.bind(this);
         this.handleMouseOut = this.onMouseOut.bind(this);
+
+        this.tooltip = document.createElement('div');
+        this.tooltip.style.position = 'fixed';
+        this.tooltip.style.color = 'white';
+        this.tooltip.style.fontFamily = 'Arial, sans-serif';
+        this.tooltip.style.fontSize = '20px';
+        this.tooltip.style.visibility = 'hidden';
+        this.tooltip.style.transform = 'translate(-50%, -100%)';
+        this.tooltip.textContent = planetName;
+        document.body.appendChild(this.tooltip);
     }
 
     onClick() {
-        if (this.camera && typeof this.camera.focusOnObject === 'function') {
-            this.camera.focusOnObject(this, {
-                distance: 10,
-                zoom: 1
-            });
+        if (this.isZoomed) {
+            this.camera.resetView();
+            this.hidePlanetInfo();
 
-            setTimeout(() => {
-                this.showPlanetInfo();
-            }, 1000);
+            this.isZoomed = false;
+        } else {
+            if (this.camera && typeof this.camera.focusOnObject === 'function') {
+                this.camera.focusOnObject(this, {
+                    distance: 10,
+                    zoom: this.zoom
+                });
+
+                setTimeout(() => {
+                    this.showPlanetInfo();
+                }, 1000);
+            }
+
+            this.isZoomed = true;
         }
     }
 
+    updateTooltip() {
+        if (!this.tooltip) return;
+
+        const worldPos = new THREE.Vector3();
+        this.getWorldPosition(worldPos);
+
+        const planetRadius = this.geometry?.parameters?.radius || 1;
+        const offsetY = planetRadius * 1.5;
+        worldPos.y += offsetY;
+
+        worldPos.project(this.camera);
+
+        const normalizedX = (worldPos.x * 0.5) + 0.5;
+        const normalizedY = (-worldPos.y * 0.5) + 0.5;
+
+        const screenX = normalizedX * window.innerWidth;
+        const screenY = normalizedY * window.innerHeight;
+
+        this.tooltip.style.left = `${screenX}px`;
+        this.tooltip.style.top = `${screenY}px`;
+    }
+
     onMouseOver() {
-        this.outlineMesh.visible = true;
+        if (this.isZoomed == false) {
+            this.outlineMesh.visible = true;
+            this.tooltip.style.visibility = 'visible';
+            this.updateTooltip();
+        }
     }
 
     onMouseOut() {
         this.outlineMesh.visible = false;
+        this.tooltip.style.visibility = 'hidden';
+    }
+
+    hidePlanetInfo() {
+        const projectsOverlay = document.getElementById('projectsOverlay');
+        const aboutMeOverlay = document.getElementById('aboutMeOverlay');
+
+        if (projectsOverlay) projectsOverlay.classList.remove('visible');
+        if (aboutMeOverlay) aboutMeOverlay.classList.remove('visible');
+
+        this.camera.resetView();
+
+        this.isZoomed = false;
+
+        if (this.camera.solarSystem && this.camera.solarSystem.scene) {
+            this.camera.solarSystem.scene.traverse((object) => {
+                if (object.isHoverable === false) {
+                    object.isHoverable = true;
+                }
+            });
+        }
     }
 
     showPlanetInfo() {

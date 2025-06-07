@@ -30,84 +30,20 @@ export class SolarSystem {
         this.mouse = new THREE.Vector2();
         this.hoveredObject = null;
 
-        this.tooltip = null;
-        this.createTooltip();
-
         this.init();
         this.setupEventListeners();
-
-        document.getElementById('close-info')?.addEventListener('click', () => {
-            this.hidePlanetInfo();
-        });
-    }
-
-    createTooltip() {
-        this.tooltip = document.createElement('div');
-        this.tooltip.style.position = 'fixed';
-        this.tooltip.style.color = 'white';
-        this.tooltip.style.fontFamily = 'Arial, sans-serif';
-        this.tooltip.style.fontSize = '20px';
-        this.tooltip.style.visibility = 'hidden';
-        this.tooltip.style.transform = 'translate(-50%, -100%)';
-        document.body.appendChild(this.tooltip);
-    }
-
-    updateTooltip(object) {
-        if (!object || !this.tooltip) return;
-
-        const worldPos = new THREE.Vector3();
-        object.getWorldPosition(worldPos);
-
-        const planetRadius = object.geometry?.parameters?.radius || 1;
-        const offsetY = planetRadius * 1.5;
-        worldPos.y += offsetY;
-
-        worldPos.project(this.camera);
-
-        const normalizedX = (worldPos.x * 0.5) + 0.5;
-        const normalizedY = (-worldPos.y * 0.5) + 0.5;
-
-        const screenX = normalizedX * window.innerWidth;
-        const screenY = normalizedY * window.innerHeight;
-
-        this.tooltip.style.left = `${screenX}px`;
-        this.tooltip.style.top = `${screenY}px`;
-    }
-
-    hidePlanetInfo() {
-        const projectsOverlay = document.getElementById('projectsOverlay');
-        const aboutMeOverlay = document.getElementById('aboutMeOverlay');
-
-        projectsOverlay.classList.remove('visible');
-        aboutMeOverlay.classList.remove('visible');
-
-        this.camera.resetView();
-        paused = false;
-
-        this.scene.traverse((object) => {
-            if (object.isHoverable == false) {
-                object.isHoverable = true;
-            }
-        });
     }
 
     setupEventListeners() {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
         window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
         window.addEventListener('keydown', (event) => {
-
-            // resume orbits 
             if (event.key == 'Escape') {
                 paused = false;
                 this.camera.resetView();
-                this.hidePlanetInfo()
-
-                // im lazy leave me alone
-                this.scene.traverse((object) => {
-                    if (object.isHoverable == false) {
-                        object.isHoverable = true;
-                    }
-                });
+                if (this.hoveredObject && this.hoveredObject.hidePlanetInfo) {
+                    this.hoveredObject.hidePlanetInfo();
+                }
             }
         });
     }
@@ -123,32 +59,27 @@ export class SolarSystem {
             const object = intersects[0].object;
             let hoverableObject = object;
 
-            // icl i got DeepSeek to fix this weird ass bug with mouseMove
             while (hoverableObject && !hoverableObject.isHoverable && hoverableObject.parent) {
                 hoverableObject = hoverableObject.parent;
             }
+
             if (hoverableObject?.isHoverable) {
                 if (this.hoveredObject !== hoverableObject) {
-                    if (this.hoveredObject && this.hoveredObject.handleMouseOut) {
+                    if (this.hoveredObject?.handleMouseOut) {
                         this.hoveredObject.handleMouseOut();
                     }
                     if (hoverableObject.handleMouseOver) {
                         hoverableObject.handleMouseOver();
                         this.hoveredObject = hoverableObject;
-
-                        this.tooltip.textContent = hoverableObject.name || 'Planet';
-                        this.tooltip.style.visibility = 'visible';
-                        this.updateTooltip(hoverableObject);
                     }
                 }
                 return;
             }
         }
 
-        if (this.hoveredObject && this.hoveredObject.handleMouseOut) {
+        if (this.hoveredObject?.handleMouseOut) {
             this.hoveredObject.handleMouseOut();
             this.hoveredObject = null;
-            this.tooltip.style.visibility = 'hidden';
         }
     }
 
@@ -160,34 +91,20 @@ export class SolarSystem {
         const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
         if (intersects.length > 0) {
-            if (this.hoveredObject) {
+            if (this.hoveredObject?.handleMouseOut) {
                 this.hoveredObject.handleMouseOut();
                 this.hoveredObject = null;
-                this.tooltip.style.visibility = 'hidden';
             }
 
             for (const intersect of intersects) {
                 let object = intersect.object;
-                object.isHoverable = false;
 
                 while (object) {
                     if (object.isClickable && object.handleClick) {
-                        // if click the same planet, hide info and zoom out
-                        // else, just hide info
-                        if (this.currentPlanet == object.name) {
-                            this.hidePlanetInfo();
-                            this.currentPlanet = null;
-                            return;
-                        } else {
-                            this.hidePlanetInfo();
-                            object.handleClick();
-                            this.currentPlanet = object.name;
-                            paused = true;
-                            return;
-                        }
+                        object.handleClick();
+                        paused = !paused;
+                        return;
                     }
-
-                    this.hidePlanetInfo();
                     object = object.parent;
                 }
             }
@@ -234,7 +151,6 @@ export class SolarSystem {
     }
 
     render() {
-        this.updateTooltip(this.hoveredObject);
         this.renderer.render(this.scene, this.camera);
     }
 }

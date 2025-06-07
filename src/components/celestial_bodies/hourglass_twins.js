@@ -70,7 +70,7 @@ export class HourglassTwins extends THREE.Group {
 
             this.camera.focusOnObject(this, {
                 distance: 10,
-                zoom: 1
+                zoom: 5
             });
         }
     }
