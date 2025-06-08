@@ -116,7 +116,7 @@ export class BasePlanet extends THREE.Mesh {
 
         if (this.camera.solarSystem && this.camera.solarSystem.scene) {
             this.camera.solarSystem.scene.traverse((object) => {
-                if (object.isHoverable === false) {
+                if (object.isHoverable == false) {
                     object.isHoverable = true;
                 }
             });

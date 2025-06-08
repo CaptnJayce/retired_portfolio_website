@@ -107,11 +107,15 @@ export class HourglassTwins extends THREE.Group {
         const bottom = overlay.querySelector('.timelineBottom');
 
         top.innerHTML = `
-            <h2>top</h2>
+            <h2>Education</h2>
+            <p>2016 to 2019</p>
+            <p>2019 to 2021</p>
+            <p>2021 to 2024</p>
+            <p>2025</p>
         `;
 
         bottom.innerHTML = `
-            <h2>bottom</h2>
+            <h2>Experience</h2>
         `;
 
         const card = document.createElement('div');
@@ -131,7 +135,7 @@ export class HourglassTwins extends THREE.Group {
 
         if (this.camera.solarSystem && this.camera.solarSystem.scene) {
             this.camera.solarSystem.scene.traverse((object) => {
-                if (object.isHoverable === false) {
+                if (object.isHoverable == false) {
                     object.isHoverable = true;
                 }
             });
@@ -140,9 +144,7 @@ export class HourglassTwins extends THREE.Group {
 
     onClick() {
         if (this.isZoomed) {
-            this.camera.resetView();
             this.hidePlanetInfo();
-            this.isZoomed = false;
         } else {
             if (this.camera && typeof this.camera.focusOnObject === 'function') {
                 this.twin1.isHoverable = false;

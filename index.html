@@ -34,30 +34,41 @@
 
         .timelineContainer {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             width: 90vw;
-            height: 90vh;
-            gap: 0.5rem;
+            gap: 30rem;
+        }
+
+        .timelineTop,
+        .timelineBottom {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            border-radius: 8px;
+            text-align: left;
+            align-items: center;
+        }
+
+        .timelineTop h2,
+        .timelineBottom h2 {
+            padding-left: 1rem;
+        }
+
+        .timelineTop p,
+        .timelineBottom p {
+            margin: 0;
+            flex: 1;
+            text-align: center;
         }
 
         .timelineTop {
             background: rgba(20, 20, 20, 0.9);
-            padding-left: 1rem;
-            border-radius: 8px;
-            height: auto;
-            border-left: 4px solid #FFA500;
-            text-align: left;
-            align-items: center;
+            border-left: 4px solid yellow;
         }
 
         .timelineBottom {
             background: rgba(20, 20, 20, 0.9);
-            padding-left: 1rem;
-            border-radius: 8px;
-            height: auto;
-            border-left: 4px solid #FFA500;
-            text-align: left;
-            align-items: center;
+            border-left: 4px solid red;
         }
 
         #aboutMeOverlay {
@@ -172,7 +183,7 @@
         }
 
         .projectCard {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid;
