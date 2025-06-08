@@ -11,6 +11,8 @@ import { Stars } from './components/celestial_bodies/stars.js'
 import { createCamera } from './systems/camera.js'
 import { createAmbientLight } from './systems/light.js'
 
+import "@fontsource/roboto-slab";
+
 var paused = false;
 export class SolarSystem {
     constructor() {
