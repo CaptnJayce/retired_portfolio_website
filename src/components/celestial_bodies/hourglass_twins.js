@@ -101,10 +101,47 @@ export class HourglassTwins extends THREE.Group {
         };
     }
 
+    showPlanetInfo() {
+        const overlay = document.getElementById('timelineOverlay');
+        const top = overlay.querySelector('.timelineTop');
+        const bottom = overlay.querySelector('.timelineBottom');
+
+        top.innerHTML = `
+            <h2>top</h2>
+        `;
+
+        bottom.innerHTML = `
+            <h2>bottom</h2>
+        `;
+
+        const card = document.createElement('div');
+        top.appendChild(card);
+
+        overlay.classList.add('visible');
+    }
+
+    hidePlanetInfo() {
+        const timelineOverlay = document.getElementById('timelineOverlay')
+
+        if (timelineOverlay) timelineOverlay.classList.remove('visible');
+
+        this.camera.resetView();
+
+        this.isZoomed = false;
+
+        if (this.camera.solarSystem && this.camera.solarSystem.scene) {
+            this.camera.solarSystem.scene.traverse((object) => {
+                if (object.isHoverable === false) {
+                    object.isHoverable = true;
+                }
+            });
+        }
+    }
 
     onClick() {
         if (this.isZoomed) {
             this.camera.resetView();
+            this.hidePlanetInfo();
             this.isZoomed = false;
         } else {
             if (this.camera && typeof this.camera.focusOnObject === 'function') {

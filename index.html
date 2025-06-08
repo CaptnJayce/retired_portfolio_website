@@ -14,6 +14,52 @@
             color: white;
         }
 
+        #timelineOverlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        #timelineOverlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .timelineContainer {
+            display: flex;
+            flex-direction: row;
+            width: 90vw;
+            height: 90vh;
+            gap: 0.5rem;
+        }
+
+        .timelineTop {
+            background: rgba(20, 20, 20, 0.9);
+            padding-left: 1rem;
+            border-radius: 8px;
+            height: auto;
+            border-left: 4px solid #FFA500;
+            text-align: left;
+            align-items: center;
+        }
+
+        .timelineBottom {
+            background: rgba(20, 20, 20, 0.9);
+            padding-left: 1rem;
+            border-radius: 8px;
+            height: auto;
+            border-left: 4px solid #FFA500;
+            text-align: left;
+            align-items: center;
+        }
+
         #aboutMeOverlay {
             position: fixed;
             width: 100%;
@@ -175,22 +221,11 @@
             color: #FDF0ED;
             text-decoration: none;
         }
-
-        .hint {
-            position: fixed;
-            top: 2%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
     </style>
 </head>
 
 <body>
     <script type="module" src="./src/main.js"></script>
-
-    <div class="hint">
-        <p>Click a planet to navigate!</p>
-    </div>
 
     <div id="projectsOverlay">
         <div class="projectsContainer">
@@ -212,6 +247,15 @@
             <div class="aboutMeContent">
                 <div class="aboutMeMain">
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="timelineOverlay">
+        <div class="timelineContainer">
+            <div class="timelineTop">
+            </div>
+            <div class="timelineBottom">
             </div>
         </div>
     </div>

@@ -45,16 +45,9 @@ export class Sun extends BasePlanet {
         <img src="https://media1.tenor.com/m/89MPCBQDPKYAAAAd/plink-nerd.gif" width="60px">
         `;
 
-        const card = this.createAboutMeCard();
+        const card = document.createElement('div');
         main.appendChild(card);
 
         overlay.classList.add('visible');
-    }
-
-    createAboutMeCard() {
-        const card = document.createElement('div');
-        card.className = 'aboutMeCard';
-
-        return card;
     }
 }
