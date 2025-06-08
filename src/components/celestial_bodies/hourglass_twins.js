@@ -105,7 +105,6 @@ export class HourglassTwins extends THREE.Group {
     onClick() {
         if (this.isZoomed) {
             this.camera.resetView();
-            // this.hidePlanetInfo();
             this.isZoomed = false;
         } else {
             if (this.camera && typeof this.camera.focusOnObject === 'function') {
@@ -120,7 +119,8 @@ export class HourglassTwins extends THREE.Group {
 
                 this.camera.focusOnObject(this, {
                     distance: 10,
-                    zoom: 5
+                    zoom: 5,
+                    xOffset: 0
                 });
 
                 setTimeout(() => {

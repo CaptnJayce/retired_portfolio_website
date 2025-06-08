@@ -24,7 +24,7 @@
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
         }
 
         #aboutMeOverlay.visible {
@@ -82,7 +82,7 @@
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
         }
 
         #projectsOverlay.visible {
@@ -175,13 +175,24 @@
             color: #FDF0ED;
             text-decoration: none;
         }
+
+        .hint {
+            position: fixed;
+            top: 2%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 
 <body>
     <script type="module" src="./src/main.js"></script>
 
-    <div id="projectsOverlay" class="hidden">
+    <div class="hint">
+        <p>Click a planet to navigate!</p>
+    </div>
+
+    <div id="projectsOverlay">
         <div class="projectsContainer">
             <div class="leftColumn">
                 <h3>In Progress</h3>

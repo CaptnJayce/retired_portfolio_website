@@ -2,7 +2,7 @@ import { BasePlanet } from './planet.js';
 
 export class BrittleHollow extends BasePlanet {
     constructor(camera) {
-        super(camera, "Contact Me", 3.8, 1.5, 0x808080);
+        super(camera, "Contact Me", 3.8, 1.5, 0x808080, 0);
 
         this.semiMajorAxis = 40;
         this.semiMinorAxis = 25;
