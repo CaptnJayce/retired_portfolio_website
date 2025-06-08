@@ -45,12 +45,15 @@ export class BasePlanet extends THREE.Mesh {
         document.body.appendChild(this.tooltip);
     }
 
+    // TODO
+    // fix isHoverable checks for all planets 
+    // when zoomed in, planets cant be hovered over except for current planet
+    // when zoomed in, planets cant be clicked except for current planet
+    // either create a new function, or use onMouseClick in App.js
+
     onClick() {
         if (this.isZoomed) {
-            this.camera.resetView();
             this.hidePlanetInfo();
-
-            this.isZoomed = false;
         } else {
             if (this.camera && typeof this.camera.focusOnObject === 'function') {
                 this.camera.focusOnObject(this, {

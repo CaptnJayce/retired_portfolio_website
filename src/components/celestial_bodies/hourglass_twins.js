@@ -145,6 +145,8 @@ export class HourglassTwins extends THREE.Group {
     onClick() {
         if (this.isZoomed) {
             this.hidePlanetInfo();
+            this.twin1.isHoverable = true;
+            this.twin2.isHoverable = true;
         } else {
             if (this.camera && typeof this.camera.focusOnObject === 'function') {
                 this.twin1.isHoverable = false;
