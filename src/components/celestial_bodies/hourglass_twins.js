@@ -1,11 +1,18 @@
-// unique case so doesnt extend from base class
 import * as THREE from 'three';
+import { BasePlanet } from './planet.js';
 
 export class HourglassTwins extends THREE.Group {
     constructor(camera) {
         super();
 
-        const geometry = new THREE.SphereGeometry(0.75, 64, 64);
+        this.twin1 = new BasePlanet(camera, "Experience", 5, 0.75, 0x86110e, 0);
+        this.twin2 = new BasePlanet(camera, "Education", 5, 0.75, 0xF6D7B0, 0);
+
+        this.twin1.isClickable = false;
+        this.twin2.isClickable = false;
+
+        this.twin1.remove(this.twin1.outlineMesh);
+        this.twin2.remove(this.twin2.outlineMesh);
 
         this.outlineMeshOne = new THREE.Mesh(
             new THREE.SphereGeometry(0.95, 64, 64),
@@ -25,9 +32,6 @@ export class HourglassTwins extends THREE.Group {
         this.outlineMeshOne.visible = false;
         this.outlineMeshTwo.visible = false;
 
-        this.twin1 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0x86110e }));
-        this.twin2 = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0xF6D7B0 }));
-
         this.add(this.outlineMeshOne, this.outlineMeshTwo, this.twin1, this.twin2);
 
         this.semiMajorAxis = 15;
@@ -40,30 +44,28 @@ export class HourglassTwins extends THREE.Group {
         this.camera = camera;
         this.handleClick = this.onClick.bind(this);
 
-        // this.twin1.name = "Ember Twin";
-        this.twin1.name = "Experience";
         this.twin1.isHoverable = true;
-        this.twin1.tooltip = this.createTooltip(this.twin1.name);
         this.twin1.updateTooltip = this.createUpdateTooltipFunction(this.twin1);
         this.twin1.handleMouseOver = () => {
-            this.outlineMeshOne.visible = true;
-            this.twin1.tooltip.style.visibility = 'visible';
-            this.twin1.updateTooltip();
+            if (this.isClickable) {
+                this.outlineMeshOne.visible = true;
+                this.twin1.tooltip.style.visibility = 'visible';
+                this.twin1.updateTooltip();
+            }
         };
         this.twin1.handleMouseOut = () => {
             this.outlineMeshOne.visible = false;
             this.twin1.tooltip.style.visibility = 'hidden';
         };
 
-        // this.twin2.name = "Ash Twin";
-        this.twin2.name = "Education";
         this.twin2.isHoverable = true;
-        this.twin2.tooltip = this.createTooltip(this.twin2.name);
         this.twin2.updateTooltip = this.createUpdateTooltipFunction(this.twin2);
         this.twin2.handleMouseOver = () => {
-            this.outlineMeshTwo.visible = true;
-            this.twin2.tooltip.style.visibility = 'visible';
-            this.twin2.updateTooltip();
+            if (this.isClickable) {
+                this.outlineMeshTwo.visible = true;
+                this.twin2.tooltip.style.visibility = 'visible';
+                this.twin2.updateTooltip();
+            }
         };
         this.twin2.handleMouseOut = () => {
             this.outlineMeshTwo.visible = false;
