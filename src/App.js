@@ -18,6 +18,7 @@ export class SolarSystem {
     constructor() {
         this.scene = new THREE.Scene();
         this.camera = createCamera();
+        this.camera.solarSystem = this;
 
         this.renderer = new THREE.WebGLRenderer({
             antialias: true,
@@ -28,8 +29,10 @@ export class SolarSystem {
         document.body.appendChild(this.renderer.domElement);
 
         this.animatedBodies = [];
+
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
+
         this.hoveredObject = null;
 
         this.init();
@@ -132,7 +135,6 @@ export class SolarSystem {
         const viewSize = 100;
         const aspect = window.innerWidth / window.innerHeight;
         this.stars = new Stars(this.scene, viewSize, aspect);
-        this.animatedBodies.push(this.stars);
     }
 
     update(deltaTime) {

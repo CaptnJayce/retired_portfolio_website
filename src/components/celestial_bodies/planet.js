@@ -45,29 +45,28 @@ export class BasePlanet extends THREE.Mesh {
         document.body.appendChild(this.tooltip);
     }
 
-    // TODO
-    // fix isHoverable checks for all planets 
-    // when zoomed in, planets cant be hovered over except for current planet
-    // when zoomed in, planets cant be clicked except for current planet
-    // either create a new function, or use onMouseClick in App.js
-
     onClick() {
         if (this.isZoomed) {
             this.hidePlanetInfo();
-        } else {
-            if (this.camera && typeof this.camera.focusOnObject === 'function') {
-                this.camera.focusOnObject(this, {
-                    distance: 10,
-                    zoom: this.zoom
-                });
-
-                setTimeout(() => {
-                    this.showPlanetInfo();
-                }, 1000);
-            }
-
-            this.isZoomed = true;
+            return;
         }
+
+        if (this.camera.solarSystem?.animatedBodies) {
+            this.camera.solarSystem.animatedBodies.forEach(obj => {
+                if (obj !== this && obj.isClickable !== undefined) {
+                    obj.isClickable = false;
+                    obj.isHoverable = false;
+                    if (obj.outlineMesh) obj.outlineMesh.visible = false;
+                    if (obj.tooltip) obj.tooltip.style.visibility = 'hidden';
+                }
+            });
+        }
+
+        if (this.camera?.focusOnObject) {
+            this.camera.focusOnObject(this, { distance: 10, zoom: this.zoom });
+            setTimeout(() => this.showPlanetInfo(), 1000);
+        }
+        this.isZoomed = true;
     }
 
     updateTooltip() {
@@ -93,7 +92,7 @@ export class BasePlanet extends THREE.Mesh {
     }
 
     onMouseOver() {
-        if (this.isZoomed == false) {
+        if (this.isClickable) {
             this.tooltipVisible = true;
             this.outlineMesh.visible = true;
             this.tooltip.style.visibility = 'visible';
@@ -114,13 +113,13 @@ export class BasePlanet extends THREE.Mesh {
         if (aboutMeOverlay) aboutMeOverlay.classList.remove('visible');
 
         this.camera.resetView();
-
         this.isZoomed = false;
 
-        if (this.camera.solarSystem && this.camera.solarSystem.scene) {
-            this.camera.solarSystem.scene.traverse((object) => {
-                if (object.isHoverable == false) {
-                    object.isHoverable = true;
+        if (this.camera.solarSystem?.animatedBodies) {
+            this.camera.solarSystem.animatedBodies.forEach(obj => {
+                if (obj.isClickable !== undefined) {
+                    obj.isClickable = true;
+                    obj.isHoverable = true;
                 }
             });
         }
