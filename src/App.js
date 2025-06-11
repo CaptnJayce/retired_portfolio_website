@@ -12,6 +12,7 @@ import { createCamera } from './systems/camera.js'
 import { createAmbientLight } from './systems/light.js'
 
 import "@fontsource/roboto-slab";
+import { lerp } from 'three/src/math/MathUtils.js';
 
 var paused = false;
 export class SolarSystem {
@@ -110,7 +111,9 @@ export class SolarSystem {
     init() {
         this.scene.add(createAmbientLight());
 
-        this.scene.add(new Sun(this.camera));
+        const sun = new Sun(this.camera);
+        this.animatedBodies.push(sun);
+        this.scene.add(sun);
 
         const hourglassTwins = new HourglassTwins(this.camera);
         this.animatedBodies.push(hourglassTwins);

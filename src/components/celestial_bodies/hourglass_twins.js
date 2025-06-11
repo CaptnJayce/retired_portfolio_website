@@ -1,107 +1,60 @@
-import * as THREE from 'three';
 import { BasePlanet } from './planet.js';
 
-export class HourglassTwins extends THREE.Group {
+export class HourglassTwins extends BasePlanet {
     constructor(camera) {
-        super();
+        super(camera, "Experience & Education", 5, 0.1, 0x000000, 0);
 
-        this.twin1 = new BasePlanet(camera, "Experience", 5, 0.75, 0x86110e, 0);
-        this.twin2 = new BasePlanet(camera, "Education", 5, 0.75, 0xF6D7B0, 0);
+        this.material.transparent = true;
+        this.material.opacity = 0;
+        this.outlineMesh.visible = false;
 
-        this.twin1.isClickable = false;
-        this.twin2.isClickable = false;
-
-        this.twin1.remove(this.twin1.outlineMesh);
-        this.twin2.remove(this.twin2.outlineMesh);
-
-        this.outlineMeshOne = new THREE.Mesh(
-            new THREE.SphereGeometry(0.95, 64, 64),
-            new THREE.MeshBasicMaterial({
-                color: 0xFFFFFF,
-                side: THREE.BackSide
-            })
-        );
-        this.outlineMeshTwo = new THREE.Mesh(
-            new THREE.SphereGeometry(0.95, 64, 64),
-            new THREE.MeshBasicMaterial({
-                color: 0xFFFFFF,
-                side: THREE.BackSide
-            })
-        );
-
-        this.outlineMeshOne.visible = false;
-        this.outlineMeshTwo.visible = false;
-
-        this.add(this.outlineMeshOne, this.outlineMeshTwo, this.twin1, this.twin2);
+        this.twin1 = this.createTwin("Experience", 0x86110e);
+        this.twin2 = this.createTwin("Education", 0xF6D7B0);
 
         this.semiMajorAxis = 15;
         this.semiMinorAxis = 15;
         this.orbitSpeed = 0.5;
         this.angle = Math.random() * Math.PI * 2;
-
-        this.isClickable = true;
-        this.isZoomed = false;
-        this.camera = camera;
-        this.handleClick = this.onClick.bind(this);
-
-        this.twin1.isHoverable = true;
-        this.twin1.updateTooltip = this.createUpdateTooltipFunction(this.twin1);
-        this.twin1.handleMouseOver = () => {
-            if (this.isClickable) {
-                this.outlineMeshOne.visible = true;
-                this.twin1.tooltip.style.visibility = 'visible';
-                this.twin1.updateTooltip();
-            }
-        };
-        this.twin1.handleMouseOut = () => {
-            this.outlineMeshOne.visible = false;
-            this.twin1.tooltip.style.visibility = 'hidden';
-        };
-
-        this.twin2.isHoverable = true;
-        this.twin2.updateTooltip = this.createUpdateTooltipFunction(this.twin2);
-        this.twin2.handleMouseOver = () => {
-            if (this.isClickable) {
-                this.outlineMeshTwo.visible = true;
-                this.twin2.tooltip.style.visibility = 'visible';
-                this.twin2.updateTooltip();
-            }
-        };
-        this.twin2.handleMouseOut = () => {
-            this.outlineMeshTwo.visible = false;
-            this.twin2.tooltip.style.visibility = 'hidden';
-        };
     }
 
-    createTooltip(text) {
-        const tooltip = document.createElement('div');
-        tooltip.style.position = 'fixed';
-        tooltip.style.color = 'white';
-        tooltip.style.fontFamily = 'Arial, sans-serif';
-        tooltip.style.fontSize = '20px';
-        tooltip.style.visibility = 'hidden';
-        tooltip.style.transform = 'translate(-50%, -100%)';
-        tooltip.style.pointerEvents = 'none';
-        tooltip.style.zIndex = '100';
-        tooltip.textContent = text;
-        document.body.appendChild(tooltip);
-        return tooltip;
+    createTwin(name, color) {
+        const twin = new BasePlanet(this.camera, name, 5, 0.75, color, 0);
+        twin.isClickable = false;
+        twin.outlineMesh.visible = false;
+
+        twin.tooltip.style.transform = 'translate(-50%, -150%)';
+
+        twin.userData.parentPlanet = this;
+        this.add(twin);
+        return twin;
     }
 
-    createUpdateTooltipFunction(twin) {
-        return () => {
-            const worldPos = new THREE.Vector3();
-            twin.getWorldPosition(worldPos);
-            worldPos.y += twin.geometry.parameters.radius * 1.5;
-            worldPos.project(this.camera);
+    update() {
+        this.angle += 0.001 * this.orbitSpeed;
+        this.position.x = Math.cos(this.angle) * this.semiMajorAxis;
+        this.position.y = Math.sin(this.angle) * this.semiMinorAxis;
 
-            const x = (worldPos.x * 0.5 + 0.5) * window.innerWidth;
-            const y = (1 - (worldPos.y * 0.5 + 0.5)) * window.innerHeight;
+        const twinAngle = this.angle * 3;
+        const twinDistance = 2;
 
-            twin.tooltip.style.left = `${x}px`;
-            twin.tooltip.style.top = `${y}px`;
-        };
+        this.twin1.position.set(
+            Math.cos(twinAngle) * twinDistance,
+            Math.sin(twinAngle) * twinDistance,
+            0
+        );
+
+        this.twin2.position.set(
+            -Math.cos(twinAngle) * twinDistance,
+            -Math.sin(twinAngle) * twinDistance,
+            0
+        );
+
+        if (this.twin1Outline) this.twin1Outline.position.copy(this.twin1.position);
+        if (this.twin2Outline) this.twin2Outline.position.copy(this.twin2.position);
     }
+
+    // TODO
+    // mesh outline
 
     showPlanetInfo() {
         const overlay = document.getElementById('timelineOverlay');
@@ -120,78 +73,6 @@ export class HourglassTwins extends THREE.Group {
             <h2>Experience</h2>
         `;
 
-        const card = document.createElement('div');
-        top.appendChild(card);
-
         overlay.classList.add('visible');
-    }
-
-    hidePlanetInfo() {
-        const timelineOverlay = document.getElementById('timelineOverlay')
-
-        if (timelineOverlay) timelineOverlay.classList.remove('visible');
-
-        this.camera.resetView();
-
-        this.isZoomed = false;
-
-        if (this.camera.solarSystem && this.camera.solarSystem.scene) {
-            this.camera.solarSystem.scene.traverse((object) => {
-                if (object.isHoverable == false) {
-                    object.isHoverable = true;
-                }
-            });
-        }
-    }
-
-    onClick() {
-        if (this.isZoomed) {
-            this.hidePlanetInfo();
-            this.twin1.isHoverable = true;
-            this.twin2.isHoverable = true;
-        } else {
-            if (this.camera && typeof this.camera.focusOnObject === 'function') {
-                this.twin1.isHoverable = false;
-                this.twin2.isHoverable = false;
-
-                this.outlineMeshOne.visible = false;
-                this.outlineMeshTwo.visible = false;
-
-                this.twin1.tooltip.style.visibility = 'hidden';
-                this.twin2.tooltip.style.visibility = 'hidden';
-
-                this.camera.focusOnObject(this, {
-                    distance: 10,
-                    zoom: 5,
-                    xOffset: 0
-                });
-
-                setTimeout(() => {
-                    this.showPlanetInfo();
-                }, 1000);
-            }
-            this.isZoomed = true;
-        }
-    }
-
-    update() {
-        this.angle += 0.001 * this.orbitSpeed;
-
-        this.position.x = Math.cos(this.angle) * this.semiMajorAxis;
-        this.position.y = Math.sin(this.angle) * this.semiMinorAxis;
-
-        const twin1X = 2 * Math.cos(this.angle * 3);
-        const twin1Y = 2 * Math.sin(this.angle * 3);
-        const twin2X = -2 * Math.cos(this.angle * 3);
-        const twin2Y = -2 * Math.sin(this.angle * 3);
-
-        this.twin1.position.set(twin1X, twin1Y, 0);
-        this.outlineMeshOne.position.set(twin1X, twin1Y, 0);
-
-        this.twin2.position.set(twin2X, twin2Y, 0);
-        this.outlineMeshTwo.position.set(twin2X, twin2Y, 0);
-
-        if (this.twin1.tooltip.style.visibility == 'visible') this.twin1.updateTooltip();
-        if (this.twin2.tooltip.style.visibility == 'visible') this.twin2.updateTooltip();
     }
 }

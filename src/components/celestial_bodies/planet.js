@@ -108,9 +108,11 @@ export class BasePlanet extends THREE.Mesh {
     hidePlanetInfo() {
         const projectsOverlay = document.getElementById('projectsOverlay');
         const aboutMeOverlay = document.getElementById('aboutMeOverlay');
+        const timelineOverlay = document.getElementById('timelineOverlay');
 
         if (projectsOverlay) projectsOverlay.classList.remove('visible');
         if (aboutMeOverlay) aboutMeOverlay.classList.remove('visible');
+        if (timelineOverlay) timelineOverlay.classList.remove('visible');
 
         this.camera.resetView();
         this.isZoomed = false;
