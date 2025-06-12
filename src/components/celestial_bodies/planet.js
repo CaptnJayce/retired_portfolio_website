@@ -42,6 +42,7 @@ export class BasePlanet extends THREE.Mesh {
         this.tooltip.style.visibility = 'hidden';
         this.tooltip.style.transform = 'translate(-50%, -100%)';
         this.tooltip.textContent = planetName;
+
         document.body.appendChild(this.tooltip);
     }
 
@@ -58,6 +59,8 @@ export class BasePlanet extends THREE.Mesh {
                     obj.isHoverable = false;
                     if (obj.outlineMesh) obj.outlineMesh.visible = false;
                     if (obj.tooltip) obj.tooltip.style.visibility = 'hidden';
+
+                    console.log(obj)
                 }
             });
         }
@@ -93,9 +96,12 @@ export class BasePlanet extends THREE.Mesh {
 
     onMouseOver() {
         if (this.isClickable) {
-            this.tooltipVisible = true;
+            if (!this.isZoomed) {
+                this.tooltipVisible = true;
+                this.tooltip.style.visibility = 'visible';
+            }
+
             this.outlineMesh.visible = true;
-            this.tooltip.style.visibility = 'visible';
             this.updateTooltip();
         }
     }

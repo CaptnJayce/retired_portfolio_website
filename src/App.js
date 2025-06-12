@@ -12,7 +12,6 @@ import { createCamera } from './systems/camera.js'
 import { createAmbientLight } from './systems/light.js'
 
 import "@fontsource/roboto-slab";
-import { lerp } from 'three/src/math/MathUtils.js';
 
 var paused = false;
 export class SolarSystem {
@@ -137,7 +136,9 @@ export class SolarSystem {
 
         const viewSize = 100;
         const aspect = window.innerWidth / window.innerHeight;
+
         this.stars = new Stars(this.scene, viewSize, aspect);
+        this.animatedBodies.push(this.stars);
     }
 
     update(deltaTime) {
