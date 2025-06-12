@@ -19,6 +19,8 @@ export class BasePlanet extends THREE.Mesh {
             })
         );
         this.outlineMesh.visible = false;
+        this.outlineMesh.position.z = 1;
+
         this.add(this.outlineMesh);
 
         this.name = planetName;
@@ -26,6 +28,7 @@ export class BasePlanet extends THREE.Mesh {
         this.isZoomed = false;
         this.camera = camera;
         this.xOffset = xOffset;
+        this.position.z = 1;
 
         this.isClickable = true;
         this.isHoverable = true;

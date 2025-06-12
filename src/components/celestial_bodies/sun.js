@@ -8,6 +8,9 @@ export class Sun extends BasePlanet {
         this.material.emissive = new THREE.Color(0xFFA500);
         this.material.emissiveIntensity = 1;
 
+        this.position.z = 0;
+        this.outlineMesh.position.z = 5;
+
         this.light = new THREE.PointLight(0xFFA500, 10000, 250, 2);
         this.add(this.light);
     }
