@@ -42,6 +42,14 @@ export class SolarSystem {
     setupEventListeners() {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
         window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
+        window.addEventListener("resize", this.onWindowResize(), false);
+    }
+
+    onWindowResize() {
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
     onMouseMove(event) {

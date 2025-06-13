@@ -41,7 +41,7 @@ export class BasePlanet extends THREE.Mesh {
         this.tooltip.style.position = 'fixed';
         this.tooltip.style.color = 'white';
         this.tooltip.style.fontFamily = 'Arial, sans-serif';
-        this.tooltip.style.fontSize = '20px';
+        this.tooltip.style.fontSize = '1vw';
         this.tooltip.style.visibility = 'hidden';
         this.tooltip.style.transform = 'translate(-50%, -100%)';
         this.tooltip.textContent = planetName;

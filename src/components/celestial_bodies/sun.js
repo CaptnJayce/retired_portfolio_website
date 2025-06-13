@@ -33,7 +33,7 @@ export class Sun extends BasePlanet {
         <p>I'm skilled in JS, ThreeJS, Odin, Raylib, C++, Lua, and Linux System Administration<br>Some other skills I have: Blender, Aseprite, Godot, 3D Printing, and playing Terraria (very important)</p>
         <br>
         <p>Some other information:</p>
-        <ul style="font-size: 18px">
+        <ul style="font-size: 1vw">
           <li> I have two cats called Willow and Winston</li>
           <li> My top five favourite games are: Terraria, Outer Wilds, Hollow Knight, Risk of Rain 2, and V Rising</li>
           <li> My favourite drink is Monster Energy Mango Loco (consumed in moderation)</li>
