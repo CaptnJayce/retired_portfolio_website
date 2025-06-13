@@ -47,14 +47,19 @@ export class BasePlanet extends THREE.Mesh {
         this.tooltip.textContent = planetName;
 
         document.body.appendChild(this.tooltip);
+
+        this.isAnimating = false;
     }
 
     onClick() {
+        if (this.isAnimating) return;
+
         if (this.isZoomed) {
             this.hidePlanetInfo();
             return;
         }
 
+        this.isAnimating = true;
         if (this.camera.solarSystem?.animatedBodies) {
             this.camera.solarSystem.animatedBodies.forEach(obj => {
                 if (obj !== this && obj.isClickable !== undefined) {
@@ -62,17 +67,21 @@ export class BasePlanet extends THREE.Mesh {
                     obj.isHoverable = false;
                     if (obj.outlineMesh) obj.outlineMesh.visible = false;
                     if (obj.tooltip) obj.tooltip.style.visibility = 'hidden';
-
-                    console.log(obj)
                 }
             });
         }
 
         if (this.camera?.focusOnObject) {
-            this.camera.focusOnObject(this, { distance: 10, zoom: this.zoom });
-            setTimeout(() => this.showPlanetInfo(), 1000);
+            this.camera.focusOnObject(this, {
+                distance: 10,
+                zoom: this.zoom,
+                onComplete: () => {
+                    this.isAnimating = false;
+                    this.isZoomed = true;
+                    this.showPlanetInfo();
+                }
+            });
         }
-        this.isZoomed = true;
     }
 
     updateTooltip() {
@@ -115,6 +124,10 @@ export class BasePlanet extends THREE.Mesh {
     }
 
     hidePlanetInfo() {
+        if (this.isAnimating) return;
+
+        this.isAnimating = true;
+
         const projectsOverlay = document.getElementById('projectsOverlay');
         const aboutMeOverlay = document.getElementById('aboutMeOverlay');
         const timelineOverlay = document.getElementById('timelineOverlay');
@@ -123,20 +136,20 @@ export class BasePlanet extends THREE.Mesh {
         if (aboutMeOverlay) aboutMeOverlay.classList.remove('visible');
         if (timelineOverlay) timelineOverlay.classList.remove('visible');
 
-        this.camera.resetView();
-        this.isZoomed = false;
+        this.camera.resetView({
+            onComplete: () => {
+                this.isAnimating = false;
+                this.isZoomed = false;
 
-        if (this.camera.solarSystem?.animatedBodies) {
-            this.camera.solarSystem.animatedBodies.forEach(obj => {
-                if (obj.isClickable !== undefined) {
-                    obj.isClickable = true;
-                    obj.isHoverable = true;
+                if (this.camera.solarSystem?.animatedBodies) {
+                    this.camera.solarSystem.animatedBodies.forEach(obj => {
+                        if (obj.isClickable !== undefined) {
+                            obj.isClickable = true;
+                            obj.isHoverable = true;
+                        }
+                    });
                 }
-            });
-        }
-    }
-
-    showPlanetInfo() {
-        this.camera.solarSystem.showPlanetInfo(this.name);
+            }
+        });
     }
 }

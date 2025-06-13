@@ -23,17 +23,22 @@ export class HourglassTwins extends BasePlanet {
         this.orbitSpeed = 0.5;
         this.angle = Math.random() * Math.PI * 2;
 
+        this.isAnimating = false;
+
         if (this.camera.solarSystem?.animatedBodies) {
             this.camera.solarSystem.animatedBodies.push(this.twin1, this.twin2);
         }
     }
 
     onClick() {
+        if (this.isAnimating) return;
+
         if (this.isZoomed) {
             this.hidePlanetInfo();
             return;
         }
 
+        this.isAnimating = true;
         if (this.camera.solarSystem?.animatedBodies) {
             this.camera.solarSystem.animatedBodies.forEach(obj => {
                 if (obj !== this && obj.isClickable !== undefined) {
@@ -51,10 +56,16 @@ export class HourglassTwins extends BasePlanet {
         this.twin2.isHoverable = true;
 
         if (this.camera?.focusOnObject) {
-            this.camera.focusOnObject(this, { distance: 10, zoom: this.zoom });
-            setTimeout(() => this.showPlanetInfo(), 1000);
+            this.camera.focusOnObject(this, {
+                distance: 10,
+                zoom: this.zoom,
+                onComplete: () => {
+                    this.isAnimating = false;
+                    this.isZoomed = true;
+                    this.showPlanetInfo();
+                }
+            });
         }
-        this.isZoomed = true;
     }
 
     createTwin(name, color) {

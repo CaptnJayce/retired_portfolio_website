@@ -23,46 +23,64 @@ export function createCamera() {
 
     camera.focusOnObject = function(object, options = {}) {
         const defaults = {
-            duration: 1.5,
+            duration: 1.25,
             distance: 5,
             zoom: 3,
             ease: "power2.inOut",
             xOffset: object.xOffset,
+            onComplete: () => { }
         };
         const config = { ...defaults, ...options };
 
         const targetPosition = object.position.clone();
         targetPosition.z = config.distance;
 
-        gsap.to(this.position, {
+        const timeline = gsap.timeline({
+            onComplete: config.onComplete
+        });
+
+        timeline.to(this.position, {
             x: targetPosition.x - config.xOffset,
             y: targetPosition.y,
             z: targetPosition.z,
             duration: config.duration,
             ease: config.ease
-        });
+        }, 0);
 
-        gsap.to(this, {
+        timeline.to(this, {
             zoom: config.zoom,
             duration: config.duration,
             ease: config.ease,
             onUpdate: () => this.updateProjectionMatrix()
-        });
+        }, 0);
+
+        return timeline;
     };
 
-    camera.resetView = function() {
-        gsap.to(this.position, {
+    camera.resetView = function(options = {}) {
+        const defaults = {
+            duration: 1.25,
+            ease: "power2.inOut",
+            onComplete: () => { }
+        };
+        const config = { ...defaults, ...options };
+
+        const timeline = gsap.timeline({
+            onComplete: config.onComplete
+        });
+
+        timeline.to(this.position, {
             x: this.initPosition.x,
             y: this.initPosition.y,
             z: this.initPosition.z,
-            duration: 1.5,
-            ease: "power2.inOut"
-        });
+            duration: config.duration,
+            ease: config.ease
+        }, 0);
 
-        gsap.to(this, {
+        timeline.to(this, {
             zoom: this.initZoom,
-            duration: 1.5,
-            ease: "power2.inOut",
+            duration: config.duration,
+            ease: config.ease,
             onUpdate: () => {
                 this.left = this.initLeft;
                 this.right = this.initRight;
@@ -70,7 +88,9 @@ export function createCamera() {
                 this.bottom = this.initBottom;
                 this.updateProjectionMatrix();
             }
-        });
+        }, 0);
+
+        return timeline;
     };
 
     return camera;
