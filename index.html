@@ -36,7 +36,7 @@
         .timelineContainer {
             display: flex;
             flex-direction: column;
-            width: 90vw;
+            max-height: 75vh;
             gap: 30rem;
         }
 
@@ -45,33 +45,25 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            width: 90vw;
             border-radius: 8px;
-            text-align: left;
-            align-items: center;
-        }
-
-        .timelineTop h2,
-        .timelineBottom h2 {
-            padding-left: 1vw;
-            font-size: 1vw;
         }
 
         .timelineTop p,
         .timelineBottom p {
             margin: 0;
-            flex: 1;
-            text-align: center;
-            font-size: 1vw;
+            font-size: 16px;
+            max-width: 30vw;
         }
 
         .timelineTop {
             background: rgba(20, 20, 20, 0.9);
-            border-left: 4px solid yellow;
+            border-left: 3px solid yellow;
         }
 
         .timelineBottom {
             background: rgba(20, 20, 20, 0.9);
-            border-left: 4px solid red;
+            border-left: 3px solid red;
         }
 
         #aboutMeOverlay {

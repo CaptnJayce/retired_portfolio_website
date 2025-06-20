@@ -155,15 +155,37 @@ export class HourglassTwins extends BasePlanet {
         const bottom = overlay.querySelector('.timelineBottom');
 
         top.innerHTML = `
-            <h2>Education</h2>
-            <p>2016 to 2019</p>
-            <p>2019 to 2021</p>
-            <p>2021 to 2024</p>
-            <p>2025</p>
+            <div>
+                <p style="text-decoration: underline">2019 to 2021</p>
+                <p>Studied for, and completed a Level 3 BTEC in IT, achieving a D*DD which allowed me to attend University</p>
+            </div>
+
+            <div>
+                <p style="text-decoration: underline">2021 to 2024</p>
+                <p>Studied for, and completed my BSc in Computer Science, achieving a 2:2 in Network Computing</p>
+            </div>
+
+            <div>
+                <p style="text-decoration: underline">2025 onwards</p>
+                <p>Currently studying for an AWS Cloud Practitioner certificate, and various Salesforce trails</p>
+            </div>
         `;
 
         bottom.innerHTML = `
-            <h2>Experience</h2>
+            <div>
+                <p style="text-decoration: underline">Final Year Project</p>
+                <p>Developed and tested insecure websites to demonstrate defensive and offensive tactics used in Cybersecurity</p>
+            </div>
+
+            <div>
+                <p style="text-decoration: underline">Tino Sport Clothing Brand</p>
+                <p>Worked closely alongside a client and colleague to overhaul the design of Tino's online clothing store</p>
+            </div>
+
+            <div>
+                <p style="text-decoration: underline">Orange Trust Charity</p>
+                <p>Volunteered as a Software Engineer for the Orange Trust, helping where I can with back-end and front-end development</p>
+            </div>
         `;
 
         overlay.classList.add('visible');
