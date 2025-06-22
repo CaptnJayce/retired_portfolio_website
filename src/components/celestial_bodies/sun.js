@@ -52,16 +52,16 @@ export class Sun extends BasePlanet {
         <!-- thank you deepseek for the pixel to vw/vh conversions -->
         <div style="display: flex; justify-content: space-between; padding-left: 1vw;">
             <div style="display: flex; flex-direction: row; align-items: flex-start;">
-                <img id="tooling" alt="neovim" src="../../../public/assets/neovim.png" style="width: 3.1315vw; height: 7.7325vh;">
-                <img id="tooling" alt="arch" src="../../../public/assets/archlinux.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="hyprland" src="../../../public/assets/hyprland.png" style="width: 2.7401vw; height: 7.7325vh;">
+                <img id="tooling" alt="neovim" src="/assets/neovim.png" style="width: 3.1315vw; height: 7.7325vh;">
+                <img id="tooling" alt="arch" src="/assets/archlinux.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img id="tooling" alt="hyprland" src="/assets/hyprland.png" style="width: 2.7401vw; height: 7.7325vh;">
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5vw;">
-                <img id="tooling" alt="odinlang" src="../../../public/assets/odin.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="javascript" src="../../../public/assets/javascript.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="C++" src="../../../public/assets/cpp.png" style="width: 3.4447vw; height: 7.7325vh;">
-                <img id="tooling" alt="raylib" src="../../../public/assets/raylib.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="aseprite" src="../../../public/assets/aseprite.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img id="tooling" alt="odinlang" src="/assets/odin.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img id="tooling" alt="javascript" src="/assets/javascript.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img id="tooling" alt="C++" src="/assets/cpp.png" style="width: 3.4447vw; height: 7.7325vh;">
+                <img id="tooling" alt="raylib" src="/assets/raylib.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img id="tooling" alt="aseprite" src="/assets/aseprite.png" style="width: 3.8622vw; height: 7.7325vh;">
             </div>
         </div>
         `;
@@ -69,9 +69,9 @@ export class Sun extends BasePlanet {
         history.innerHTML = `
         <h2>Education / Experience</h2>
 
-        <img id="tooling" alt="brunel" src="../../../public/assets/brunel.png" style="width: 10.8622vw; height: 7.7325vh;">
-        <img id="tooling" alt="ncc" src="../../../public/assets/ncc.png" style="padding: 0 0.5vw 0 0.5vw; width: 10.8622vw; height: 7.7325vh;">
-        <img id="tooling" alt="aws" src="../../../public/assets/aws.png" style="width: 4.8622vw; height: 7.7325vh;">
+        <img id="tooling" alt="brunel" src="/assets/brunel.png" style="width: 10.8622vw; height: 7.7325vh;">
+        <img id="tooling" alt="ncc" src="/assets/ncc.png" style="padding: 0 0.5vw 0 0.5vw; width: 10.8622vw; height: 7.7325vh;">
+        <img id="tooling" alt="aws" src="/assets/aws.png" style="width: 4.8622vw; height: 7.7325vh;">
 
         <p>I have a strong academic background with a BSc in Computer Science, a Level 3 BTEC Certification in IT, as well as an AWS Cloud Practitioner Certificate.</p>
         <p>I've worked professionally as a web developer, working with Shopify and front-end frameworks such as ReactJS</p>
@@ -79,9 +79,9 @@ export class Sun extends BasePlanet {
         `;
 
         footer.innerHTML = `
-        <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="height: 100%; display: flex; align-items: center; justify-content: space-between;">
             <div>
-                <img src="https://media1.tenor.com/m/89MPCBQDPKYAAAAd/plink-nerd.gif" style="width: 2vw; padding: 0.6vh 0 0 1vw;">
+                <img src="https://media1.tenor.com/m/89MPCBQDPKYAAAAd/plink-nerd.gif" style="width: 2vw; padding-left: 1vw;">
             </div>
         <div style="display: flex; gap: 1em; position: absolute; left: 50%; transform: translateX(-50%);">
                 <a href="https://github.com/CaptnJayce" id="links"><i class="nf nf-fa-github"></i></a>
