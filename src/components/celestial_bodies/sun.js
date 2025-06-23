@@ -50,7 +50,7 @@ export class Sun extends BasePlanet {
         <h2>What I use</h2>
 
         <!-- thank you deepseek for the pixel to vw/vh conversions -->
-        <div style="display: flex; justify-content: space-between; padding-left: 1vw;">
+        <div style="display: flex; justify-content: space-between;">
             <div style="display: flex; flex-direction: row; align-items: flex-start;">
                 <img id="tooling" alt="neovim" src="/assets/neovim.png" style="width: 3.1315vw; height: 7.7325vh;">
                 <img id="tooling" alt="arch" src="/assets/archlinux.png" style="width: 3.8622vw; height: 7.7325vh;">

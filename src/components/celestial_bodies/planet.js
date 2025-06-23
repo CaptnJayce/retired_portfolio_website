@@ -60,6 +60,10 @@ export class BasePlanet extends THREE.Mesh {
         }
 
         this.isAnimating = true;
+
+        this.outlineMesh.visible = true;
+        this.isZoomed = true;
+
         if (this.camera.solarSystem?.animatedBodies) {
             this.camera.solarSystem.animatedBodies.forEach(obj => {
                 if (obj !== this && obj.isClickable !== undefined) {
@@ -111,15 +115,16 @@ export class BasePlanet extends THREE.Mesh {
             if (!this.isZoomed) {
                 this.tooltipVisible = true;
                 this.tooltip.style.visibility = 'visible';
+                this.outlineMesh.visible = true;
             }
-
-            this.outlineMesh.visible = true;
             this.updateTooltip();
         }
     }
 
     onMouseOut() {
-        this.outlineMesh.visible = false;
+        if (!this.isZoomed) {
+            this.outlineMesh.visible = false;
+        }
         this.tooltip.style.visibility = 'hidden';
     }
 
@@ -140,6 +145,7 @@ export class BasePlanet extends THREE.Mesh {
             onComplete: () => {
                 this.isAnimating = false;
                 this.isZoomed = false;
+                this.outlineMesh.visible = false;
 
                 if (this.camera.solarSystem?.animatedBodies) {
                     this.camera.solarSystem.animatedBodies.forEach(obj => {
