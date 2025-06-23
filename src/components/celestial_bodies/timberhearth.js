@@ -2,7 +2,7 @@ import { BasePlanet } from './planet.js';
 
 export class TimberHearth extends BasePlanet {
     constructor(camera) {
-        super(camera, "Projects", 4, 1.25, 0x59981a, 0);
+        super(camera, "Projects", 2, 1.25, 0x59981a, 0);
 
         this.semiMajorAxis = 30;
         this.semiMinorAxis = 20;
@@ -15,7 +15,7 @@ export class TimberHearth extends BasePlanet {
                 desc: "A portfolio website, inspired by Outer Wilds, made in ThreeJS",
                 tech: ["ThreeJS", "HTML", "CSS"],
                 status: "Incomplete",
-                img: "",
+                img: "/assets/portfolio.png",
                 link: "https://github.com/CaptnJayce/captnjayce.github.io"
             },
             {
@@ -23,7 +23,7 @@ export class TimberHearth extends BasePlanet {
                 desc: "A simple platformer, focused around hitting obstacles to gain navigate levels",
                 tech: ["Godot", "GDScript"],
                 status: "Complete",
-                img: "",
+                img: "/assets/parrythefloor.png",
                 link: "https://captnjayce.itch.io/parry-the-floor"
             },
             {
@@ -31,7 +31,7 @@ export class TimberHearth extends BasePlanet {
                 desc: "My current long term game-dev project",
                 tech: ["Odin", "Raylib"],
                 status: "Incomplete",
-                img: "",
+                img: "/assets/witchway.png",
                 link: "https://github.com/CaptnJayce/witch-way"
             },
             {
@@ -39,7 +39,7 @@ export class TimberHearth extends BasePlanet {
                 desc: "An HTML website that visualises various algorithms",
                 tech: ["JS", "HTML", "CSS"],
                 status: "Complete",
-                img: "",
+                img: "/assets/algovis.png",
                 link: "https://github.com/CaptnJayce/algorithm-visualizser"
             },
             {
@@ -87,8 +87,8 @@ export class TimberHearth extends BasePlanet {
                 desc: "A custom built keyboard",
                 tech: ["Ergodash Kit", "Soldering Kit"],
                 status: "Incomplete",
-                img: "",
-                link: ""
+                img: "/assets/ergodash.png",
+                link: "https://github.com/omkbd/ErgoDash"
             }
         ];
     }

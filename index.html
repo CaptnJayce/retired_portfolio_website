@@ -189,8 +189,8 @@
 
         #projectsOverlay {
             position: fixed;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -207,31 +207,28 @@
 
         .projectsContainer {
             display: flex;
-            height: 80vh;
-            width: 80vw;
-            gap: 15rem;
+            height: 85vh;
+            width: 90vw;
+            gap: 30vw;
             margin-top: 1vw;
         }
 
         .leftColumn,
         .rightColumn {
             flex: 1;
-            max-height: 800px;
+            max-height: 80vh;
+            width: 25vw;
             overflow-y: scroll;
             scrollbar-width: thin;
             scrollbar-color: white #00000000;
             padding: 1vw;
-            border-radius: 8px;
+            border-radius: 0.2vw;
         }
 
-        .leftColumn {
-            background: rgba(233, 86, 120, 0.1);
-            border: 1px solid #E95678;
-        }
-
+        .leftColumn,
         .rightColumn {
-            background: rgba(89, 227, 227, 0.1);
-            border: 1px solid #59E3E3;
+            background: #016a4d1A;
+            border: 0.2vw solid #016a4d;
         }
 
         .projectsList {
@@ -243,16 +240,16 @@
         .projectCard {
             background: rgba(20, 20, 20, 0.9);
             padding: 1.5vw;
-            border-radius: 8px;
-            border-left: 4px solid;
+            border-radius: 0.2vw;
+            border-left: 0.2vw solid;
         }
 
         .incompleteProjects .projectCard {
-            border-left-color: #E95678;
+            border-left-color: #016a4d;
         }
 
         .completeProjects .projectCard {
-            border-left-color: #59E3E3;
+            border-left-color: #016a4d;
         }
 
         .projectCard h3 {
@@ -302,11 +299,11 @@
     <div id="projectsOverlay">
         <div class="projectsContainer">
             <div class="leftColumn">
-                <h3>In Progress</h3>
+                <h3 style="font-size: 1.5vw;">In Progress</h3>
                 <div class="projectsList incompleteProjects"></div>
             </div>
             <div class="rightColumn">
-                <h3>Completed</h3>
+                <h3 style="font-size: 1.5vw;">Completed</h3>
                 <div class="projectsList completeProjects"></div>
             </div>
         </div>
