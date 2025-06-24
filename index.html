@@ -31,7 +31,8 @@
             <i class="nf nf-fa-gear"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">zoom speed</a>
+            <label for="zoomSpeed">Zoom speed: <span id="zoomSpeedValue"></span></label>
+            <input type="range" id="zoomSpeed" name="zoomSpeed" min="0.1" max="2" value="0.8" step="0.1" />
         </div>
     </div>
 
@@ -84,6 +85,30 @@
             document.getElementById('settingsDropdown').classList.toggle('show');
             this.classList.toggle('rotated');
         });
+
+        document.addEventListener('click', function (event) {
+            const dropdown = document.getElementById('settingsDropdown');
+            const isClickInside = dropdown.contains(event.target);
+
+            if (!isClickInside && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+                settingsButton.classList.remove('rotated');
+            }
+        });
+
+        // zoom speed 
+        const zoomSpeedInput = document.getElementById('zoomSpeed');
+        const zoomSpeedValue = document.getElementById('zoomSpeedValue');
+
+        zoomSpeedValue.textContent = zoomSpeedInput.value;
+
+        zoomSpeedInput.addEventListener('input', function () {
+            zoomSpeedValue.textContent = this.value;
+        });
+
+        function getZoomSpeed() {
+            return parseInt(zoomSpeedInput.value);
+        }
     </script>
 </body>
 
