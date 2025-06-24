@@ -1,0 +1,120 @@
+#aboutMeOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#aboutMeOverlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.aboutMeContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 95vh;
+    gap: 0.5vw;
+}
+
+.aboutMeTitle {
+    background-color: #000000CC;
+    border-radius: 8px;
+    height: 6vh;
+    border-left: 0.2vw solid #FFA500;
+    border-right: 0.2vw solid #FFA500;
+    text-align: center;
+    font-size: 0.8vw;
+}
+
+.aboutMeFooter {
+    background-color: #000000CC;
+    border-radius: 8px;
+    height: 6vh;
+    border-left: 0.2vw solid #FFA500;
+    border-right: 0.2vw solid #FFA500;
+    text-align: center;
+    font-size: 0.8vw;
+}
+
+.aboutMeTitle .aboutMeFooter h2 {
+    margin: 0;
+    font-size: 0.8vw;
+}
+
+.aboutMeMain {
+    background-color: #000000CC;
+    font-size: 0.8vw;
+    padding-left: 1vw;
+    flex: 1;
+    max-width: 32vw;
+    height: 75vh;
+    border-left: 0.2vw solid #FFA500;
+    border-radius: 8px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: black #00000000;
+}
+
+.aboutMeMain p {
+    font-size: 0.8vw;
+}
+
+.aboutMeSecondary {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 5vw;
+    top: 9.5vh;
+    bottom: 9.5vh;
+    justify-content: space-between;
+}
+
+.aboutMeTools {
+    background-color: #000000CC;
+    height: 30vh;
+    width: 32vw;
+    font-size: 0.8vw;
+    border-right: 0.2vw solid #FFA500;
+    border-radius: 8px;
+    padding-left: 1vw;
+}
+
+.aboutMeHistory {
+    background-color: #000000CC;
+    height: 45vh;
+    width: 32vw;
+    font-size: 0.8vw;
+    border-right: 0.2vw solid #FFA500;
+    border-radius: 8px;
+    padding-left: 1vw;
+}
+
+.tooling {
+    margin-right: 1vw;
+}
+
+.break {
+    color: white;
+}
+
+.titles {
+    padding-top: 1vh;
+    padding-bottom: 0;
+    margin-bottom: 0.5vh;
+}
+
+.links {
+    font-size: 1.5vw;
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 0 1vw 0 1vw;
+}

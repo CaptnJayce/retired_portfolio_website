@@ -1,0 +1,122 @@
+#projectsOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#projectsOverlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.projectsContainer {
+    display: flex;
+    height: 85vh;
+    width: 80vw;
+    gap: 20vw;
+    margin-top: 1vw;
+}
+
+.leftColumn,
+.rightColumn {
+    flex: 1;
+    max-height: 80vh;
+    width: 30vw;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: black #00000000;
+    padding: 1vw;
+    border-radius: 0.2vw;
+}
+
+/* all that for a left side scrollbar */
+.rightColumn {
+    background: #000000CC;
+    border-right: 0.2vw solid #016a4d;
+    overflow-y: auto;
+    direction: rtl;
+}
+
+.rightColumn>* {
+    direction: ltr;
+}
+
+.leftColumn {
+    background: #000000CC;
+    border-left: 0.2vw solid #016a4d;
+}
+
+.rightColumn {
+    background: #000000CC;
+    border-right: 0.2vw solid #016a4d;
+}
+
+.projectsList {
+    display: grid;
+    gap: 1.5vw;
+    margin-top: 1vw;
+}
+
+.projectCard {
+    background: rgba(20, 20, 20, 0.9);
+    padding: 1.5vw;
+    border-radius: 0.2vw;
+    border-left: 0.2vw solid;
+    border-right: 0.2vw solid;
+}
+
+.incompleteProjects .projectCard {
+    border-left-color: #016a4d;
+    border-right-color: transparent;
+}
+
+.completeProjects .projectCard {
+    border-right-color: #016a4d;
+    border-left-color: transparent;
+}
+
+.projectCard h3 {
+    margin-top: 0;
+    color: white;
+    font-size: 1vw;
+}
+
+.projectCard p {
+    color: #ccc;
+    font-size: 1vw;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5vw;
+    margin: 1vw 0;
+}
+
+.tag {
+    background: #333;
+    padding: 0.3vw 0.6vw;
+    border-radius: 4px;
+    font-size: 1vw;
+}
+
+.projectImage {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 1vw;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 1vw;
+    color: #FDF0ED;
+    text-decoration: none;
+    font-size: 1vw;
+}

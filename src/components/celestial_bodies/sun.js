@@ -28,12 +28,12 @@ export class Sun extends BasePlanet {
         `;
 
         main.innerHTML = `
-        <h2 id="titles">Hello! My name is Casey Jestico</h2>
+        <h2 class="titles">Hello! My name is Casey Jestico</h2>
         <p style="margin-top: 0;">I'm a web/game developer from London</p>
         <p>I have been making games and websites for almost five years and have had an interest in technology from as early as I can remember</p>
         <p>I love to see my projects evolve as I write more code and I get this experience the most with game/web development. I find them to be the best mediums to express myself and my ideas in</p>
 
-        <h2 id="titles">Some fun facts</h2>
+        <h2 class="titles">Some fun facts</h2>
         <p style="margin: 0;">Hobbies</p>
         <ul style="font-size: 0.8vw; margin: 0;">
             <li>Gaming</li>
@@ -42,14 +42,14 @@ export class Sun extends BasePlanet {
             <li>Pixel art</li>
         </ul>
 
-        <p id="titles">General</p>
+        <p class="titles">General</p>
         <ul style="font-size: 0.8vw; margin: 0;">
             <li>I have two cats called Willow and Winston</li>
             <li>I know Fares</li>
             <li>I know what you did, Daniel.</li>
             <li>My favourite drink is Monster Energy Mango Loco (consumed in moderation)</li>
         </ul>
-        <p id="titles">Top 5</p>
+        <p class="titles">Top 5</p>
         <ul style="font-size: 0.8vw; margin: 0;">
             <li>Terraria</li>
             <li>Outer Wilds</li>
@@ -58,7 +58,7 @@ export class Sun extends BasePlanet {
             <li>V Rising</li>
         </ul>
 
-        <h2 id="titles">FAQ</h2>
+        <h2 class="titles">FAQ</h2>
         <p style="font-weight: bold; margin-top: 0;"><i class="nf nf-fa-question" style="color: red"></i> Why are you called Captn-Jayce- if your name is Casey?</p>
         <p><i class="nf nf-oct-light_bulb" style="color: yellow"></i> I wanted my online username to have an actual human name but was hesistant to use my real one, so I picked Jayce by reversing my initials (CJ -> JC) and picking the closest name I could think of.</p>
         <p style="font-weight: bold"><i class="nf nf-fa-question" style="color: red"></i> Why did you make an Outer Wilds themed website?</p>
@@ -67,31 +67,31 @@ export class Sun extends BasePlanet {
         `;
 
         tools.innerHTML = `
-        <h2 id="titles">What I use</h2>
+        <h2 class="titles">What I use</h2>
 
         <!-- thank you deepseek for the pixel to vw/vh conversions -->
         <div style="display: flex; justify-content: space-between;">
             <div style="display: flex; flex-direction: row; align-items: flex-start;">
-                <img id="tooling" alt="neovim" src="/assets/neovim.png" style="width: 3.1315vw; height: 7.7325vh;">
-                <img id="tooling" alt="arch" src="/assets/archlinux.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="hyprland" src="/assets/hyprland.png" style="width: 2.7401vw; height: 7.7325vh;">
+                <img class="tooling" alt="neovim" src="/assets/neovim.png" style="width: 3.1315vw; height: 7.7325vh;">
+                <img class="tooling" alt="arch" src="/assets/archlinux.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img class="tooling" alt="hyprland" src="/assets/hyprland.png" style="width: 2.7401vw; height: 7.7325vh;">
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5vw;">
-                <img id="tooling" alt="odinlang" src="/assets/odin.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="javascript" src="/assets/javascript.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="C++" src="/assets/cpp.png" style="width: 3.4447vw; height: 7.7325vh;">
-                <img id="tooling" alt="raylib" src="/assets/raylib.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img id="tooling" alt="aseprite" src="/assets/aseprite.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img class="tooling" alt="odinlang" src="/assets/odin.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img class="tooling" alt="javascript" src="/assets/javascript.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img class="tooling" alt="C++" src="/assets/cpp.png" style="width: 3.4447vw; height: 7.7325vh;">
+                <img class="tooling" alt="raylib" src="/assets/raylib.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img class="tooling" alt="aseprite" src="/assets/aseprite.png" style="width: 3.8622vw; height: 7.7325vh;">
             </div>
         </div>
         `;
 
         history.innerHTML = `
-        <h2 id="titles">Education / Experience</h2>
+        <h2 class="titles">Education / Experience</h2>
 
-        <img id="tooling" alt="brunel" src="/assets/brunel.png" style="width: 10.8622vw; height: 7.7325vh;">
-        <img id="tooling" alt="ncc" src="/assets/ncc.png" style="padding: 0 0.5vw 0 0.5vw; width: 10.8622vw; height: 7.7325vh;">
-        <img id="tooling" alt="aws" src="/assets/aws.png" style="width: 4.8622vw; height: 7.7325vh;">
+        <img class="tooling" alt="brunel" src="/assets/brunel.png" style="width: 10.8622vw; height: 7.7325vh;">
+        <img class="tooling" alt="ncc" src="/assets/ncc.png" style="padding: 0 0.5vw 0 0.5vw; width: 10.8622vw; height: 7.7325vh;">
+        <img class="tooling" alt="aws" src="/assets/aws.png" style="width: 4.8622vw; height: 7.7325vh;">
 
         <p>I have a strong academic background with a BSc in Computer Science, a Level 3 BTEC Certification in IT, as well as an AWS Cloud Practitioner Certificate.</p>
         <p>I've worked professionally as a web developer, working with Shopify and front-end frameworks such as ReactJS</p>
@@ -104,11 +104,11 @@ export class Sun extends BasePlanet {
                 <img src="https://media1.tenor.com/m/89MPCBQDPKYAAAAd/plink-nerd.gif" style="width: 2vw; padding-left: 1vw;">
             </div>
         <div style="display: flex; gap: 1em; position: absolute; left: 50%; transform: translateX(-50%);">
-                <a href="https://github.com/CaptnJayce" id="links"><i class="nf nf-fa-github"></i></a>
-                <a href="https://captnjayce.itch.io/" id="links"><i class="nf nf-fa-itch_io"></i></a>
-                <a href="https://www.linkedin.com/in/jc444/" id="links"><i class="nf nf-md-linkedin"></i></a>
-                <a href="mailto:captn.enquiries@protonmail.com" id="links"><i class="nf nf-md-email"></i></a>
-                <a href="https://discord.com/users/775894736623239260" id="links"><i class="nf nf-fa-discord"></i></a>
+                <a href="https://github.com/CaptnJayce" class="links"><i class="nf nf-fa-github"></i></a>
+                <a href="https://captnjayce.itch.io/" class="links"><i class="nf nf-fa-itch_io"></i></a>
+                <a href="https://www.linkedin.com/in/jc444/" class="links"><i class="nf nf-md-linkedin"></i></a>
+                <a href="mailto:captn.enquiries@protonmail.com" class="links"><i class="nf nf-md-email"></i></a>
+                <a href="https://discord.com/users/775894736623239260" class="links"><i class="nf nf-fa-discord"></i></a>
             </div>
             <div style="padding-right: 1vw;">
                 <p>© 2025 Casey Jestico</p>
