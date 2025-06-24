@@ -23,7 +23,7 @@ export function createCamera() {
 
     camera.focusOnObject = function(object, options = {}) {
         const defaults = {
-            duration: 1.25,
+            duration: 0.8,
             distance: 5,
             zoom: 3,
             ease: "power2.inOut",
@@ -59,7 +59,7 @@ export function createCamera() {
 
     camera.resetView = function(options = {}) {
         const defaults = {
-            duration: 1.25,
+            duration: 0.8,
             ease: "power2.inOut",
             onComplete: () => { }
         };
