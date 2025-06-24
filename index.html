@@ -208,8 +208,8 @@
         .projectsContainer {
             display: flex;
             height: 85vh;
-            width: 90vw;
-            gap: 30vw;
+            width: 80vw;
+            gap: 20vw;
             margin-top: 1vw;
         }
 
@@ -217,18 +217,34 @@
         .rightColumn {
             flex: 1;
             max-height: 80vh;
-            width: 25vw;
+            width: 30vw;
             overflow-y: scroll;
             scrollbar-width: thin;
-            scrollbar-color: white #00000000;
+            scrollbar-color: black #00000000;
             padding: 1vw;
             border-radius: 0.2vw;
         }
 
-        .leftColumn,
+        /* all that for a left side scrollbar*/
         .rightColumn {
-            background: #016a4d1A;
-            border: 0.2vw solid #016a4d;
+            background: #000000CC;
+            border-right: 0.2vw solid #016a4d;
+            overflow-y: auto;
+            direction: rtl;
+        }
+
+        .rightColumn>* {
+            direction: ltr;
+        }
+
+        .leftColumn {
+            background: #000000CC;
+            border-left: 0.2vw solid #016a4d;
+        }
+
+        .rightColumn {
+            background: #000000CC;
+            border-right: 0.2vw solid #016a4d;
         }
 
         .projectsList {
@@ -242,14 +258,17 @@
             padding: 1.5vw;
             border-radius: 0.2vw;
             border-left: 0.2vw solid;
+            border-right: 0.2vw solid;
         }
 
         .incompleteProjects .projectCard {
             border-left-color: #016a4d;
+            border-right-color: transparent;
         }
 
         .completeProjects .projectCard {
-            border-left-color: #016a4d;
+            border-right-color: #016a4d;
+            border-left-color: transparent;
         }
 
         .projectCard h3 {
@@ -279,7 +298,7 @@
 
         .projectImage {
             max-width: 100%;
-            border-radius: 4px;
+            border-radius: 12px;
             margin-top: 1vw;
         }
 
@@ -299,11 +318,11 @@
     <div id="projectsOverlay">
         <div class="projectsContainer">
             <div class="leftColumn">
-                <h3 style="font-size: 1.5vw;">In Progress</h3>
+                <h3 style="font-size: 1.5vw; margin-top: 1vh;">In Progress</h3>
                 <div class="projectsList incompleteProjects"></div>
             </div>
             <div class="rightColumn">
-                <h3 style="font-size: 1.5vw;">Completed</h3>
+                <h3 style="display: flex; font-size: 1.5vw; margin-top: 1vh; justify-content: right;">Completed</h3>
                 <div class="projectsList completeProjects"></div>
             </div>
         </div>

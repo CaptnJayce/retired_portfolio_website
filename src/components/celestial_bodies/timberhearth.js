@@ -20,7 +20,7 @@ export class TimberHearth extends BasePlanet {
             },
             {
                 title: "Parry The Floor Demo",
-                desc: "A simple platformer, focused around hitting obstacles to gain navigate levels",
+                desc: "A simple three level platformer, focused around hitting obstacles to navigate levels",
                 tech: ["Godot", "GDScript"],
                 status: "Complete",
                 img: "/assets/parrythefloor.png",
@@ -44,7 +44,7 @@ export class TimberHearth extends BasePlanet {
             },
             {
                 title: "Infinite Caves",
-                desc: "Using Perlin Noise and seeded generation to make infinite caves",
+                desc: "Using Perlin Noise and seeded generation to generate infinite 2D caves",
                 tech: ["Unity", "C#"],
                 status: "Complete",
                 img: "",
@@ -52,7 +52,7 @@ export class TimberHearth extends BasePlanet {
             },
             {
                 title: "Quartermaster",
-                desc: "A desktop assistant",
+                desc: "An AI desktop assistant capable of web scraping, TTS, and STT",
                 tech: ["Python", "Ollama"],
                 status: "Incomplete",
                 img: "",
@@ -86,7 +86,7 @@ export class TimberHearth extends BasePlanet {
                 title: "Ergodash",
                 desc: "A custom built keyboard",
                 tech: ["Ergodash Kit", "Soldering Kit"],
-                status: "Incomplete",
+                status: "Complete",
                 img: "/assets/ergodash.png",
                 link: "https://github.com/omkbd/ErgoDash"
             }
