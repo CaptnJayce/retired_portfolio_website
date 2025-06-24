@@ -17,18 +17,13 @@ export class Sun extends BasePlanet {
 
     showPlanetInfo() {
         const overlay = document.getElementById('aboutMeOverlay');
-        const title = overlay.querySelector('.aboutMeTitle');
-        const main = overlay.querySelector('.aboutMeMain');
-        const footer = overlay.querySelector('.aboutMeFooter');
-        const tools = overlay.querySelector('.aboutMeTools');
-        const history = overlay.querySelector('.aboutMeHistory');
-
-        title.innerHTML = `
-        <h2>~ General Information ~</h2>
-        `;
+        const main = overlay.querySelector('.aboutMeContent');
+        const footer = overlay.querySelector('.aboutMeContentF');
+        const tools = overlay.querySelector('.aboutMeContentT');
+        const history = overlay.querySelector('.aboutMeContentH');
 
         main.innerHTML = `
-        <h2 class="titles">Hello! My name is Casey Jestico</h2>
+        <h2 class="titles" style="margin-top: 0; padding-top: 0.5vh; ">Hello! My name is Casey Jestico</h2>
         <p style="margin-top: 0;">I'm a web/game developer from London</p>
         <p>I have been making games and websites for almost five years and have had an interest in technology from as early as I can remember</p>
         <p>I love to see my projects evolve as I write more code and I get this experience the most with game/web development. I find them to be the best mediums to express myself and my ideas in</p>
@@ -79,9 +74,12 @@ export class Sun extends BasePlanet {
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5vw;">
                 <img class="tooling" alt="odinlang" src="/assets/odin.png" style="width: 3.8622vw; height: 7.7325vh;">
                 <img class="tooling" alt="javascript" src="/assets/javascript.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img class="tooling" alt="C++" src="/assets/cpp.png" style="width: 3.4447vw; height: 7.7325vh;">
+                <img  alt="C++" src="/assets/cpp.png" style="width: 3.4447vw; height: 7.7325vh;">
                 <img class="tooling" alt="raylib" src="/assets/raylib.png" style="width: 3.8622vw; height: 7.7325vh;">
                 <img class="tooling" alt="aseprite" src="/assets/aseprite.png" style="width: 3.8622vw; height: 7.7325vh;">
+
+
+        <img src="https://media1.tenor.com/m/89MPCBQDPKYAAAAd/plink-nerd.gif" style="width: 3.2vw;">
             </div>
         </div>
         `;
@@ -100,17 +98,14 @@ export class Sun extends BasePlanet {
 
         footer.innerHTML = `
         <div style="height: 100%; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-                <img src="https://media1.tenor.com/m/89MPCBQDPKYAAAAd/plink-nerd.gif" style="width: 2vw; padding-left: 1vw;">
-            </div>
-        <div style="display: flex; gap: 1em; position: absolute; left: 50%; transform: translateX(-50%);">
+            <div style="display: flex; gap: 1em; position: absolute; left: 50vw; transform: translateX(-50%);">
                 <a href="https://github.com/CaptnJayce" class="links"><i class="nf nf-fa-github"></i></a>
                 <a href="https://captnjayce.itch.io/" class="links"><i class="nf nf-fa-itch_io"></i></a>
                 <a href="https://www.linkedin.com/in/jc444/" class="links"><i class="nf nf-md-linkedin"></i></a>
                 <a href="mailto:captn.enquiries@protonmail.com" class="links"><i class="nf nf-md-email"></i></a>
                 <a href="https://discord.com/users/775894736623239260" class="links"><i class="nf nf-fa-discord"></i></a>
             </div>
-            <div style="padding-right: 1vw;">
+            <div style="padding-left: 1vw;">
                 <p>© 2025 Casey Jestico</p>
             </div> 
         </div>
