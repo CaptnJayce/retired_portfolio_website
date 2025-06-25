@@ -67,16 +67,16 @@ export class Sun extends BasePlanet {
         <!-- thank you deepseek for the pixel to vw/vh conversions -->
         <div style="display: flex; justify-content: space-between;">
             <div style="display: flex; flex-direction: row; align-items: flex-start;">
-                <img class="tooling" alt="neovim" src="/assets/neovim.png" style="width: 3.1315vw; height: 7.7325vh;">
-                <img class="tooling" alt="arch" src="/assets/archlinux.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img class="tooling" alt="hyprland" src="/assets/hyprland.png" style="width: 2.7401vw; height: 7.7325vh;">
+                <img class="tooling" alt="neovim" src="/assets/neovim.png" style="width: 3.6vw;">
+                <img class="tooling" alt="arch" src="/assets/archlinux.png">
+                <img class="tooling" alt="hyprland" src="/assets/hyprland.png" style="width: 3.6vw;">
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5vw;">
-                <img class="tooling" alt="odinlang" src="/assets/odin.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img class="tooling" alt="javascript" src="/assets/javascript.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img  alt="C++" src="/assets/cpp.png" style="width: 3.4447vw; height: 7.7325vh;">
-                <img class="tooling" alt="raylib" src="/assets/raylib.png" style="width: 3.8622vw; height: 7.7325vh;">
-                <img class="tooling" alt="aseprite" src="/assets/aseprite.png" style="width: 3.8622vw; height: 7.7325vh;">
+                <img class="tooling" alt="odinlang" src="/assets/odin.png">
+                <img class="tooling" alt="javascript" src="/assets/javascript.png">
+                <img class="tooling" alt="C++" src="/assets/cpp.png" style="width: 3.6vw;">
+                <img class="tooling" alt="raylib" src="/assets/raylib.png">
+                <img class="tooling" alt="aseprite" src="/assets/aseprite.png">
 
 
         <img src="https://media1.tenor.com/m/89MPCBQDPKYAAAAd/plink-nerd.gif" style="width: 3.2vw;">
@@ -87,9 +87,9 @@ export class Sun extends BasePlanet {
         history.innerHTML = `
         <h2 class="titles">Education / Experience</h2>
 
-        <img class="tooling" alt="brunel" src="/assets/brunel.png" style="width: 10.8622vw; height: 7.7325vh;">
-        <img class="tooling" alt="ncc" src="/assets/ncc.png" style="padding: 0 0.5vw 0 0.5vw; width: 10.8622vw; height: 7.7325vh;">
-        <img class="tooling" alt="aws" src="/assets/aws.png" style="width: 4.8622vw; height: 7.7325vh;">
+        <img alt="brunel" src="/assets/brunel.png" style="width: 10.8622vw; height: 7.7325vh;">
+        <img alt="ncc" src="/assets/ncc.png" style="padding: 0 0.5vw 0 0.5vw; width: 10.8622vw; height: 7.7325vh;">
+        <img alt="aws" src="/assets/aws.png" style="width: 4.8622vw; height: 7.7325vh;">
 
         <p>I have a strong academic background with a BSc in Computer Science, a Level 3 BTEC Certification in IT, as well as an AWS Cloud Practitioner Certificate.</p>
         <p>I've worked professionally as a web developer, working with Shopify and front-end frameworks such as ReactJS</p>
