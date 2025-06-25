@@ -40,11 +40,11 @@
 }
 
 .timelineTop {
-    background: rgba(20, 20, 20, 0.9);
+    background-color: #141414CC;
     border-left: 3px solid yellow;
 }
 
 .timelineBottom {
-    background: rgba(20, 20, 20, 0.9);
+    background-color: #141414CC;
     border-left: 3px solid red;
 }

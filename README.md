@@ -8,3 +8,10 @@
 - I wanted to make sure the design wasn't too niche and abstract - where only a select amount of people could see it and go "that's a cool design". This was another reason I went with Outer Wilds as my inspiration, instead of a game like Terraria or Risk of Rain 2.
 - Outer Wilds planet map:
 ![reference_image](/public/assets/outer_wilds_map.png)
+
+### TODO:
+- Education / Experience timelines
+- Contact page 
+- Figure out what to do for other planets 
+- 3D Models for planets
+- Container for titles in projects so it doesn't scroll with project cards

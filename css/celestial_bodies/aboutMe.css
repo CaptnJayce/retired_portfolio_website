@@ -36,7 +36,7 @@
 }
 
 .aboutMeContentF {
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: #141414CC;
     border-radius: 0.4vw;
     height: 5vh;
     border-left: 0.2vw solid #FFA500;
@@ -87,7 +87,7 @@
 
 .aboutMeContentT {
     position: relative;
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: #141414CC;
     border-radius: 0.4vw;
     border-right: 0.2vw solid #FFA500;
     height: 26vh;
@@ -107,7 +107,7 @@
 
 .aboutMeContentH {
     position: relative;
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: #141414CC;
     border-radius: 0.4vw;
     border-right: 0.2vw solid #FFA500;
     margin: 1vw;
@@ -119,7 +119,7 @@
 
 .aboutMeContent {
     position: relative;
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: #141414CC;
     border-radius: 0.4vw;
     border-left: 0.2vw solid #FFA500;
     padding: 0.2vw;
@@ -127,7 +127,7 @@
     max-height: 75.2vh;
     overflow-y: scroll;
     scrollbar-width: thin;
-    scrollbar-color: black #00000000;
+    scrollbar-color: transparent #010101;
 }
 
 .tooling {
