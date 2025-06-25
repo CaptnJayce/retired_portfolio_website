@@ -23,6 +23,34 @@ export class BrittleHollow extends BasePlanet {
 
         programming.innerHTML = `
             <h3>Programming</h3>
+            <h4 style="margin-bottom: 0.4vw;">Gamedev</h4>
+            <div class="skillsItem">
+                <img class="tooling" alt="odinlang" src="/assets/odin.png">
+                <p>Odin (Odinlang)</p>
+
+                <img class="tooling" alt="raylib" src="/assets/raylib.png">
+                <p>Raylib</p>
+            </div>
+
+            <div class="skillsItem">
+                <img class="tooling" alt="cpp" src="/assets/cpp.png"">
+                <p>C++</p>
+            </div>
+            <h4 style="margin-bottom: 0.4vw;">Webdev</h4>
+            <div class="skillsItem">
+                <img class="tooling" alt="javascript" src="/assets/javascript.png"">
+                <p>JavaScript</p>
+
+                <img class="tooling" alt="threejs" src="/assets/threejs.png"">
+                <p>ThreeJS</p>
+            </div>
+            <div class="skillsItem">
+                <img class="tooling" alt="html" src="/assets/html.png"">
+                <p>HTML</p>
+
+                <img class="tooling" alt="css" src="/assets/css.png"">
+                <p>CSS</p>
+            </div>
         `;
 
         environment.innerHTML = `

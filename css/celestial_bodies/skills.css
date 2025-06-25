@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
@@ -19,14 +20,72 @@
 .skillsContainer {
     display: flex;
     flex-direction: row;
-    max-height: 75vh;
-    gap: 15vh;
+    height: 90vh;
+    width: 90vw;
+    font-size: 0.8vw;
 }
 
-.skillsTitle {}
+.skillsItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    text-align: left;
+    padding-bottom: 0.5vw;
+}
 
-.skillsProgramming {}
+.skillsItem p {
+    margin: 0;
+}
 
-.skillsEnvironment {}
+.skillsBackground,
+.skillsBackgroundTitle {
+    width: 25vw;
+    height: 50vh;
+    background-color: #000000CC;
+    position: absolute;
+}
 
-.skillsOther {}
+.skillsBackgroundTitle {
+    width: 25vw;
+    height: 4vh;
+    font-size: 1vw;
+}
+
+.skillsBackgroundTitle.skillsTitle {
+    top: 4vh;
+    left: 50%;
+    height: auto;
+    transform: translateX(-50%);
+    background-color: #141414CC;
+    border-left: 0.2vw solid #f8a110;
+    border-right: 0.2vw solid #f8a110;
+    border-radius: 0.4vw;
+}
+
+.skillsBackground.skillsProgramming {
+    justify-items: left;
+    top: 15%;
+    left: 5vh;
+    background-color: #141414CC;
+    border-left: 0.2vw solid #f8a110;
+    border-radius: 0.4vw;
+}
+
+.skillsBackground.skillsEnvironment {
+    top: 15%;
+    right: 5vh;
+    background-color: #141414CC;
+    border-right: 0.2vw solid #f8a110;
+    border-radius: 0.4vw;
+}
+
+.skillsBackground.skillsOther {
+    height: 30vh;
+    bottom: 4vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #141414CC;
+    border-left: 0.2vw solid #f8a110;
+    border-right: 0.2vw solid #f8a110;
+    border-radius: 0.4vw;
+}

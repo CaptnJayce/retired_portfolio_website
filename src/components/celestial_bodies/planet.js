@@ -134,10 +134,12 @@ export class BasePlanet extends THREE.Mesh {
         const projectsOverlay = document.getElementById('projectsOverlay');
         const aboutMeOverlay = document.getElementById('aboutMeOverlay');
         const timelineOverlay = document.getElementById('timelineOverlay');
+        const skillsOverlay = document.getElementById('skillsOverlay');
 
         if (projectsOverlay) projectsOverlay.classList.remove('visible');
         if (aboutMeOverlay) aboutMeOverlay.classList.remove('visible');
         if (timelineOverlay) timelineOverlay.classList.remove('visible');
+        if (skillsOverlay) skillsOverlay.classList.remove('visible');
 
         this.camera.resetView({
             onComplete: () => {
