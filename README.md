@@ -13,5 +13,6 @@
 - Education / Experience timelines
 - Contact page 
 - Figure out what to do for other planets 
+- Loading animation
 - 3D Models for planets
 - Container for titles in projects so it doesn't scroll with project cards

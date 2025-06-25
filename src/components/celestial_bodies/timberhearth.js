@@ -2,7 +2,7 @@ import { BasePlanet } from './planet.js';
 
 export class TimberHearth extends BasePlanet {
     constructor(camera) {
-        super(camera, "Projects", 2, 1.25, 0x59981a, 0);
+        super(camera, "Projects", 1.8, 1.25, 0x59981a, 0);
 
         this.semiMajorAxis = 30;
         this.semiMinorAxis = 20;

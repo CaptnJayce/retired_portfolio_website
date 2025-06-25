@@ -111,12 +111,10 @@ export class BasePlanet extends THREE.Mesh {
     }
 
     onMouseOver() {
-        if (this.isClickable) {
-            if (!this.isZoomed) {
-                this.tooltipVisible = true;
-                this.tooltip.style.visibility = 'visible';
-                this.outlineMesh.visible = true;
-            }
+        if (this.isClickable && !this.isZoomed) {
+            this.tooltipVisible = true;
+            this.tooltip.style.visibility = 'visible';
+            this.outlineMesh.visible = true;
             this.updateTooltip();
         }
     }

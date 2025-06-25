@@ -18,33 +18,70 @@
 
 .timelineContainer {
     display: flex;
-    flex-direction: column;
-    max-height: 75vh;
-    gap: 30rem;
-}
-
-.timelineTop,
-.timelineBottom {
-    display: flex;
     flex-direction: row;
+    max-height: 75vh;
+    gap: 15vh;
+}
+
+.timelineSectionL,
+.timelineSectionR {
+    display: flex;
     flex-wrap: wrap;
-    width: 90vw;
-    border-radius: 8px;
+    justify-content: center;
+    width: 45vw;
 }
 
-.timelineTop p,
-.timelineBottom p {
+.timelineSectionL h3 {
+    color: #f5bf42;
+}
+
+.timelineSectionR h3 {
+    color: #f54242;
+}
+
+/* yes i know there's a better way to do this, sunk cost falacy is a bitch */
+.timelineTopL,
+.timelineTopLT,
+.timelineTopR,
+.timelineBottomL,
+.timelineBottomR,
+.timelineBottomRT {
+    flex-direction: row;
+    width: 12vw;
+    height: 18vh;
+    border-radius: 0.4vw;
     margin: 0;
-    font-size: 16px;
-    max-width: 30vw;
+    font-size: 0.8vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
 }
 
-.timelineTop {
-    background-color: #141414CC;
-    border-left: 3px solid yellow;
+.timelineBottomRT,
+.timelineTopLT {
+    margin-left: 10vw;
 }
 
-.timelineBottom {
+.timelineBottomL,
+.timelineTopL,
+.timelineTopLT {
     background-color: #141414CC;
-    border-left: 3px solid red;
+    border-left: 0.2vw solid #f5bf42;
+}
+
+.timelineBottomR,
+.timelineTopR,
+.timelineBottomRT {
+    background-color: #141414CC;
+    border-left: 0.2vw solid #f54242;
+}
+
+.timelineMiddle {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #FDF0ED;
+    height: 1.5vh;
+    width: 42vw;
+    border-radius: 2vw;
+    margin: 18vh 0 18vh 0;
 }
