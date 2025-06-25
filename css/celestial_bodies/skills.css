@@ -1,0 +1,32 @@
+#skillsOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#skillsOverlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.skillsContainer {
+    display: flex;
+    flex-direction: row;
+    max-height: 75vh;
+    gap: 15vh;
+}
+
+.skillsTitle {}
+
+.skillsProgramming {}
+
+.skillsEnvironment {}
+
+.skillsOther {}
