@@ -10,8 +10,6 @@
 ![reference_image](/public/assets/outer_wilds_map.png)
 
 ### TODO:
-- Education / Experience timelines
-- Contact page 
 - Figure out what to do for other planets 
 - Loading animation
 - 3D Models for planets
