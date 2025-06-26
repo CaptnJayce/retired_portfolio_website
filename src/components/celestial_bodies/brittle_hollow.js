@@ -22,39 +22,88 @@ export class BrittleHollow extends BasePlanet {
         `;
 
         programming.innerHTML = `
-            <h3>Programming</h3>
+            <h3 style="margin-bottom: 0;">Programming</h3>
+
             <h4 style="margin-bottom: 0.4vw;">Gamedev</h4>
-            <div class="skillsItem">
-                <img class="tooling" alt="odinlang" src="/assets/odin.png">
-                <p>Odin (Odinlang)</p>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="skillsItem">
+                    <img class="tooling" alt="odinlang" src="/assets/odin.png">
+                    <p class="skillsDesc">Odin</p>
+                </div>
 
-                <img class="tooling" alt="raylib" src="/assets/raylib.png">
-                <p>Raylib</p>
+                <div class="skillsItem">
+                    <img class="tooling" alt="raylib" src="/assets/raylib.png">
+                    <p class="skillsDesc">Raylib</p>
+                </div>
+
+                <div class="skillsItem">
+                    <img class="tooling" alt="cpp" src="/assets/cpp.png"">
+                    <p class="skillsDesc">C++</p>
+                </div>
+
+                <div class="skillsItem">
+                    <img class="tooling" alt="threejs" src="/assets/threejs.png"">
+                    <p class="skillsDesc">ThreeJS</p>
+                </div>
             </div>
 
-            <div class="skillsItem">
-                <img class="tooling" alt="cpp" src="/assets/cpp.png"">
-                <p>C++</p>
-            </div>
             <h4 style="margin-bottom: 0.4vw;">Webdev</h4>
-            <div class="skillsItem">
-                <img class="tooling" alt="javascript" src="/assets/javascript.png"">
-                <p>JavaScript</p>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="skillsItem">
+                    <img class="tooling" alt="javascript" src="/assets/javascript.png"">
+                    <p>JavaScript</p>
+                </div>
 
-                <img class="tooling" alt="threejs" src="/assets/threejs.png"">
-                <p>ThreeJS</p>
-            </div>
-            <div class="skillsItem">
-                <img class="tooling" alt="html" src="/assets/html.png"">
-                <p>HTML</p>
+                <div class="skillsItem">
+                    <img class="tooling" alt="html" src="/assets/html.png"">
+                    <p>HTML</p>
+                </div>
 
-                <img class="tooling" alt="css" src="/assets/css.png"">
-                <p>CSS</p>
+                <div class="skillsItem">
+                    <img class="tooling" alt="css" src="/assets/css.png"">
+                    <p>CSS</p>
+                </div>
             </div>
         `;
 
         environment.innerHTML = `
-            <h3>Environment</h3>
+            <h3 style="margin-bottom: 0;">Environment</h3>
+
+            <h4 style="margin-bottom: 0.4vw;">System</h4>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="skillsItemR">
+                    <p>Arch Linux</p>
+                    <img class="tooling" alt="archlinux" src="/assets/archlinux.png">
+                </div>
+
+                <div class="skillsItemR">
+                    <p>Hyprland</p>
+                    <img class="tooling" alt="hyprland" src="/assets/hyprland.png">
+                </div>
+
+                <div class="skillsItemR">
+                    <p>Windows 10</p>
+                    <img class="tooling" alt="win10" src="/assets/win10.png">
+                </div>
+            </div>
+
+            <h4 style="margin-bottom: 0.4vw;">IDE/Text Editor</h4>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="skillsItemR">
+                    <p>Neovim</p>
+                    <img class="tooling" alt="neovim" src="/assets/neovim.png"">
+                </div>
+
+                <div class="skillsItemR">
+                    <p>VSCode</p>
+                    <img class="tooling" alt="vscode" src="/assets/vscode.png"">
+                </div>
+
+                <div class="skillsItemR">
+                    <p>Intellij</p>
+                    <img class="tooling" alt="intellij" src="/assets/intellij.png"">
+                </div>
+            </div>
         `;
 
         other.innerHTML = `

@@ -22,32 +22,47 @@
     flex-direction: row;
     height: 90vh;
     width: 90vw;
-    font-size: 0.8vw;
+    font-size: 0.9vw;
 }
 
 .skillsItem {
     display: flex;
     align-items: center;
-    gap: 0.5em;
     text-align: left;
     padding-bottom: 0.5vw;
+    width: 10vw;
 }
 
-.skillsItem p {
+.skillsItemR {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    padding-bottom: 0.5vw;
+    width: 10vw;
+    justify-content: right;
+    margin-left: auto;
+}
+
+.skillsItem p,
+.skillsItemR p {
     margin: 0;
 }
 
 .skillsBackground,
 .skillsBackgroundTitle {
-    width: 25vw;
+    width: 20vw;
     height: 50vh;
     background-color: #000000CC;
     position: absolute;
 }
 
+.skillsBackground {
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+}
+
 .skillsBackgroundTitle {
     width: 25vw;
-    height: 4vh;
     font-size: 1vw;
 }
 
@@ -63,17 +78,20 @@
 }
 
 .skillsBackground.skillsProgramming {
-    justify-items: left;
+    display: grid;
+    justify-items: start;
     top: 15%;
-    left: 5vh;
+    left: 10vh;
     background-color: #141414CC;
     border-left: 0.2vw solid #f8a110;
     border-radius: 0.4vw;
 }
 
 .skillsBackground.skillsEnvironment {
+    display: grid;
+    justify-items: end;
     top: 15%;
-    right: 5vh;
+    right: 10vh;
     background-color: #141414CC;
     border-right: 0.2vw solid #f8a110;
     border-radius: 0.4vw;
