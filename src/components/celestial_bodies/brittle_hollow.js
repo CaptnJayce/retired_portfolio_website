@@ -24,31 +24,23 @@ export class BrittleHollow extends BasePlanet {
         programming.innerHTML = `
             <h3 style="margin-bottom: 0;">Programming</h3>
 
-            <h4 style="margin-bottom: 0.4vw;">Gamedev</h4>
+            <h4 style="margin-bottom: 0.4vw;">Languages</h4>
             <div style="display: flex; flex-wrap: wrap;">
                 <div class="skillsItem">
                     <img class="tooling" alt="odinlang" src="/assets/odin.png">
-                    <p class="skillsDesc">Odin</p>
-                </div>
-
-                <div class="skillsItem">
-                    <img class="tooling" alt="raylib" src="/assets/raylib.png">
-                    <p class="skillsDesc">Raylib</p>
+                    <p>Odin</p>
                 </div>
 
                 <div class="skillsItem">
                     <img class="tooling" alt="cpp" src="/assets/cpp.png"">
-                    <p class="skillsDesc">C++</p>
+                    <p>C++</p>
                 </div>
 
                 <div class="skillsItem">
-                    <img class="tooling" alt="threejs" src="/assets/threejs.png"">
-                    <p class="skillsDesc">ThreeJS</p>
+                    <img class="tooling" alt="python" src="/assets/python.png"">
+                    <p>Python</p>
                 </div>
-            </div>
 
-            <h4 style="margin-bottom: 0.4vw;">Webdev</h4>
-            <div style="display: flex; flex-wrap: wrap;">
                 <div class="skillsItem">
                     <img class="tooling" alt="javascript" src="/assets/javascript.png"">
                     <p>JavaScript</p>
@@ -62,6 +54,19 @@ export class BrittleHollow extends BasePlanet {
                 <div class="skillsItem">
                     <img class="tooling" alt="css" src="/assets/css.png"">
                     <p>CSS</p>
+                </div>
+            </div>
+
+            <h4 style="margin-bottom: 0.4vw;">Libraries</h4>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="skillsItem">
+                    <img class="tooling" alt="threejs" src="/assets/threejs.png"">
+                    <p>ThreeJS</p>
+                </div>
+
+                <div class="skillsItem">
+                    <img class="tooling" alt="raylib" src="/assets/raylib.png">
+                    <p>Raylib</p>
                 </div>
             </div>
         `;
@@ -82,32 +87,49 @@ export class BrittleHollow extends BasePlanet {
                 </div>
 
                 <div class="skillsItemR">
-                    <p>Windows 10</p>
+                    <p>Windows</p>
                     <img class="tooling" alt="win10" src="/assets/win10.png">
                 </div>
-            </div>
 
-            <h4 style="margin-bottom: 0.4vw;">IDE/Text Editor</h4>
-            <div style="display: flex; flex-wrap: wrap;">
                 <div class="skillsItemR">
                     <p>Neovim</p>
                     <img class="tooling" alt="neovim" src="/assets/neovim.png"">
                 </div>
+            </div>
 
+            <h4 style="margin-bottom: 0.4vw;">Tools</h4>
+            <div style="display: flex; flex-wrap: wrap;">
                 <div class="skillsItemR">
-                    <p>VSCode</p>
-                    <img class="tooling" alt="vscode" src="/assets/vscode.png"">
+                    <p>Git</p>
+                    <img class="tooling" alt="git" src="/assets/git.png"">
                 </div>
 
                 <div class="skillsItemR">
-                    <p>Intellij</p>
-                    <img class="tooling" alt="intellij" src="/assets/intellij.png"">
+                    <p>NodeJS</p>
+                    <img class="tooling" alt="git" src="/assets/nodejs.png"">
+                </div>
+
+                <div class="skillsItemR">
+                    <p>tmux</p>
+                    <img class="tooling" alt="git" src="/assets/tmux.png"">
                 </div>
             </div>
         `;
 
         other.innerHTML = `
             <h3>Other</h3>
+            <h4 style="margin-bottom: 0.4vw;">Tools</h4>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="skillsItem">
+                    <img class="tooling" alt="aseprite" src="/assets/aseprite.png"">
+                    <p>Aseprite</p>
+                </div>
+
+                <div class="skillsItemR">
+                    <p>Blender</p>
+                    <img class="tooling" alt="blender" src="/assets/blender.png"">
+                </div>
+            </div>
         `;
 
         overlay.classList.add('visible');
