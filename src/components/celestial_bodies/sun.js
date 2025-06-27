@@ -29,29 +29,38 @@ export class Sun extends BasePlanet {
         <p>I love to see my projects evolve as I write more code and I get this experience the most with game/web development. I find them to be the best mediums to express myself and my ideas in</p>
 
         <h2 class="titles">Some fun facts</h2>
-        <p style="margin: 0;">Hobbies</p>
-        <ul style="font-size: 0.8vw; margin: 0;">
-            <li>Gaming</li>
-            <li>3D Printing</li>
-            <li>Creative writing</li>
-            <li>Pixel art</li>
-        </ul>
+        
+        <button type="button" class="collapsible">
+            <i class="nf nf-cod-triangle_right"></i> Hobbies
+        </button>
+        <div class="content">
+            <ul style="padding: 0 0 1vw 0; font-size: 1vw; margin: 0;">
+                <ul><i class="nf nf-md-gamepad" style="color: #F43E5C;"></i> Gaming</ul>
+                <ul><i class="nf nf-md-printer_3d_nozzle" style="color: #29D398;"></i> 3D Printing</ul>
+                <ul><i class="nf nf-md-pen" style="color: #EE64AE;"></i> Creative writing</ul>
+                <ul><i class="nf nf-fa-paint_brush" style="color: #59E3E3;"></i> Pixel art</ul>
+            </ul>
+        </div>
 
-        <p class="titles">General</p>
-        <ul style="font-size: 0.8vw; margin: 0;">
-            <li>I have two cats called Willow and Winston</li>
-            <li>I know Fares</li>
-            <li>I know what you did, Daniel.</li>
-            <li>My favourite drink is Monster Energy Mango Loco (consumed in moderation)</li>
-        </ul>
-        <p class="titles">Top 5</p>
-        <ul style="font-size: 0.8vw; margin: 0;">
-            <li>Terraria</li>
-            <li>Outer Wilds</li>
-            <li>Hollow Knight</li>
-            <li>Risk of Rain 2</li>
-            <li>V Rising</li>
-        </ul>
+        <button type="button" class="collapsible">
+            <i class="nf nf-cod-triangle_right"></i> General
+        </button>
+        <div class="content">
+            <ul style="padding: 0 0 1vw 0; font-size: 1vw; margin: 0;">
+                <ul><i class="nf nf-md-cat" style="color: #FDF0ED"></i> I have two cats called Willow and Winston</ul>
+                <button type="button" class="collapsible" style="padding-left: 1.9vw;">
+                    <i class="nf nf-cod-triangle_right"></i> Cattos 
+                </button>
+                <div class="content" style="padding-left: 3.2vw;">
+                    <img style="width: 10vw" alt="willow" src="/assets/willow.jpg">
+                    <img style="width: 10vw" alt="winston" src="/assets/winston.jpg">
+                </div>
+                <ul><i class="nf nf-md-cup" style="color: #F77D26"></i> My favourite drink is Monster Energy Mango Loco (consumed in moderation)</ul>
+                <ul><i class="nf nf-fa-glasses" style="color:  #CF9FFF"></i> I know a guy named Ibrahim</ul>
+                <ul><i class="nf nf-md-turtle" style="color: #29D398"></i> I know a guy named Fares</ul>
+                <ul><i class="nf nf-fa-snowflake" style="color: #59E3E3"></i> My favourite season is winter</ul>
+            </ul>
+        </div>
 
         <h2 class="titles">FAQ</h2>
         <p style="font-weight: bold; margin-top: 0;"><i class="nf nf-fa-question" style="color: red"></i> Why are you called Captn-Jayce- if your name is Casey?</p>
@@ -64,7 +73,6 @@ export class Sun extends BasePlanet {
         tools.innerHTML = `
         <h2 class="titles">What I use</h2>
 
-        <!-- thank you deepseek for the pixel to vw/vh conversions -->
         <div style="display: flex; justify-content: space-between;">
             <div style="display: flex; flex-direction: row; align-items: flex-start;">
                 <img class="tooling" alt="neovim" src="/assets/neovim.png" style="width: 3.6vw;">
@@ -113,6 +121,30 @@ export class Sun extends BasePlanet {
         const card = document.createElement('div');
         main.appendChild(card);
 
+        this.collapsible();
+
         overlay.classList.add('visible');
+    }
+
+    collapsible() {
+        const collapsibles = document.getElementsByClassName("collapsible");
+
+        for (let i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const icon = this.querySelector('i');
+                const content = this.nextElementSibling;
+
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                    icon.classList.remove('nf-cod-triangle_down');
+                    icon.classList.add('nf-cod-triangle_right');
+                } else {
+                    content.style.display = "block";
+                    icon.classList.remove('nf-cod-triangle_right');
+                    icon.classList.add('nf-cod-triangle_down');
+                }
+            });
+        }
     }
 }

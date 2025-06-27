@@ -9,6 +9,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
+    font-size: 1vw;
 }
 
 #aboutMeOverlay.visible {
@@ -31,7 +32,6 @@
     border-left: 0.2vw solid #FFA500;
     border-right: 0.2vw solid #FFA500;
     text-align: center;
-    font-size: 0.8vw;
     padding: 0.25vh 1vw 0.25vh 1vw;
 }
 
@@ -42,17 +42,14 @@
     border-left: 0.2vw solid #FFA500;
     border-right: 0.2vw solid #FFA500;
     text-align: center;
-    font-size: 0.8vw;
 }
 
 .aboutMeTitle .aboutMeFooter h2 {
     margin: 0;
-    font-size: 0.8vw;
 }
 
 .aboutMeMain {
     background-color: #000000CC;
-    font-size: 0.8vw;
     padding: 1vw;
     flex: 1;
     max-width: 32vw;
@@ -62,7 +59,6 @@
 }
 
 .aboutMeMain p {
-    font-size: 0.8vw;
     margin: 0;
     padding: 0.5vw 0;
 }
@@ -80,7 +76,6 @@
 .aboutMeTools {
     background-color: #000000CC;
     height: 30vh;
-    font-size: 0.8vw;
     border-right: 0.2vw solid #FFA500;
     border-radius: 0.4vw;
 }
@@ -100,7 +95,6 @@
     background-color: #000000CC;
     height: 45vh;
     width: 32vw;
-    font-size: 0.8vw;
     border-right: 0.2vw solid #FFA500;
     border-radius: 0.4vw;
 }
@@ -153,4 +147,23 @@
     background-color: transparent;
     text-decoration: none;
     padding: 0 1vw 0 1vw;
+}
+
+.collapsible {
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding-left: 0;
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 1vw;
+}
+
+.content {
+    display: none;
+    overflow: hidden;
+    width: 100%;
 }
