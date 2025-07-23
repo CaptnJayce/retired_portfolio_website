@@ -11,9 +11,7 @@ import { Stars } from './components/celestial_bodies/stars.js'
 import { createCamera } from './systems/camera.js'
 import { createAmbientLight } from './systems/light.js'
 
-import "@fontsource/roboto-slab";
-
-var paused = false;
+let paused = false;
 export class SolarSystem {
     constructor() {
         this.scene = new THREE.Scene();
@@ -37,6 +35,31 @@ export class SolarSystem {
 
         this.init();
         this.setupEventListeners();
+
+        setTimeout(() => this.simulateSunClick(), 1800);
+    }
+
+    simulateSunClick() {
+        if (!this.sun) return;
+
+        const sunPosition = this.sun.position.clone();
+        sunPosition.project(this.camera);
+
+        const mouseCoords = {
+            x: sunPosition.x,
+            y: -sunPosition.y,
+        };
+
+        this.raycaster.setFromCamera(mouseCoords, this.camera);
+        const intersects = this.raycaster.intersectObject(this.sun, true);
+
+        if (intersects.length > 0) {
+            const fakeClickEvent = {
+                clientX: (mouseCoords.x * 0.5 + 0.5) * window.innerWidth,
+                clientY: (mouseCoords.y * 0.5 + 0.5) * window.innerHeight,
+            };
+            this.onMouseClick(fakeClickEvent);
+        }
     }
 
     setupEventListeners() {
@@ -119,6 +142,7 @@ export class SolarSystem {
         this.scene.add(createAmbientLight());
 
         const sun = new Sun(this.camera);
+        this.sun = sun;
         this.animatedBodies.push(sun);
         this.scene.add(sun);
 

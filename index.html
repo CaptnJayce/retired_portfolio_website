@@ -7,18 +7,25 @@
     <link rel="icon" href="/smugsip.ico">
     <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css">
 
-    <link rel="stylesheet" href="css/celestial_bodies/aboutMe.css">
+    <link rel="stylesheet" href="css/celestial_bodies/welcome.css">
     <link rel="stylesheet" href="css/celestial_bodies/projects.css">
     <link rel="stylesheet" href="css/celestial_bodies/timeline.css">
     <link rel="stylesheet" href="css/celestial_bodies/skills.css">
     <link rel="stylesheet" href="css/components/settings.css">
 
     <style>
+        @font-face {
+            font-family: 'DepartureMono Nerd Font';
+            src: url('./fonts/DepartureMonoNerdFont-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
-            font-family: "Arial";
+            font-family: 'DepartureMono Nerd Font', monospace;
             margin: 0;
             overflow: hidden;
-            color: white;
+            color: #faf4ed;
             background-color: black;
             animation: fadeIn 1.5s ease-in;
         }
@@ -51,7 +58,7 @@
         </button>
         <div class="dropdown-content">
             <label for="zoomSpeed">Zoom speed: <span id="zoomSpeedValue"></span></label>
-            <input type="range" id="zoomSpeed" name="zoomSpeed" min="0.1" max="2" value="0.8" step="0.1" />
+            <input type="range" id="zoomSpeed" name="zoomSpeed" min="0.1" max="2" value="1.2" step="0.1" />
         </div>
     </div>
 
@@ -68,30 +75,11 @@
         </div>
     </div>
 
-    <div id="aboutMeOverlay">
-        <div class="aboutMeContainer">
-            <div class="aboutMeMain">
-                <h3 style="display: flex; font-size: 1.5vw; margin-top: 1vh; margin-bottom: 2.6vh;">General Information
-                </h3>
-                <div class="aboutMeContent">
-                </div>
-            </div>
-
-            <div class="mainSecondary">
-                <div class="aboutMeSecondary">
-                    <div class="aboutMeTools">
-                        <div class="aboutMeContentT">
-                        </div>
-                    </div>
-                    <div class="aboutMeHistory">
-                        <div class="aboutMeContentH">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="aboutMeFooter">
-                <div class="aboutMeContentF">
+    <div id="welcomeOverlay">
+        <div class="welcomeContainer">
+            <div class="welcomeMain">
+                <div class="circle"></div>
+                <div class="welcomeContent">
                 </div>
             </div>
         </div>

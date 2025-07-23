@@ -12,7 +12,7 @@ export class BasePlanet extends THREE.Mesh {
         super(geometry, material);
 
         this.outlineMesh = new THREE.Mesh(
-            new THREE.SphereGeometry(radius * 1.1, 64, 64),
+            new THREE.SphereGeometry(radius, 64, 64),
             new THREE.MeshBasicMaterial({
                 color: 0xFFFFFF,
                 side: THREE.BackSide
@@ -132,12 +132,12 @@ export class BasePlanet extends THREE.Mesh {
         this.isAnimating = true;
 
         const projectsOverlay = document.getElementById('projectsOverlay');
-        const aboutMeOverlay = document.getElementById('aboutMeOverlay');
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
         const timelineOverlay = document.getElementById('timelineOverlay');
         const skillsOverlay = document.getElementById('skillsOverlay');
 
         if (projectsOverlay) projectsOverlay.classList.remove('visible');
-        if (aboutMeOverlay) aboutMeOverlay.classList.remove('visible');
+        if (welcomeOverlay) welcomeOverlay.classList.remove('visible');
         if (timelineOverlay) timelineOverlay.classList.remove('visible');
         if (skillsOverlay) skillsOverlay.classList.remove('visible');
 
