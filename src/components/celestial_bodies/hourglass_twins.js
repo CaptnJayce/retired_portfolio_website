@@ -194,7 +194,7 @@ export class HourglassTwins extends BasePlanet {
         `;
         bottomL.innerHTML = `
             <h3>2021 to 2024</h3>
-            <p>Attended Brunel University where I studied for, and completed my BSc in Computer Science, achieving a 2:2 in Computer Science: Network Computing</p>
+            <p>Attended Brunel University where I studied for, and completed my B.Sc. in Computer Science, achieving a 2:2 in Computer Science: Network Computing</p>
         `;
 
         middle.innerHTML = `

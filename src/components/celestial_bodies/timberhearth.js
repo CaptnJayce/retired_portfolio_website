@@ -105,7 +105,7 @@ export class TimberHearth extends BasePlanet {
         this.projects.forEach(project => {
             const projectCard = this.createProjectCard(project);
 
-            if (project.status == 'Complete') {
+            if (project.status === 'Complete') {
                 completeList.appendChild(projectCard);
             } else {
                 incompleteList.appendChild(projectCard);

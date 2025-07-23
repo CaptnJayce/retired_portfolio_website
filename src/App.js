@@ -65,7 +65,7 @@ export class SolarSystem {
     setupEventListeners() {
         window.addEventListener('click', (event) => this.onMouseClick(event), false);
         window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
-        window.addEventListener("resize", this.onWindowResize(), false);
+        window.addEventListener("resize", () => this.onWindowResize());
     }
 
     onWindowResize() {
@@ -75,16 +75,19 @@ export class SolarSystem {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    onMouseMove(event) {
+    mouseCoordinates(event) {
         this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    }
+
+    onMouseMove(event) {
+        this.mouseCoordinates(event);
 
         this.raycaster.setFromCamera(this.mouse, this.camera);
         const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
         if (intersects.length > 0) {
-            const object = intersects[0].object;
-            let hoverableObject = object;
+            let hoverableObject = intersects[0].object;
 
             while (hoverableObject && !hoverableObject.isHoverable && hoverableObject.parent) {
                 hoverableObject = hoverableObject.parent;
@@ -111,8 +114,7 @@ export class SolarSystem {
     }
 
     onMouseClick(event) {
-        this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        this.mouseCoordinates(event);
 
         this.raycaster.setFromCamera(this.mouse, this.camera);
         const intersects = this.raycaster.intersectObjects(this.scene.children, true);
