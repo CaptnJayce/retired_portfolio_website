@@ -1,8 +1,9 @@
 import { BasePlanet } from './planet.js';
+import {typeEffect, typeAsciiEffect} from "../../systems/globals";
 
 export class TimberHearth extends BasePlanet {
     constructor(camera) {
-        super(camera, "Projects", 1.8, 1.25, 0x59981a, 0);
+        super(camera, "Projects", 6, 1.25, 0x59981a, 0);
 
         this.semiMajorAxis = 30;
         this.semiMinorAxis = 20;
@@ -96,11 +97,27 @@ export class TimberHearth extends BasePlanet {
     // we're doing this da looooooooooooooooooooong way
     showPlanetInfo() {
         const overlay = document.getElementById('projectsOverlay');
+        const main = overlay.querySelector('.projectsTitle')
         const incompleteList = overlay.querySelector('.incompleteProjects');
         const completeList = overlay.querySelector('.completeProjects');
 
+        main.innerHTML = `
+        <pre class="projectsAscii"></pre> 
+        `;
+        const projects = main.querySelector('pre') ;
+
         incompleteList.innerHTML = '';
         completeList.innerHTML = '';
+
+        const ascii = `
+██████╗ ██████╗   ██████╗      ██╗ ███████╗ ██████╗████████╗███████╗
+██╔══██╗██╔══██╗ ██╔═══██╗     ██║ ██╔════╝██╔════╝╚══██╔══╝██╔════╝
+██████╔╝██████╔╝ ██║   ██║     ██║ █████╗  ██║        ██║   ███████╗
+██╔═══╝ ██╔══██╗ ██║   ██║ ██╗ ██║ ██╔══╝  ██║        ██║   ╚════██║
+██║     ██║  ██║ ╚██████╔╝ ╚████╔╝ ███████╗╚██████╗   ██║   ███████║
+╚═╝     ╚═╝  ╚═╝  ╚═════╝   ╚═══╝  ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝
+        `
+        typeAsciiEffect(projects, ascii, 100);
 
         this.projects.forEach(project => {
             const projectCard = this.createProjectCard(project);

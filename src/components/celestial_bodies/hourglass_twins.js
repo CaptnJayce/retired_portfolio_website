@@ -1,16 +1,17 @@
 import { BasePlanet } from './planet.js';
 import * as THREE from 'three';
+import { typeEffect, typeAsciiEffect } from '../../systems/globals.js';
 
 export class HourglassTwins extends BasePlanet {
     constructor(camera) {
-        super(camera, "Experience & Education", 2.2, 3, 0x000000, 0);
+        super(camera, "About Me", 7, 3, 0x000000, 0);
 
         this.material.transparent = true;
         this.material.depthWrite = false;
         this.material.opacity = 0;
 
-        this.twin1 = this.createTwin("Experience", 0x86110e);
-        this.twin2 = this.createTwin("Education", 0xF6D7B0);
+        this.twin1 = this.createTwin("One", 0x86110e);
+        this.twin2 = this.createTwin("Two", 0xF6D7B0);
 
         this.createTwinOutlines();
 
@@ -148,7 +149,7 @@ export class HourglassTwins extends BasePlanet {
 
         this.isAnimating = true;
 
-        const overlay = document.getElementById('timelineOverlay');
+        const overlay = document.getElementById('aboutMeOverlay');
         overlay.classList.remove('visible');
 
         this.camera.resetView({
@@ -171,48 +172,27 @@ export class HourglassTwins extends BasePlanet {
     }
 
     showPlanetInfo() {
-        const overlay = document.getElementById('timelineOverlay');
-        const topL = overlay.querySelector('.timelineTopL');
-        const topLT = overlay.querySelector('.timelineTopLT');
-        const topR = overlay.querySelector('.timelineTopR');
-        const middle = overlay.querySelector('.timelineMiddle');
-        const bottomL = overlay.querySelector('.timelineBottomL');
-        const bottomR = overlay.querySelector('.timelineBottomR');
-        const bottomRT = overlay.querySelector('.timelineBottomRT');
+        const overlay = document.getElementById('aboutMeOverlay');
+        const main = overlay.querySelector('.aboutMeMain');
 
-        middle.innerHTML = `
-        `;
+        main.innerHTML = `
+        <pre class="aboutMeAscii"></pre>
+        `
 
-        // education
-        topL.innerHTML = `
-            <h3>2019 to 2021</h3>
-            <p>Attended New City College where I studied for, and completed a Level 3 BTEC in IT, achieving a D*DD which allowed me to attend University</p>
-        `;
-        topLT.innerHTML = `
-            <h3>2025 onwards</h3>
-            <p>Currently studying for an AWS Cloud Practitioner certificate and exploring various trails in the Salesforce ecosystem</p>
-        `;
-        bottomL.innerHTML = `
-            <h3>2021 to 2024</h3>
-            <p>Attended Brunel University where I studied for, and completed my B.Sc. in Computer Science, achieving a 2:2 in Computer Science: Network Computing</p>
-        `;
+        const aboutMe = main.querySelector('pre');
+        const ascii = `
+  █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗   ███╗   ███╗███████╗
+ ██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝   ████╗ ████║██╔════╝
+ ███████║██████╔╝██║   ██║██║   ██║   ██║      ██╔████╔██║█████╗  
+ ██╔══██║██╔══██╗██║   ██║██║   ██║   ██║      ██║╚██╔╝██║██╔══╝  
+ ██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║      ██║ ╚═╝ ██║███████╗
+ ╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝      ╚═╝     ╚═╝╚══════╝
+        `
 
-        middle.innerHTML = `
-        `;
+        typeAsciiEffect(aboutMe, ascii, 100);
 
-        // experience
-        bottomR.innerHTML = `
-            <h3>Cybersecurity in The Web</h3>
-            <p>For my University final year project, I developed and tested both secure & insecure websites to demonstrate defensive and offensive tactics used in Cybersecurity</p>
-        `;
-        bottomRT.innerHTML = `
-            <h3>Voluntary SWE</h3>
-            <p>I volunteer as a Software Engineer for the Orange Trust, helping where I can with front-end and back-end development</p>
-        `;
-        topR.innerHTML = `
-            <h3>Shopify Webstore</h3>
-            <p>Worked closely alongside a client and colleague to overhaul the design of Tino's online clothing store</p>
-        `;
+        const card = document.createElement('div');
+        main.appendChild(card);
 
         overlay.classList.add('visible');
     }

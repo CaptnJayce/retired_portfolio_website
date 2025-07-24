@@ -25,8 +25,21 @@
     margin-top: 1vw;
 }
 
+.projectsTitle {
+    position: absolute;
+    align-items: center;
+    width: 80vw;
+    top: -2vh;
+}
+
+.projectsAscii {
+    font-size: 0.8vw;
+    text-align: center;
+}
+
 .leftColumn,
 .rightColumn {
+    transform: translateY(5vh);
     flex: 1;
     max-height: 80vh;
     width: 30vw;

@@ -18,92 +18,16 @@
 }
 
 .skillsContainer {
-    display: flex;
-    flex-direction: row;
-    height: 90vh;
+    height: 100vh;
     width: 90vw;
-    font-size: 0.9vw;
+    font-size: 0.8vw;
 }
 
-.skillsItem {
-    display: flex;
+.skillsAscii {
+    font-size: 0.8vw;
+    text-align: center;
+}
+
+.skillsTitle {
     align-items: center;
-    text-align: left;
-    padding-bottom: 0.5vw;
-    width: 10vw;
-}
-
-.skillsItemR {
-    display: flex;
-    align-items: center;
-    text-align: right;
-    padding-bottom: 0.5vw;
-    width: 10vw;
-    justify-content: right;
-    margin-left: auto;
-}
-
-.skillsItem p,
-.skillsItemR p {
-    margin: 0;
-}
-
-.skillsBackground,
-.skillsBackgroundTitle {
-    width: 20vw;
-    height: 50vh;
-    background-color: #000000CC;
-    position: absolute;
-}
-
-.skillsBackground {
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
-}
-
-.skillsBackgroundTitle {
-    width: 25vw;
-    font-size: 1vw;
-}
-
-.skillsBackgroundTitle.skillsTitle {
-    top: 4vh;
-    left: 50%;
-    height: auto;
-    transform: translateX(-50%);
-    background-color: #141414CC;
-    border-left: 0.2vw solid #f8a110;
-    border-right: 0.2vw solid #f8a110;
-    border-radius: 0.4vw;
-}
-
-.skillsBackground.skillsProgramming {
-    display: grid;
-    justify-items: start;
-    top: 15%;
-    left: 10vh;
-    background-color: #141414CC;
-    border-left: 0.2vw solid #f8a110;
-    border-radius: 0.4vw;
-}
-
-.skillsBackground.skillsEnvironment {
-    display: grid;
-    justify-items: end;
-    top: 15%;
-    right: 10vh;
-    background-color: #141414CC;
-    border-right: 0.2vw solid #f8a110;
-    border-radius: 0.4vw;
-}
-
-.skillsBackground.skillsOther {
-    height: 30vh;
-    bottom: 4vh;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #141414CC;
-    border-left: 0.2vw solid #f8a110;
-    border-right: 0.2vw solid #f8a110;
-    border-radius: 0.4vw;
 }
