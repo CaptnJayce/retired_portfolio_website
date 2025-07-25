@@ -103,6 +103,7 @@ export class TimberHearth extends BasePlanet {
 
         main.innerHTML = `
         <pre class="projectsAscii"></pre> 
+        <pre class="projectsAsciiLines"></pre> 
         `;
         const projects = main.querySelector('pre') ;
 
@@ -116,6 +117,40 @@ export class TimberHearth extends BasePlanet {
 ██╔═══╝ ██╔══██╗ ██║   ██║ ██╗ ██║ ██╔══╝  ██║        ██║   ╚════██║
 ██║     ██║  ██║ ╚██████╔╝ ╚████╔╝ ███████╗╚██████╗   ██║   ███████║
 ╚═╝     ╚═╝  ╚═╝  ╚═════╝   ╚═══╝  ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝
+
+═╗                                                                      ╔═
+╚═╗                                                                  ╔═╝
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                            ╔════════╗                            ║
+║                           ╔╝        ╚╗                           ║
+╚═══════════════════════════╣          ╠═══════════════════════════╝
+╔═══════════════════════════╣          ╠═══════════════════════════╗
+║                           ╚╗        ╔╝                           ║
+║                            ╚════════╝                            ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+║                                                                  ║
+╔═╝                                                                  ╚═╗
+═╝                                                                      ╚═
         `
         typeAsciiEffect(projects, ascii, this.hasVisited ? 0 : 100);
 

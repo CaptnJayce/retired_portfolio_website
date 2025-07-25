@@ -22,16 +22,20 @@ export class Sun extends BasePlanet {
 
         main.innerHTML = `
         <pre class="welcomeAscii"></pre>
-        <h2 class="titles" style="margin-top: 0; padding-top: 0.5vh;"><span></span></h2>
+        <div class="header-container" style="display: flex; justify-content: center; align-items: center; margin-top: 0; padding-top: 0.5vh;">
+        <h2 class="titles" style="padding-right: 1vw;"><span></span></h2>
+        <img src="assets/pfp.png" style="width: 3vw; height: 3vw; display: none;">
+        </div>
         <p style="margin-top: 0;"><span></span></p>
         <p style="margin-top: 0;"><span></span></p>
         <p style="margin-top: 0;"><span></span></p>
-        <a href="https://github.com/CaptnJayce/captnjayce.github.io/issues" class="welcomeLink""><span></span></a>
+        <a href="https://github.com/CaptnJayce/captnjayce.github.io/issues" class="welcomeLink"><span></span></a>
         <p style="padding-top: 4vh;"><span></span></p>
         `;
 
         const welcome = main.querySelector('pre');
         const heading = main.querySelector('h2 span');
+        const img = main.querySelector('img');
         const pOne = main.querySelectorAll('p span')[0];
         const pTwo = main.querySelectorAll('p span')[1];
         const pThree = main.querySelectorAll('p span')[2];
@@ -44,10 +48,14 @@ export class Sun extends BasePlanet {
  ██╔══██║██╔══╝  ██║     ██║     ██║   ██║      ██║   ██╔══██║██╔══╝  ██╔══██╗██╔══╝  
  ██║  ██║███████╗███████╗███████╗╚██████╔╝      ██║   ██║  ██║███████╗██║  ██║███████╗
  ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝       ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+ 
         `;
 
         // TODO: Add toggle for setTimeout
         typeAsciiEffect(welcome, ascii, this.hasVisited ? 0 : 100);
+        setTimeout(() => {
+            img.style.display = "block";
+        }, this.hasVisited ? 0 : 1900);
 
         const messages = [
             { element: heading, text: 'My name is CaptnJayce or Casey', delay: 1000 },

@@ -36,7 +36,8 @@ export class SolarSystem {
         this.init();
         this.setupEventListeners();
 
-        setTimeout(() => this.simulateSunClick(), 1800);
+        // TODO: comment this back in when done
+        // setTimeout(() => this.simulateSunClick(), 1800);
     }
 
     simulateSunClick() {
