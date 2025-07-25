@@ -117,7 +117,7 @@ export class TimberHearth extends BasePlanet {
 ██║     ██║  ██║ ╚██████╔╝ ╚████╔╝ ███████╗╚██████╗   ██║   ███████║
 ╚═╝     ╚═╝  ╚═╝  ╚═════╝   ╚═══╝  ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝
         `
-        typeAsciiEffect(projects, ascii, 100);
+        typeAsciiEffect(projects, ascii, this.hasVisited ? 0 : 100);
 
         this.projects.forEach(project => {
             const projectCard = this.createProjectCard(project);

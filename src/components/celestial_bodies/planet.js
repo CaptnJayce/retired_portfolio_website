@@ -26,6 +26,7 @@ export class BasePlanet extends THREE.Mesh {
         this.name = planetName;
         this.zoom = zoomAmount;
         this.isZoomed = false;
+        this.hasVisited = false;
         this.camera = camera;
         this.xOffset = xOffset;
         this.yOffset = yOffset;
@@ -56,6 +57,7 @@ export class BasePlanet extends THREE.Mesh {
         if (this.isAnimating) return;
 
         if (this.isZoomed) {
+            this.hasVisited = true;
             this.hidePlanetInfo();
             return;
         }

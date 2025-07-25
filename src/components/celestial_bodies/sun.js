@@ -46,27 +46,21 @@ export class Sun extends BasePlanet {
  ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝       ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
         `;
 
-        // TODO: Make simpler with async
         // TODO: Add toggle for setTimeout
-        typeAsciiEffect(welcome, ascii, 100);
-        setTimeout( ()=> {
-            typeEffect(heading, 'My name is CaptnJayce or Casey', 30);
-        }, 1000);
-        setTimeout(() => {
-            typeEffect(pOne, 'This is my Outer Wilds themed portfolio website, documenting my projects, experience, as well as future blogs and webgames', 30);
-        }, 2400);
-        setTimeout(() => {
-            typeEffect(pTwo, 'Each planet will tell you something different, click on the Sun to zoom out and explore the Outer Wilds solar system!', 30);
-        }, 6500);
-        setTimeout(() => {
-            typeEffect(pThree, 'If you have any bugs to report, or features to suggest, please open an issue on GitHub: ', 30);
-        }, 10500);
-        setTimeout(() => {
-            typeEffect(link, 'captnjayce.github.io/issues', 30);
-        }, 13400);
-        setTimeout(() => {
-            typeEffect(pFour, 'Thank you for visiting :)', 30);
-        }, 15200);
+        typeAsciiEffect(welcome, ascii, this.hasVisited ? 0 : 100);
+
+        const messages = [
+            { element: heading, text: 'My name is CaptnJayce or Casey', delay: 1000 },
+            { element: pOne, text: 'This is my Outer Wilds themed portfolio website, documenting my projects, experience, as well as future blogs and webgames', delay: 2400 },
+            { element: pTwo, text: 'Each planet will tell you something different, click on the Sun to zoom out and explore the Outer Wilds solar system!', delay: 6500 },
+            { element: pThree, text: 'If you have any bugs to report, or features to suggest, please open an issue on GitHub: ', delay: 10500 },
+            { element: link, text: 'captnjayce.github.io/issues', delay: 13400 },
+            { element: pFour, text: 'Thank you for visiting :)', delay: 15200 }
+        ];
+
+        messages.forEach(({ element, text, delay }) => {
+            setTimeout(() => typeEffect(element, text, this.hasVisited ? 0 : 30), this.hasVisited ? 0 : delay);
+        });
 
         const card = document.createElement('div');
         main.appendChild(card);

@@ -28,7 +28,7 @@ export class BrittleHollow extends BasePlanet {
 ███████╗██╔╝ ██╗██║     ███████╗██║  ██║██║███████╗██║ ╚████║╚██████╗ ███████╗
        ╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝       
         `
-        typeAsciiEffect(experience, ascii, 100);
+        typeAsciiEffect(experience, ascii, this.hasVisited ? 0 : 100);
 
         const card = document.createElement('div');
         main.appendChild(card);

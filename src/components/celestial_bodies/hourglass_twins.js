@@ -31,6 +31,7 @@ export class HourglassTwins extends BasePlanet {
         if (this.isAnimating) return;
 
         if (this.isZoomed) {
+            this.hasVisited = true;
             this.hidePlanetInfo();
             return;
         }
@@ -188,8 +189,7 @@ export class HourglassTwins extends BasePlanet {
  ██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║      ██║ ╚═╝ ██║███████╗
  ╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝      ╚═╝     ╚═╝╚══════╝
         `
-
-        typeAsciiEffect(aboutMe, ascii, 100);
+        typeAsciiEffect(aboutMe, ascii, this.hasVisited ? 0 : 100);
 
         const card = document.createElement('div');
         main.appendChild(card);
