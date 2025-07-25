@@ -4,7 +4,7 @@ import { typeEffect, typeAsciiEffect } from '../../systems/globals.js';
 
 export class Sun extends BasePlanet {
     constructor(camera) {
-        super(camera, "Welcome", 5, 8, 0xFFA500, -15);
+        super(camera, "Welcome", 6, 8, 0xFFA500, 0, -11);
 
         this.material.emissive = new THREE.Color(0xFFA500);
         this.material.emissiveIntensity = 1;

@@ -2,7 +2,7 @@ import { BasePlanet } from './planet.js';
 
 export class GiantsDeep extends BasePlanet {
     constructor(camera) {
-        super(camera, "...", 3, 4, 0x30a073, 0);
+        super(camera, "...", 6, 4, 0x30a073, 0, -9);
 
         this.semiMajorAxis = 55;
         this.semiMinorAxis = 35;

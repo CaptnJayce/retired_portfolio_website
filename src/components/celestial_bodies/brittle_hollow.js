@@ -3,7 +3,7 @@ import {typeAsciiEffect} from "../../systems/globals";
 
 export class BrittleHollow extends BasePlanet {
     constructor(camera) {
-        super(camera, "Experience", 5, 1.5, 0x808080, 0);
+        super(camera, "Experience", 4, 1.5, 0x808080, 0, 0);
 
         this.semiMajorAxis = 40;
         this.semiMinorAxis = 25;

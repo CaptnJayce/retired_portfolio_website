@@ -28,6 +28,7 @@ export function createCamera() {
             zoom: 3,
             ease: "power2.inOut",
             xOffset: object.xOffset,
+            yOffset: object.yOffset,
             onComplete: () => { }
         };
         const config = { ...defaults, ...options };
@@ -41,7 +42,7 @@ export function createCamera() {
 
         timeline.to(this.position, {
             x: targetPosition.x - config.xOffset,
-            y: targetPosition.y,
+            y: targetPosition.y - config.yOffset,
             z: targetPosition.z,
             duration: config.duration,
             ease: config.ease

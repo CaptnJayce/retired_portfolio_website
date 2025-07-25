@@ -4,7 +4,7 @@ import { typeEffect, typeAsciiEffect } from '../../systems/globals.js';
 
 export class HourglassTwins extends BasePlanet {
     constructor(camera) {
-        super(camera, "About Me", 7, 3, 0x000000, 0);
+        super(camera, "About Me", 4, 3, 0x000000, 0, 0);
 
         this.material.transparent = true;
         this.material.depthWrite = false;
