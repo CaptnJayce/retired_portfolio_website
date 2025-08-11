@@ -1,3 +1,8 @@
+# This is retired
+- Honestly, I got sick of working on this project. It became too gimmicky and accumulated so much technical debt I just resented working on it.
+- I'm working on a new website, something simpler and more practical. It's unfortunate because I really liked the idea - but any further development will just feel like sunk-cost. 
+
+
 ### Outer Wilds themed Portfolio Website
 - I opted for a ThreeJS website as I wanted to make a portfolio website with more charm than just some static HTML pages, additionally, I wanted to learn the library for future web-game projects I have in mind.
 - ThreeJS also allows me to emulate workflows from other projects, meaning I could get into flow a lot quicker despite learning a new tool.
